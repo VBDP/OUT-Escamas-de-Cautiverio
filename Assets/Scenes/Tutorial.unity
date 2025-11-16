@@ -16945,7 +16945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3986d06f3a21aef43880fcba5f40f65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenDoors
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1325920162}
   needsKey: 0
 --- !u!65 &1156329811
 BoxCollider:
@@ -18938,10 +18938,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eb05673c6eaf2443911e5f8b7d32997, type: 2}
+    - target: {fileID: 1630794972795428178, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 17fd1a63ed28519458a188a2c702390a, type: 2}
+    - target: {fileID: 1630794972795428178, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a2cafa04cfbbce4c87c257e6d03679c, type: 2}
+    - target: {fileID: 1630794972795428178, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a2cafa04cfbbce4c87c257e6d03679c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -4213761076027111091, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: 0
@@ -28351,7 +28368,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -28366,7 +28383,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
