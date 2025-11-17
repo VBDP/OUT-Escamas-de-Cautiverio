@@ -24,4 +24,13 @@ public class ColissionDetection : MonoBehaviour
             transform.position += pushDir * pushBackForce * Time.deltaTime;
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            Vector3 pushDir = (transform.position - other.ClosestPoint(transform.position)).normalized;
+            transform.position += pushDir * 0 * Time.deltaTime;
+        }
+    }
 }
