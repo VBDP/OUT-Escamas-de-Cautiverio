@@ -908,8 +908,8 @@ GameObject:
   - component: {fileID: 71348799427736573}
   - component: {fileID: 8539017286712081129}
   - component: {fileID: 4330610271817151731}
-  - component: {fileID: 8539017286712081130}
   - component: {fileID: 8539017286712081131}
+  - component: {fileID: 8539017286712081132}
   m_Layer: 0
   m_Name: First Person Camera
   m_TagString: Untagged
@@ -972,6 +972,26 @@ PrefabInstance:
     - target: {fileID: 5016074824906894731, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
       propertyPath: m_Name
       value: red_dungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938219898123579633, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938219898123579633, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938219898123579633, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160943639671412275, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160943639671412275, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4117188517258036396, guid: 6b074d6a8175b604fa96dab438102ddc, type: 3}
@@ -1046,20 +1066,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215129578314394890}
   m_Enabled: 1
---- !u!114 &8539017286712081130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215129578314394890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d2caa9735af3843818db02f7dc1731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RaycastController
-  rayDistance: 10
-  lineRenderer: {fileID: 8539017286712081131}
 --- !u!120 &8539017286712081131
 LineRenderer:
   serializedVersion: 2
@@ -1170,6 +1176,19 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8539017286712081132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215129578314394890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d2caa9735af3843818db02f7dc1731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastController
+  hittingDoor: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
