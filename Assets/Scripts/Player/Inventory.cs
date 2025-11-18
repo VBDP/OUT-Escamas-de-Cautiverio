@@ -3,7 +3,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-    private bool KeyFirstDoor = false;
+    public bool KeyFirstDoor = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,5 +19,10 @@ public class Inventory : MonoBehaviour
     public void GetKeyFirstDoor()
     {
         KeyFirstDoor = true;    
+    }
+
+    public bool returnKeyFirstDoor(bool keyFirstDoor)
+    {
+        return KeyFirstDoor;
     }
 }
