@@ -18,15 +18,18 @@ public class RaycastController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
         {
-            if (hit.collider.gameObject.tag == "Door") {   
+            if (hit.collider.gameObject.tag == "Door") {
+           
                 if (Input.GetMouseButton(0) && keyFirstDoor)
                 {
                         Debug.Log(keyFirstDoor);
-                        hit.transform.Rotate(Vector3.down);    
+                        hit.transform.Rotate(Vector3.down);
+                    interactionText.text = "";
                 }
                 else if (Input.GetMouseButton(0)) 
                 {
                     Debug.Log(keyFirstDoor);
+                    interactionText.text = "Necesitas una llave para abrir esa puerta";
                 }
             }
 
