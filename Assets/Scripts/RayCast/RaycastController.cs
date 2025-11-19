@@ -32,11 +32,11 @@ public class RaycastController : MonoBehaviour
                 else if (Input.GetMouseButton(0)) 
                 {
                     Debug.Log(keyFirstDoor);
-                    interactionText.text = "Necesitas una llave para abrir esa puerta";
-                }
+                                    }
                 else if (!keyFirstDoor)
                 {
                     outline.OutlineColor = new Color(1f, 0f, 0f); //La puerta se vuelve roja cuando no tienes la llave
+                    interactionText.text = "Necesitas una llave para abrir esa puerta";
                 }
             }
 
