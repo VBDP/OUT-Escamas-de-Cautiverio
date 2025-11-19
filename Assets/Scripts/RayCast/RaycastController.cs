@@ -11,15 +11,18 @@ public class RaycastController : MonoBehaviour
     {
         bool keyFirstDoor = inventory.returnKeyFirstDoor(this);
         interactionText.text = "";
-        if (keyFirstDoor)
-        {
-            outline.OutlineColor = new Color(0f, 1f, 0f);
-        }
-        RaycastHit hit;
+            RaycastHit hit;
+        outline.OutlineColor = new Color(0f, 0f, 0f, 0f); //No se ve el outline en la puerta
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
         {
+            
             if (hit.collider.gameObject.tag == "Door") {
-           
+
+                if (keyFirstDoor)
+                {
+                    outline.OutlineColor = new Color(0f, 1f, 0f); //La puerta se vuelve verde cuando tienes la llave
+                }
+
                 if (Input.GetMouseButton(0) && keyFirstDoor)
                 {
                         Debug.Log(keyFirstDoor);
@@ -30,6 +33,10 @@ public class RaycastController : MonoBehaviour
                 {
                     Debug.Log(keyFirstDoor);
                     interactionText.text = "Necesitas una llave para abrir esa puerta";
+                }
+                else if (!keyFirstDoor)
+                {
+                    outline.OutlineColor = new Color(1f, 0f, 0f); //La puerta se vuelve roja cuando no tienes la llave
                 }
             }
 
@@ -45,6 +52,7 @@ public class RaycastController : MonoBehaviour
             }
 
         }
+        
     }
 }
 
