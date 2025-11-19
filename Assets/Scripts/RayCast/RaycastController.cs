@@ -7,6 +7,7 @@ public class RaycastController : MonoBehaviour
     public Inventory inventory;
     public Outline outline;
     public Outline outlineKey;
+    public Outline LeverOutline;
     public TextMeshProUGUI interactionText;
     public void Update()
     {
@@ -15,6 +16,7 @@ public class RaycastController : MonoBehaviour
             RaycastHit hit;
         outline.OutlineColor = new Color(0f, 0f, 0f, 0f); //No se ve el outline en la puerta
         outlineKey.OutlineColor = new Color(1f, 1f, 1f, 0f);
+        LeverOutline.OutlineColor = new Color(1f, 1f, 1f, 0f);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
         {
             
@@ -54,8 +56,20 @@ public class RaycastController : MonoBehaviour
                 }
             }
 
+            if (hit.collider.gameObject.tag == "Lever")
+            {
+                LeverOutline.OutlineColor = new Color(1f, 1f, 1f,1f); //El palanca se vuelve blanca al hacer hover
+                interactionText.text = "Click to pull the lever";
+                if (Input.GetMouseButton(0))
+                {
+
+                    
+                }
+                
+
         }
         
     }
+}
 }
 
