@@ -6,6 +6,7 @@ public class RaycastController : MonoBehaviour
     public bool hittingDoor = false;
     public Inventory inventory;
     public Outline outline;
+    public Outline outlineKey;
     public TextMeshProUGUI interactionText;
     public void Update()
     {
@@ -13,6 +14,7 @@ public class RaycastController : MonoBehaviour
         interactionText.text = "";
             RaycastHit hit;
         outline.OutlineColor = new Color(0f, 0f, 0f, 0f); //No se ve el outline en la puerta
+        outlineKey.OutlineColor = new Color(1f, 1f, 1f, 0f);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
         {
             
@@ -43,6 +45,7 @@ public class RaycastController : MonoBehaviour
             if(hit.collider.name == "Key01")
             {
                 interactionText.text = "Click to grab";
+                outlineKey.OutlineColor = new Color(1f, 1f, 1f,1f); //La llave se vuelve blanca al hacer hover
                 if (Input.GetMouseButton(0))
                 {
                     inventory.GetKeyFirstDoor();

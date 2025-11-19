@@ -717,8 +717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 1
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -755,6 +755,10 @@ PrefabInstance:
       propertyPath: outline
       value: 
       objectReference: {fileID: 1622656668731725423}
+    - target: {fileID: 1186763999228657179, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: outlineKey
+      value: 
+      objectReference: {fileID: 1189171436}
     - target: {fileID: 1186763999228657179, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
       propertyPath: interactionText
       value: 
