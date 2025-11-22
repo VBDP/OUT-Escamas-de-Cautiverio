@@ -71,10 +71,7 @@ public class LifeSystem : MonoBehaviour
     // ------------------------------------------------------------------------
     public void LifeImageFillAmount()
     {
-        if (LifeImage != null && CurrentHealth > 0f)
-        {
             LifeImage.fillAmount = CurrentHealth / MaxHealth;
-        }
     }
     // ------------------------------------------------------------------------
 }
