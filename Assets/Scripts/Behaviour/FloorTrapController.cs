@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class FloorTrapController : MonoBehaviour
 {
-    public Animator animator;
-  public void ActivarTrampa()
+    Animator anim;
+
+    private void Start()
     {
-        animator.SetBool("Activated", true);
+        anim = GetComponent<Animator>();
+    }
+    public void ActivarTrampa()
+    {
+        anim.SetBool("Activated", true);
     }
 
     public void DesactivarTrampa()
     {
-        animator.SetBool("Activated", false);
+        anim.SetBool("Activated", false);
     }
 
     private void OnTriggerEnter(Collider other)
