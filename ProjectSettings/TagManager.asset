@@ -10,6 +10,7 @@ TagManager:
   - FloorTrap
   - Collectable
   - Trigger
+  - NPC
   layers:
   - Default
   - TransparentFX

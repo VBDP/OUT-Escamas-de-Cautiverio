@@ -8,15 +8,16 @@ public class RaycastController : MonoBehaviour
     public Outline outline;
     public Outline outlineKey;
     public Outline outlineDoubleDoor;
+    public Outline NPCOutline;
     public TextMeshProUGUI interactionText;
     public void Update()
     {
         bool keyFirstDoor = inventory.returnKeyFirstDoor(this);
-        interactionText.text = "";
-            RaycastHit hit;
+                    RaycastHit hit;
         outline.OutlineColor = new Color(0f, 0f, 0f, 0f); //No se ve el outline en la puerta
         outlineKey.OutlineColor = new Color(1f, 1f, 1f, 0f);
         outlineDoubleDoor.OutlineColor = new Color(1f, 1f, 1f, 0f);
+        NPCOutline.OutlineColor = new Color(0f,0f,0f,0f);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
         {
             
@@ -70,6 +71,18 @@ public class RaycastController : MonoBehaviour
 
                 }
             }
+
+            if(hit.collider.tag == "NPC" && Input.GetMouseButton(0))
+            {
+                interactionText.text = "Assassin: ¿Puedes ver la palanca al lado de la puerta doble de madera?, Tira de ella y hayarás lo que buscas";
+                
+            }
+            else if (hit.collider.tag == "NPC" && !Input.GetMouseButton(0)){
+                interactionText.text = "Click to Talk";
+                NPCOutline.OutlineColor = new Color(1f, 0.84f, 0f, 1f);
+                
+            }
+
 
 
         }

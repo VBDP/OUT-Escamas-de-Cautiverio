@@ -1165,6 +1165,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1622656668731725423}
     - target: {fileID: 1186763999228657179, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: NPCOutline
+      value: 
+      objectReference: {fileID: 1555341391}
+    - target: {fileID: 1186763999228657179, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
       propertyPath: outlineKey
       value: 
       objectReference: {fileID: 1189171436}
@@ -1265,6 +1269,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8932629608694537548, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: -8757574553973548645, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1337,6 +1345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 1184918583161920007, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1392,6 +1404,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1555341388}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1555341390}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1555341391}
   m_SourcePrefab: {fileID: 100100000, guid: 90c5b17e333993e4b88cc17af8e86af2, type: 3}
 --- !u!1 &1555341387 stripped
 GameObject:
@@ -1420,6 +1438,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1555341390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555341387}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.7561575, z: 1}
+  m_Center: {x: 0, y: 0.9189293, z: -0}
+--- !u!114 &1555341391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555341387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.6732015, b: 0, a: 0}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!114 &1721142460 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3909999672185193054, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
@@ -29433,7 +29490,6 @@ GameObject:
   - component: {fileID: 5247343990555831329}
   - component: {fileID: 1098057486472890582}
   - component: {fileID: 4064813673325359229}
-  - component: {fileID: 5247343990555831330}
   m_Layer: 0
   m_Name: cage_02 (2)
   m_TagString: Untagged
@@ -63722,28 +63778,6 @@ Transform:
   - {fileID: 4121655811493824918}
   m_Father: {fileID: 4559867503409287415}
   m_LocalEulerAnglesHint: {x: 0, y: -233, z: 90}
---- !u!64 &5247343990555831330
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2466726446354358027}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300046, guid: 9889117518dff7b42806ad82249545f8, type: 3}
 --- !u!23 &5255186649764788792
 MeshRenderer:
   m_ObjectHideFlags: 0
