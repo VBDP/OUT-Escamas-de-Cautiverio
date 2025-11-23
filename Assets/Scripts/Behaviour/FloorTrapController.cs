@@ -6,9 +6,12 @@ using UnityEngine;
 public class FloorTrapController : MonoBehaviour
 {
     Animator anim;
+    AudioSource AudioSource;
+   public AudioClip clip;
         private void Start()
     {
         anim = GetComponent<Animator>();
+        AudioSource = GetComponent<AudioSource>();
     }
     public void ActivarTrampa()
     {
@@ -28,7 +31,8 @@ public class FloorTrapController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Trampa activada");
-            StartCoroutine(Wait(0.5f, () => anim.SetBool("Activated", true))); //Espera 1 segundo
+            
+            StartCoroutine(Wait(0.5f, () => ActivateTrap())); //Espera 1 segundo
 
         }
     }
@@ -40,5 +44,12 @@ public class FloorTrapController : MonoBehaviour
              Debug.Log("Trampa desactivada");
             StartCoroutine(Wait(0.5f, () => anim.SetBool("Activated", false))); //Espera 1 segundo
         }
+    }
+
+    public void ActivateTrap()
+    {
+        anim.SetBool("Activated", true);
+        AudioSource.Play();
+
     }
 }
