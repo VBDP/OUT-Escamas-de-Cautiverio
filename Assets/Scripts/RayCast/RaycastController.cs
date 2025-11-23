@@ -12,6 +12,7 @@ public class RaycastController : MonoBehaviour
     public TextMeshProUGUI interactionText;
     public void Update()
     {
+        interactionText.text = "";
         bool keyFirstDoor = inventory.returnKeyFirstDoor(this);
                     RaycastHit hit;
         outline.OutlineColor = new Color(0f, 0f, 0f, 0f); //No se ve el outline en la puerta
