@@ -42,7 +42,7 @@ public class RaycastController : MonoBehaviour
                 }
             }
 
-            if(hit.collider.name == "Key01")
+            if(hit.collider.tag == "Collectable")
             {
                 interactionText.text = "Click to grab";
                 outlineKey.OutlineColor = new Color(1f, 1f, 1f,1f); //La llave se vuelve blanca al hacer hover
@@ -53,6 +53,21 @@ public class RaycastController : MonoBehaviour
                     
                 }
             }
+
+            if (hit.collider.tag == "Trigger")
+            {
+                interactionText.text = "Click to interact";
+                outlineKey.OutlineColor = new Color(1f, 1f, 1f, 1f); //La llave se vuelve blanca al hacer hover
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if(hit.collider.name == "Lever"){
+                        Animator animator = hit.collider.GetComponent<Animator>();
+                        animator.SetBool("IsActive", true);
+                    }
+
+                }
+            }
+
 
         }
         

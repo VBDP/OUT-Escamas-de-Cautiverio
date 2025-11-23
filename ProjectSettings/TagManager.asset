@@ -7,8 +7,9 @@ TagManager:
   - Ground
   - Wall
   - Door
-  - Key
   - FloorTrap
+  - Collectable
+  - Trigger
   layers:
   - Default
   - TransparentFX
