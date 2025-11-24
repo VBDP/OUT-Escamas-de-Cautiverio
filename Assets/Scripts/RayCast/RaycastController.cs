@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RaycastController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RaycastController : MonoBehaviour
     public Outline outlineDoubleDoor;
     public Outline NPCOutline;
     public TextMeshProUGUI interactionText;
+    public Image inventory1Image;
 
     
     public void Update()
@@ -53,6 +55,7 @@ public class RaycastController : MonoBehaviour
                 {
                     inventory.GetKeyFirstDoor();
                     Destroy(hit.collider.gameObject);
+                    inventory1Image.enabled = true;
                     
                 }
             }
