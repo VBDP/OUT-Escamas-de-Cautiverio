@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Este Script es un sistema que permite al juego restar salud del jugador con diversos eventos.
-// Trampas, Caidas al vacío, ataques, ...
-// También permite sanar al jugador con pociones, objetos especiales...
+// Trampas, Caidas al vacï¿½o, ataques, ...
+// Tambiï¿½n permite sanar al jugador con pociones, objetos especiales...
 
 public class LifeSystem : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class LifeSystem : MonoBehaviour
     // ------------------------------------ ------------------------------------
     public void DamagePlayer(float damage)
     {
-        //Programa para recibir daño
+        //Programa para recibir daï¿½o
         if (CurrentHealth > 0)
         {
             CurrentHealth -= damage;
@@ -34,7 +34,7 @@ public class LifeSystem : MonoBehaviour
         }
 
         LifeImageFillAmount();
-        Debug.Log("Te han dañado" + CurrentHealth);
+        Debug.Log("Te han daï¿½ado" + CurrentHealth);
 
     }
     // ------------------------------------------------------------------------
@@ -65,6 +65,9 @@ public class LifeSystem : MonoBehaviour
     public void KillPlayer()
     {      
         transform.position = PlayerSpawn;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         CurrentHealth = 100f;
         LifeImageFillAmount();
     }
