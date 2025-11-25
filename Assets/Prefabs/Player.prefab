@@ -147,16 +147,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6693797254880467695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d2caa9735af3843818db02f7dc1731, type: 3}
+  m_Script: {fileID: 11500000, guid: a8cc12c96689ba640bc28f9386243c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaycastController
-  hittingDoor: 0
-  inventory: {fileID: 6274599577143755084}
+  objectName: 
+  objectTag: 
   outline: {fileID: 0}
-  outlineDoubleDoor: {fileID: 0}
-  NPCOutline: {fileID: 0}
-  interactionText: {fileID: 0}
-  inventory1Image: {fileID: 0}
 --- !u!1001 &6918101456921636063
 PrefabInstance:
   m_ObjectHideFlags: 0

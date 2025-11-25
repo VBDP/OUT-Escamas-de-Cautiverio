@@ -911,6 +911,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275941196782151802, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_Name
+      value: LifeImage
+      objectReference: {fileID: 0}
     - target: {fileID: 1893123746779735928, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -23213,7 +23217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 0}
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
   outlineWidth: 1
   precomputeOutline: 0
   bakeKeys: []
@@ -101600,6 +101604,7 @@ GameObject:
   - component: {fileID: 7316346167333406982}
   - component: {fileID: 5420896847640939521}
   - component: {fileID: 4532825147332586407}
+  - component: {fileID: 7477570381674791007}
   m_Layer: 3
   m_Name: door01
   m_TagString: Door
@@ -101607,6 +101612,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7477570381674791007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477570381674791006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed824054cfe8249bf291c4848c55c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
+  hitObjectName: 
+  hitObjectTag: 
+  outline: {fileID: 0}
+  raycastController: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!23 &7483816670410223976
 MeshRenderer:
   m_ObjectHideFlags: 0
