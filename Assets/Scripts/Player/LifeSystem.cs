@@ -18,6 +18,7 @@ public class LifeSystem : MonoBehaviour
         MaxHealth = 100f;
         CurrentHealth = MaxHealth;
         PlayerSpawn = transform.position;
+        LifeImage = GameObject.Find("LifeImage").GetComponent<Image>();
     }
     // ------------------------------------ ------------------------------------
     public void DamagePlayer(float damage)

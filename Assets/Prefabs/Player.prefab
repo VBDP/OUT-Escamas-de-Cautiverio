@@ -153,8 +153,10 @@ MonoBehaviour:
   hittingDoor: 0
   inventory: {fileID: 6274599577143755084}
   outline: {fileID: 0}
-  outlineKey: {fileID: 0}
+  outlineDoubleDoor: {fileID: 0}
+  NPCOutline: {fileID: 0}
   interactionText: {fileID: 0}
+  inventory1Image: {fileID: 0}
 --- !u!1001 &6918101456921636063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ PrefabInstance:
       addedObject: {fileID: 8409082892013544502}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7579683284527235134}
+      addedObject: {fileID: 8263304775106130123}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2920641915299968081}
@@ -355,7 +357,7 @@ MonoBehaviour:
   mouseSensitivity: 2
   verticalRotation: 0
   jumpForce: 5
---- !u!114 &7579683284527235134
+--- !u!114 &8263304775106130123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,6 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9cb32ddbef7a42a9c75703ed07a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
-  MaxHealth: 0
-  CurrentHealth: 0
+  MaxHealth: 100
+  CurrentHealth: 100
   LifeImage: {fileID: 0}
