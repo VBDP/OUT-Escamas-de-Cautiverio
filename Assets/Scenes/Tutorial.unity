@@ -101621,14 +101621,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7477570381674791006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfed824054cfe8249bf291c4848c55c1, type: 3}
+  m_Script: {fileID: 11500000, guid: be052edd6b70de84c8c9265d83bd0ed0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  hitObjectName: 
-  hitObjectTag: 
-  outline: {fileID: 0}
-  raycastController: {fileID: 0}
-  inventory: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::PrisonGate
 --- !u!23 &7483816670410223976
 MeshRenderer:
   m_ObjectHideFlags: 0
