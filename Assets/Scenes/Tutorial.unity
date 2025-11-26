@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 1469301647}
   - component: {fileID: 1469301646}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: World Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101624,6 +101624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be052edd6b70de84c8c9265d83bd0ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrisonGate
+  raycastController: {fileID: 0}
+  haveKey: 0
+  inventory: {fileID: 0}
 --- !u!23 &7483816670410223976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -116977,6 +116980,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1469301647}
   - {fileID: 498414439}
   - {fileID: 1849976498}
   - {fileID: 600851050}
@@ -116992,7 +116996,6 @@ SceneRoots:
   - {fileID: 4559867503409287415}
   - {fileID: 1555341386}
   - {fileID: 23742507}
-  - {fileID: 1469301647}
   - {fileID: 59877059}
   - {fileID: 769602639}
   - {fileID: 1251677427}
