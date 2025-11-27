@@ -1,67 +1,59 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PrisonGate : MonoBehaviour,DoorInterface
 {
-    DoorInterface doorInterface;
-    bool isOpen = false;
-    public RaycastController raycastController;
-    public bool haveKey = false;
-    public Inventory inventory;
 
+    DoorInterface doorInterface;
+    private RaycastController raycastController;
+    private bool haveKey = false;
+    private bool isOpen = false;
+    private Outline outline;
+    public TMPro.TextMeshProUGUI InteractionText;
+
+//----------------------------------------------------------------------------------------------------------------------
     public void Start()
-    {
+    {       
+        outline = GetComponent<Outline>();
         doorInterface = this as DoorInterface;
         raycastController = GameObject.Find("First Person Camera").GetComponent<RaycastController>();
-        inventory = GameObject.Find("Player").GetComponent<Inventory>();
-        if(raycastController)
-        {
-            Debug.LogError("RaycastController found on First Person Camera");
-        }
-        if(inventory)
-        {
-            Debug.LogError("Inventory found on Player");
-        }
     }
 
 public void Update()
     {
-       
-                isOpened();
         doorInterface.OpenCloseDoor();
+        outlinePuerta();
+        comprobarApertura();
     }
 
+//----------------------------------------------------------------------------------------------------------------------
     void DoorInterface.OpenCloseDoor()
     {
-        if(raycastController.GetHitObjectName() == "door01")
+       
+    }
+
+    void outlinePuerta()
+    {
+         if(raycastController.GetHitObjectName() == "Prison Gate")
         {
-            Debug.Log("Prison Gate interacted");
-            if(Input.GetMouseButton(0))
-            {
-                if(isOpen == false)
-                {
-                    transform.Rotate(this.transform.localRotation.x,-1f,this.transform.localRotation.z);
-                }
-                else if(isOpen == true)
-                {
-                    transform.Rotate(this.transform.localRotation.x,1f,this.transform.localRotation.z);
-                }
-            }
+           outline.OutlineColor = Color.white;
+        }
+        else
+        {
+            outline.OutlineColor = new Color(0,0,0,0);
         }
     }
 
-    void isOpened()
+    void comprobarApertura()
     {
-        if(transform.localRotation.y <= -0.7f && haveKey)
+        if(transform.localRotation.y <= -0.7f || transform.localRotation.y >= 0.7f)
         {
             isOpen = true;
         }
-        else if(transform.localRotation.y >= 0f && !haveKey)
+        else
         {
             isOpen = false;
         }
-        else{
-            isOpen = false;
-        }
-
     }
+
+//----------------------------------------------------------------------------------------------------------------------
 }
