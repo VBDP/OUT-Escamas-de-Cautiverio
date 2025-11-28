@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3797174748920020238}
   - component: {fileID: 7571452864089675547}
   - component: {fileID: 1948798842868762074}
+  - component: {fileID: -355387083003160797}
   m_Layer: 0
-  m_Name: Key01
+  m_Name: PrisonGate Key
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,6 +132,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29779917, y: 0.052075986, z: 0.12158017}
   m_Center: {x: -0.024731686, y: 0.00078005734, z: -0.000016465781}
+--- !u!114 &-355387083003160797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170146237162280362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3684def153472e04592f83da2fda612f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyController
+  whatDoorOpens: Prison Gate
+  Raycast: {fileID: 0}
 --- !u!1001 &8584208017938313647
 PrefabInstance:
   m_ObjectHideFlags: 0
