@@ -20,7 +20,7 @@ public class PrisonGate : MonoBehaviour,DoorInterface
     {
         haveKey = key.GetKey();
          OutlineChanger(); //Cambia el color del outline.
-        ChangeInteractionText();
+         ChangeInteractionText();
 
         if (haveKey) 
         { 
@@ -32,5 +32,5 @@ public class PrisonGate : MonoBehaviour,DoorInterface
     void OutlineChanger() { if (Raycast.GetHitObjectName() == "Prison Gate") { objectOutline.OutlineColor = Color.white; objectOutline.OutlineWidth = 2.0f; } else { objectOutline.OutlineColor = new Color(0, 0, 0, 0); } }
     public void CalculatePlayerPosition() { Vector3 dir = (player.position - transform.position).normalized; dot = Vector3.Dot(transform.right, dir);}
     void ChangeInteractionText() { if (Raycast.GetHitObjectName() == "Prison Gate") { if (!haveKey) { InteractionText.text = "Necesitas una llave para abrir esta puerta"; } } else { InteractionText.text = ""; } }
-    void DoorInterface.OpenCloseDoor() { if (Raycast.GetHitObjectName() == "Prison Gate" && Input.GetMouseButton(0)) { if (animator.GetFloat("DoorRotation") < 5 && dot >= 0) { DoorRotation += 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } else if (animator.GetFloat("DoorRotation") >= 0 && dot < 0) { DoorRotation -= 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } } }
+    void DoorInterface.OpenCloseDoor() { if (Raycast.GetHitObjectName() == "Prison Gate" && Input.GetMouseButton(0)) { if (animator.GetFloat("DoorRotation") < 5 && dot >= 0) { DoorRotation += 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } else if (animator.GetFloat("DoorRotation") >= 0 && dot < 0) { if (dot > -2) { DoorRotation -= 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } } } }
 }

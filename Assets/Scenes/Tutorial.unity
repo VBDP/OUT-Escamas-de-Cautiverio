@@ -2171,6 +2171,10 @@ PrefabInstance:
       propertyPath: outlineDoubleDoor
       value: 
       objectReference: {fileID: 919132148675768593}
+    - target: {fileID: 2082491691824252816, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7460408368793930548, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.956
