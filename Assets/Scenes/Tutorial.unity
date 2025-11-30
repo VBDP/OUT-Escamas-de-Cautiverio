@@ -779,6 +779,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 158027385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &475812367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3909999672185193054, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+  m_PrefabInstance: {fileID: 600851050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &486780214
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeImage
       objectReference: {fileID: 0}
+    - target: {fileID: 357336837915054094, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 357336837915054094, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1893123746779735928, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -972,6 +991,34 @@ PrefabInstance:
     - target: {fileID: 4686003061284965731, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 471
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387313019807161848, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047931495712394386, guid: 34b941b06271a4f49bf9af3439c8fddb, type: 3}
       propertyPath: m_Pivot.x
@@ -1587,7 +1634,7 @@ PrefabInstance:
     - target: {fileID: 3845054136643398313, guid: 62da2351a023d774a83df9e674d01bbb, type: 3}
       propertyPath: LifeSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1325920168}
     - target: {fileID: 5206571888918822019, guid: 62da2351a023d774a83df9e674d01bbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.606
@@ -2227,6 +2274,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: healthImage
+      value: 
+      objectReference: {fileID: 475812367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2242,6 +2297,17 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 9091074267777027617, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
   m_PrefabInstance: {fileID: 1325920160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1325920168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+  m_PrefabInstance: {fileID: 1325920160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a9cb32ddbef7a42a9c75703ed07a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
 --- !u!1 &1327620827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,7 +2396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1469301646
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2990,7 +3056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849976498}
   m_Layer: 0
-  m_Name: TeleportTarget
+  m_Name: PlayerSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3093,7 +3159,7 @@ PrefabInstance:
     - target: {fileID: 559596867749659788, guid: 9bcbb888cf8394e44b1e7c5f84d04a24, type: 3}
       propertyPath: LifeSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1325920168}
     - target: {fileID: 1520652508677449814, guid: 9bcbb888cf8394e44b1e7c5f84d04a24, type: 3}
       propertyPath: m_Name
       value: Dungeon_Floor_Trap_Star
@@ -3265,7 +3331,7 @@ PrefabInstance:
     - target: {fileID: 559596867749659788, guid: 9bcbb888cf8394e44b1e7c5f84d04a24, type: 3}
       propertyPath: LifeSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1325920168}
     - target: {fileID: 1520652508677449814, guid: 9bcbb888cf8394e44b1e7c5f84d04a24, type: 3}
       propertyPath: m_Name
       value: Dungeon_Floor_Trap_Star
@@ -21371,6 +21437,7 @@ GameObject:
   - component: {fileID: 919132148675768592}
   - component: {fileID: 919132148675768593}
   - component: {fileID: 919132148675768594}
+  - component: {fileID: 919132148675768595}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Trigger
@@ -21538,6 +21605,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &919132148675768595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148675768590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98f2c99ca0f9e74699c45850b0bc854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lever
+  Raycast: {fileID: 1098666586}
 --- !u!64 &945671268972006226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -102014,6 +102094,7 @@ MonoBehaviour:
   Raycast: {fileID: 1098666586}
   player: {fileID: 1325920161}
   InteractionText: {fileID: 176277825}
+  keyImage: {fileID: 1741580518}
 --- !u!95 &7477570381674791008
 Animator:
   serializedVersion: 7

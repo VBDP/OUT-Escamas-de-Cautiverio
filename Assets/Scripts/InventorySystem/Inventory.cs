@@ -16,13 +16,4 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void GetKeyFirstDoor()
-    {
-        KeyFirstDoor = true;    
-    }
-
-    public bool returnKeyFirstDoor(bool keyFirstDoor)
-    {
-        return KeyFirstDoor;
-    }
 }

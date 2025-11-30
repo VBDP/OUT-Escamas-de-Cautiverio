@@ -1,29 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
+/*--------  ---------*/
+/*
+  Este Script es un sistema que permite al juego restar salud del jugador con diversos eventos.
+  Trampas, Caidas al vacio, ataques, ...
+  Tambien permite sanar al jugador con pociones, objetos especiales...
+*/
 
-// Este Script es un sistema que permite al juego restar salud del jugador con diversos eventos.
-// Trampas, Caidas al vac�o, ataques, ...
-// Tambi�n permite sanar al jugador con pociones, objetos especiales...
-
-public class LifeSystem : MonoBehaviour
+public class LifeSystem : MonoBehaviour  
 {
     public float MaxHealth; //Vida maxima 
     public float CurrentHealth; //Vida actual
-    public Image LifeImage; // Imagen del HUD
-    private Vector3 PlayerSpawn;
-    // ------------------------------------------------------------------------
+    public Image healthImage; // Imagen del HUD
+    private Vector3 PlayerSpawnPosition;
+    private Quaternion PlayerSpawnRotation;
+   
+
+    /*-------- Void Start && Void Update ---------*/
     void Start()
     {
         // Inicializamos la vida al maximo
         MaxHealth = 100f;
         CurrentHealth = MaxHealth;
-        PlayerSpawn = transform.position;
-        LifeImage = GameObject.Find("LifeImage").GetComponent<Image>();
+        PlayerSpawnPosition = transform.position;
+        PlayerSpawnRotation = transform.rotation; 
     }
-    // ------------------------------------ ------------------------------------
+
     public void DamagePlayer(float damage)
     {
-        //Programa para recibir da�o
+        //Programa para recibir damage
         if (CurrentHealth > 0)
         {
             CurrentHealth -= damage;
@@ -38,7 +43,7 @@ public class LifeSystem : MonoBehaviour
         Debug.Log("Te han da�ado" + CurrentHealth);
 
     }
-    // ------------------------------------------------------------------------
+
     public void HealPlayer(float heal)
     {
         //Programa para sanar
@@ -62,20 +67,21 @@ public class LifeSystem : MonoBehaviour
             KillPlayer();
         }
     }
-    // ------------------------------------------------------------------------
+
     public void KillPlayer()
     {      
-        transform.position = PlayerSpawn;
+        transform.position = PlayerSpawnPosition;
+        transform.rotation = PlayerSpawnRotation;
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         CurrentHealth = 100f;
         LifeImageFillAmount();
     }
-    // ------------------------------------------------------------------------
+
     public void LifeImageFillAmount()
     {
-            LifeImage.fillAmount = CurrentHealth / MaxHealth;
+            healthImage.fillAmount = CurrentHealth / MaxHealth;
     }
-    // ------------------------------------------------------------------------
+
 }
