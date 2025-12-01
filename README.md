@@ -40,8 +40,7 @@ El proyecto fue desarrollado con **Unity** y hace uso de los siguientes paquetes
 ---
 
 ## 🕹️ Cómo jugar
-
-Información pendiente de ser modificada, ¡no te lo pierdas!
+[Pruebame en Itch.IO](https://vbdp.itch.io/outthegame).
 ---
 
 > _“Las cadenas solo son fuertes hasta que recuerdas que puedes volar.”_
