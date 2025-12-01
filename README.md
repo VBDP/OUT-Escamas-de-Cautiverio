@@ -23,8 +23,6 @@ Tu misión: encontrar la salida, esquivar trampas y descubrir los secretos que o
 ## 🧰 Créditos y herramientas utilizadas
 
 El proyecto fue desarrollado con **Unity** y hace uso de los siguientes paquetes:
--  [Universal Render Pipeline (URP)](https://unity.com/srp/universal-render-pipeline). 
--  [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest).
 -  [Decrepit Dungeon LITE](https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936).
 -  [Dungeon Deco Set - Proto Series](https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-deco-set-proto-series-247692).
 -  [Dungeon Floor Traps](https://assetstore.unity.com/packages/3d/props/interior/dungeon-floor-traps-77765).
