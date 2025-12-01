@@ -23,11 +23,25 @@ Tu misión: encontrar la salida, esquivar trampas y descubrir los secretos que o
 ## 🧰 Créditos y herramientas utilizadas
 
 El proyecto fue desarrollado con **Unity** y hace uso de los siguientes paquetes:
-
-- 🎥 [Cinemachine](https://unity.com/unity/features/editor/art-and-design/cinemachine) — Control avanzado de cámaras.  
-- 🎮 [Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@latest/) — Sistema moderno de entrada para teclado, mando y gamepad.  
-- 🌫️ [Universal Render Pipeline (URP)](https://unity.com/srp/universal-render-pipeline) — Renderizado optimizado para una mejor iluminación y rendimiento.  
-- 🔊 [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest) — Tipografía y texto avanzado.  
+-  [Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@latest/).
+-  [Universal Render Pipeline (URP)](https://unity.com/srp/universal-render-pipeline). 
+-  [TextMeshPro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest).
+-  [Decrepit Dungeon LITE](https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936).
+-  [Dungeon Deco Set - Proto Series](https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-deco-set-proto-series-247692).
+-  [Dungeon Floor Traps](https://assetstore.unity.com/packages/3d/props/interior/dungeon-floor-traps-77765).
+-  [Dungeon Modular Pack](https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-modular-pack-295430).
+-  [Free Simple Dungeon Props](https://assetstore.unity.com/packages/3d/environments/dungeons/free-simple-dungeon-props-225521).
+-  [Inferno World Free - Low Poly 3D Models](https://assetstore.unity.com/packages/3d/environments/fantasy/inferno-world-free-low-poly-3d-models-328402).
+-  [Interactive Physical Door Pack](https://assetstore.unity.com/packages/tools/physics/interactive-physical-door-pack-163249).
+-  [Modular Prison Asset Pack](https://assetstore.unity.com/packages/3d/environments/dungeons/modular-prison-asset-pack-232410).
+-  [orc assasin](https://assetstore.unity.com/packages/3d/characters/creatures/orc-assasin-117169).
+-  [Orc Berserker3](https://assetstore.unity.com/packages/3d/characters/orc-berserker3-93019).
+-  [Orc Caster and Fighter Pack](https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/orc-caster-and-fighter-pack-108361).
+-  [Orc Warrior | Orc Character](https://assetstore.unity.com/packages/3d/characters/orc-warrior-orc-character-200207).
+-  [Quick Outline](https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488).
+-  [Stylized Hand Painted Dungeon (Free)](https://assetstore.unity.com/packages/3d/environments/stylized-hand-painted-dungeon-free-173934).
+-  [The Red Prison](https://assetstore.unity.com/packages/3d/environments/dungeons/the-red-prison-40198).
+-  [Volumetric Lines](https://assetstore.unity.com/packages/tools/particles-effects/volumetric-lines-29160).
 
 ---
 
