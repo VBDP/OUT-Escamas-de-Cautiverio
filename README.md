@@ -6,7 +6,7 @@ Tu misión: encontrar la salida, esquivar trampas y descubrir los secretos que o
 
 🎮 **Género:** Aventura / Escape / Puzzle  
 🧩 **Motor:** Unity  
-📜 **Documento de diseño (GDD):** [Ver en Google Docs](https://docs.google.com/document/d/1-sCjgmitrhC_p-wKdMQCpize-owot2MU45Z_TxvR0OU/edit?usp=sharing)
+📜 **Documento de diseño (GDD):** [Ver en Google Docs](https://docs.google.com/document/d/1-sCjgmitrhC_p-wKdMQCpize-owot2MU45Z_TxvR0OU/edit?usp=sharing)  
 📜 **Clickup (Tareas):** [Ver en ClickUp](https://app.clickup.com/9014915793/v/s/90144356060)
 
 ---
