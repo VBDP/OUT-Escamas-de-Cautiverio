@@ -33,5 +33,16 @@ public class TutorialChest : MonoBehaviour
         if (isOpen) { particles.SetActive(true); player.position = teleportPoint.position; player.rotation = teleportPoint.rotation;
             rb.constraints = RigidbodyConstraints.FreezeAll;WinPanel.SetActive(true); HUDPanel.SetActive(false); }
     }
-    void OpenChest() { if (raycast.GetHitObjectName() == "HellChest") { outline.OutlineColor = Color.white; interactionText.text = "Abre el cofre para finalizar el tutorial"; if(Input.GetMouseButton(0)){ animator.SetBool("IsOpen",true); isOpen = true;  } } }
+    void OpenChest() { 
+        if (raycast.GetHitObjectName() == "HellChest") { 
+            outline.OutlineColor = Color.white; interactionText.text = "Abre el cofre para finalizar el tutorial"; 
+            if(Input.GetMouseButton(0))
+            { 
+                animator.SetBool("IsOpen",true); isOpen = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            } 
+         
+        }
+    } 
 }
