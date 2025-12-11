@@ -24032,6 +24032,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1305536178}
     m_Modifications:
+    - target: {fileID: 787548728214729846, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1656418029804612836, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
       propertyPath: m_Name
       value: HUD System
@@ -24077,6 +24081,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7609512592757453863, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817854810612215369, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
