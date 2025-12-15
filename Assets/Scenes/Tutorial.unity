@@ -2317,6 +2317,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9cb32ddbef7a42a9c75703ed07a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
+--- !u!114 &1325920169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8409082892013544502, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+  m_PrefabInstance: {fileID: 1325920160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fe6ffb5d283064f9f11151aeed4510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1327620827
 GameObject:
   m_ObjectHideFlags: 0
@@ -32630,6 +32641,10 @@ PrefabInstance:
       propertyPath: tutorialPanel
       value: 
       objectReference: {fileID: 6440716070294369932}
+    - target: {fileID: 7311139270384883749, guid: c6d1e3cf03292cc42a5c548996201860, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1325920169}
     - target: {fileID: 8016111864369449017, guid: c6d1e3cf03292cc42a5c548996201860, type: 3}
       propertyPath: textTutorial
       value: 
@@ -107862,6 +107877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfb22d3326219a4b975ec610fabff63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialChest
+  playerMovement: {fileID: 1325920169}
   raycast: {fileID: 1098666586}
   interactionText: {fileID: 3500873093410097716}
   WinPanel: {fileID: 1872577461787159925}

@@ -3,20 +3,18 @@ using UnityEngine;
 
 public class TutorialChest : MonoBehaviour
 {
+    
     private Outline outline;
     private Animator animator;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private RaycastController raycast;
     [SerializeField] private TextMeshProUGUI interactionText;
     [SerializeField] private GameObject WinPanel;
     [SerializeField] private GameObject HUDPanel;
-
     [SerializeField] private GameObject particles;
-
     [SerializeField] private Transform player;
     [SerializeField] private Transform teleportPoint;
-    
     [SerializeField] private Rigidbody rb;
-
     [SerializeField] private bool isOpen = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +39,7 @@ public class TutorialChest : MonoBehaviour
                 animator.SetBool("IsOpen",true); isOpen = true;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                playerMovement.BlockCamera();
             } 
          
         }
