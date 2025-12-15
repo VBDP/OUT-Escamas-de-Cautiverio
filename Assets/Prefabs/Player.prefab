@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -367,4 +371,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
   MaxHealth: 100
   CurrentHealth: 100
-  LifeImage: {fileID: 0}
+  healthImage: {fileID: 0}
