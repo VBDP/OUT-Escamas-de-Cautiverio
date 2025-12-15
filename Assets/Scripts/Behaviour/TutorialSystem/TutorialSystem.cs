@@ -17,7 +17,7 @@ public class TutorialSystem : MonoBehaviour
     public void PanelActivate()
     {
         tutorialPanel.SetActive(true);
-        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     public void PanelDeactivate()
