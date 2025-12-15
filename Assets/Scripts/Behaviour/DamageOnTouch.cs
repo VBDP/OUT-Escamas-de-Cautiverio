@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DamageOnTouch : MonoBehaviour
 {
-    public int FloorTrapDamage;
+    public int customDamage;
     public LifeSystem LifeSystem;
 
     private void OnTriggerEnter(Collider other)
@@ -11,9 +11,9 @@ public class DamageOnTouch : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            if (LifeSystem.CurrentHealth - FloorTrapDamage > 0)
+            if (LifeSystem.CurrentHealth - customDamage > 0)
             {
-                LifeSystem.DamagePlayer(FloorTrapDamage);
+                LifeSystem.DamagePlayer(customDamage);
                 LifeSystem.LifeImageFillAmount();
             }
             else
