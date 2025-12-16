@@ -241,9 +241,6 @@ PrefabInstance:
       addedObject: {fileID: 6274599577143755084}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4928252412634950144}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8409082892013544502}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: -1
@@ -328,19 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   KeyFirstDoor: 0
---- !u!114 &4928252412634950144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7837214768348795278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592d666f4540a5448a5d71469e7f9a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColissionDetection
-  pushBackForce: 5
 --- !u!114 &8409082892013544502
 MonoBehaviour:
   m_ObjectHideFlags: 0
