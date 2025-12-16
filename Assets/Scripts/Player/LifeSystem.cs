@@ -40,7 +40,7 @@ public class LifeSystem : MonoBehaviour
         }
 
         LifeImageFillAmount();
-        Debug.Log("Te han da�ado" + CurrentHealth);
+        Debug.Log("Te han dañado" + CurrentHealth);
 
     }
 
