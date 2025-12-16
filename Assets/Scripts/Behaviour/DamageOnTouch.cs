@@ -3,8 +3,13 @@ using UnityEngine.UI;
 
 public class DamageOnTouch : MonoBehaviour
 {
-    public int customDamage;
-    public LifeSystem LifeSystem;
+    public int customDamage = 50;
+    private LifeSystem LifeSystem;
+
+    void Start()
+    {
+        LifeSystem = GameObject.Find("Player").GetComponent<LifeSystem>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,9 +25,7 @@ public class DamageOnTouch : MonoBehaviour
             {
                 LifeSystem.KillPlayer();
             }
-                
-
-            
+                    
         }
     }
 }
