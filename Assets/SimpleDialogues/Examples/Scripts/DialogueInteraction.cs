@@ -18,6 +18,7 @@ public class DialogueInteraction : MonoBehaviour {
     GameObject backPanel;
     [SerializeField]
     GameObject nextTreeButton;
+    
 
     bool nextEnd = false;
 
