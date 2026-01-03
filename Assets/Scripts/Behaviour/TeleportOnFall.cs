@@ -8,6 +8,7 @@ public class TeleportOnFall : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player fell, teleporting...");
             other.transform.position = teleportTarget.transform.position; // Teleport the player to the specified coordinates
             other.transform.rotation = teleportTarget.transform.rotation; // Optional: Reset the player's rotation
         }

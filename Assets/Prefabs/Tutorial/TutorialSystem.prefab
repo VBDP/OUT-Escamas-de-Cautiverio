@@ -1,0 +1,485 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &156983128033731721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70741818090640218}
+  - component: {fileID: 7311139270384883749}
+  m_Layer: 0
+  m_Name: TutorialSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70741818090640218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156983128033731721}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21, y: 1.90972, z: -23.82688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6544777747004383712}
+  - {fileID: 9121570548871399014}
+  - {fileID: 5047109157627404928}
+  - {fileID: 300616000481473707}
+  - {fileID: 5564510450561626630}
+  - {fileID: 5505576617223503327}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7311139270384883749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156983128033731721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fc1cec94f6cbd459c2eb21adeeddcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialSystem
+  tutorialPanel: {fileID: 0}
+  rb: {fileID: 0}
+--- !u!1 &806553075430103966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300616000481473707}
+  - component: {fileID: 7085024028161226351}
+  - component: {fileID: 2586552119035487689}
+  m_Layer: 0
+  m_Name: 'Enemy Fase '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &300616000481473707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806553075430103966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.61, y: 1.25, z: 15.34}
+  m_LocalScale: {x: 3.1825879, y: 3.6018534, z: 5.962255}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7085024028161226351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806553075430103966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2586552119035487689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806553075430103966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: "Cuidado con los enemigos, podr\xEDan verte y atacarte o hacerte
+    cosas peores... Mucho peores..."
+  spriteTutorial: {fileID: 21300000, guid: 7c8606b157851b24a9d0f6e09ebd3429, type: 3}
+--- !u!1 &2201911181158089639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5505576617223503327}
+  - component: {fileID: 1242855856845805034}
+  - component: {fileID: 8016111864369449017}
+  m_Layer: 0
+  m_Name: 'Hidden Trap Fase '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5505576617223503327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201911181158089639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -8.1, y: 1.63, z: 28.483}
+  m_LocalScale: {x: 3.205194, y: 3.0476968, z: 4.5199504}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1242855856845805034
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201911181158089639}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8016111864369449017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201911181158089639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: Cuidado pues algunas veces las trampas pueden estar escondidas
+  spriteTutorial: {fileID: 21300000, guid: 03ff9b1a6c7016f4ea4187a85c6bedb9, type: 3}
+--- !u!1 &4030098564177274770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9121570548871399014}
+  - component: {fileID: 6799089986086384063}
+  - component: {fileID: 8386534142214134402}
+  m_Layer: 0
+  m_Name: 'Trap Fase '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9121570548871399014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030098564177274770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.24, y: -3.988, z: 15.79}
+  m_LocalScale: {x: 4.902926, y: 3.6018534, z: 5.962255}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6799089986086384063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030098564177274770}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8386534142214134402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4030098564177274770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: Cuidado con las trampas del suelo, te quitan la mitad de la vida,
+    evitalas a toda costa.
+  spriteTutorial: {fileID: 21300000, guid: 03ff9b1a6c7016f4ea4187a85c6bedb9, type: 3}
+--- !u!1 &4824288217134927341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5564510450561626630}
+  - component: {fileID: 721454457664469705}
+  - component: {fileID: 4317974501857378071}
+  m_Layer: 0
+  m_Name: 'Lever Fase '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5564510450561626630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824288217134927341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -4, y: 1.63, z: 23.6}
+  m_LocalScale: {x: 3.8978286, y: 3.0476968, z: 4.5199504}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &721454457664469705
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824288217134927341}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4317974501857378071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824288217134927341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: Activa los mecanismos como palancas para abrir puertas y eliminar
+    bloqueos.
+  spriteTutorial: {fileID: 21300000, guid: 2b11ba89b25cec943871858d73aaa0f7, type: 3}
+--- !u!1 &6685021935776640998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5047109157627404928}
+  - component: {fileID: 3491986604955588775}
+  - component: {fileID: 5597717669768706311}
+  m_Layer: 0
+  m_Name: 'NPC Fase  '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5047109157627404928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685021935776640998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.82, y: 1.25, z: 15.24}
+  m_LocalScale: {x: 3.1825879, y: 3.6018534, z: 5.962255}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3491986604955588775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685021935776640998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5597717669768706311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685021935776640998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: Puedes hablar con algunos NPC, Prueba a hablar con el asesino de
+    la derecha.
+  spriteTutorial: {fileID: 21300000, guid: a63296568d85cfa42aed24b041d91ab9, type: 3}
+--- !u!1 &8072798090721025615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6544777747004383712}
+  - component: {fileID: 6490165463619280049}
+  - component: {fileID: 1718335256894062389}
+  m_Layer: 0
+  m_Name: Key Fase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6544777747004383712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072798090721025615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000022618859, y: -0.7071068, z: 0.00000022618859, w: 0.7071068}
+  m_LocalPosition: {x: -40, y: -3.988, z: 23}
+  m_LocalScale: {x: 3.7995527, y: 3.6018534, z: 5.962255}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70741818090640218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6490165463619280049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072798090721025615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1718335256894062389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072798090721025615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e3453814ba354f9feef539d294c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fase1
+  TutorialSystem: {fileID: 7311139270384883749}
+  textTutorial: {fileID: 0}
+  imageTutorial: {fileID: 0}
+  TextoTutorial: "Agarra la llave que hay en alg\xFAn lado de esta habitaci\xF3n,
+    y empuja la puerta con suavidad con el rat\xF3n"
+  spriteTutorial: {fileID: 21300000, guid: b2e183e9621dd334696056e3fa59a5ff, type: 3}

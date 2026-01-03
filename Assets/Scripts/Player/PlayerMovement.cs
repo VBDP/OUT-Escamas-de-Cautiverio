@@ -7,25 +7,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float verticalRotation = 0f;
     [SerializeField] private float jumpForce = 5f;
     private bool isGrounded;
+    private bool cameraUnlocked = true;
+    Transform playerCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         isGrounded = true;
+        playerCamera = transform.GetChild(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        verticalRotation -= mouseY * mouseSensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
-        Transform playerCamera = transform.GetChild(0);
-        playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        transform.Rotate(Vector3.up * mouseX * mouseSensitivity);
-
+        CameraRotation();
     }
 
     void FixedUpdate()
@@ -63,5 +58,30 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
             }
         }
+    }
+
+    public void CameraRotation()
+    {
+        if(cameraUnlocked)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+            verticalRotation -= mouseY;
+            verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+
+            playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
+    }
+
+    public void BlockCamera()
+    {
+        cameraUnlocked = false;
+    }
+
+        public void UnblockCamera()
+    {
+        cameraUnlocked = true;
     }
 }
