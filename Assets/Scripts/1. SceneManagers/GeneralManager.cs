@@ -32,6 +32,8 @@ public class GeneralManager : MonoBehaviour
             playerMovement.UnblockCamera();
             ClosePauseMenu();
         } 
+
+        score();
     }
 
     void OpenPauseMenu()
@@ -53,7 +55,16 @@ public class GeneralManager : MonoBehaviour
         panelsToDeactivate[0].gameObject.SetActive(true);
         pauseMenuActive = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
+        Cursor.visible = false; 
+    }
+
+    void score()
+    {
+        int score = 1000;
+        float timePlayed = timer.TimePlayed;
+        score -= (int)timePlayed;
+        if (score < 0) score = 0;
+        PlayerPrefs.SetInt("Score", score); 
+        Debug.Log("Score: " + score);
     }
 }

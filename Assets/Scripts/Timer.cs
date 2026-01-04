@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Timer
+public class Timer : MonoBehaviour
 {
     public float TimePlayed { get; private set; }
     private bool running;
