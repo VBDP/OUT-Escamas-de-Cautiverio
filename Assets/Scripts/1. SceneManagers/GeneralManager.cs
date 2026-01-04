@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class GeneralManager : MonoBehaviour
 {   
     [SerializeField] private List<GameObject> panelsToDeactivate;
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private TextMeshProUGUI timerText;
+    private float timer = 0f;
     private bool pauseMenuActive = false;
 
     void Update()
@@ -20,6 +23,8 @@ public class GeneralManager : MonoBehaviour
             playerMovement.UnblockCamera();
             ClosePauseMenu();
         }
+
+        UpdateTimerDisplay(Time.timeSinceLevelLoad);
     }
 
     void OpenPauseMenu()
@@ -43,5 +48,12 @@ public class GeneralManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
+    }
+
+    void UpdateTimerDisplay(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60F);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
+        timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 }
