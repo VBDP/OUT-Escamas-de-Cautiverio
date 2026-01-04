@@ -1825,6 +1825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305536178}
+  - component: {fileID: 1305536179}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -1853,6 +1854,19 @@ Transform:
   - {fileID: 378085346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305536179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305536177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec52bd767e998ea4cb77038becaa315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Timer
+  timerText: {fileID: 7866015484057888487}
 --- !u!1001 &1323175153
 PrefabInstance:
   m_ObjectHideFlags: 0
