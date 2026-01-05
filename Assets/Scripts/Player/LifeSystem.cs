@@ -61,7 +61,7 @@ public class LifeSystem : MonoBehaviour
                 CurrentHealth = 100f;
             }
             LifeImageFillAmount();
-            Debug.Log("Te han curado" + CurrentHealth);
+            Debug.Log("TE ha curado hasta " + CurrentHealth + "% de vida");
             
         }
         else
