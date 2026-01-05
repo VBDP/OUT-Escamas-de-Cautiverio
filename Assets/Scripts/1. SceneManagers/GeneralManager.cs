@@ -9,13 +9,19 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     private bool pauseMenuActive = false;
     private Timer timer;
+    private int score = 1000;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    
 
+    private float scoreIntervalTimer = 0f;
+     private float scoreInterval = 60f;
+     private int scorePenalty = 100;
     void Awake()
     {
     timer = new Timer();
     timer.StartTimer();
-    }
+}
     void Update()
     { 
          timer.Tick(Time.deltaTime);
@@ -33,9 +39,21 @@ public class GeneralManager : MonoBehaviour
             ClosePauseMenu();
         } 
 
-        score();
+        Score();
+
+        if (!pauseMenuActive)
+{
+    scoreIntervalTimer += Time.deltaTime;
+
+    if (scoreIntervalTimer >= scoreInterval)
+    {
+        decreaseScore(scorePenalty);
+        scoreIntervalTimer = 0f;
+    }
+}
     }
 
+//Pause Menu Management
     void OpenPauseMenu()
     {
         foreach (GameObject panel in panelsToDeactivate)
@@ -58,13 +76,28 @@ public class GeneralManager : MonoBehaviour
         Cursor.visible = false; 
     }
 
-    void score()
+ //Score Management
+    void Score()
     {
-        int score = 1000;
-        float timePlayed = timer.TimePlayed;
-        score -= (int)timePlayed;
         if (score < 0) score = 0;
-        PlayerPrefs.SetInt("Score", score); 
-        Debug.Log("Score: " + score);
+        PlayerPrefs.SetInt("Score", score);
+        scoreText.text = "Score: " + score.ToString();  
+    }
+
+    public void decreaseScore(int amount)
+    {
+        score -= amount;
+        if (score < 0) score = 0;
+    }   
+
+    public void increaseScore(int amount)
+    {
+        score += amount;
+    }
+
+//Timer Save on Quit
+    void OnApplicationQuit()
+    {
+        timer.SaveTime();
     }
 }

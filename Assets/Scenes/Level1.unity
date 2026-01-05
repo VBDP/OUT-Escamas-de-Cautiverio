@@ -641,6 +641,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4000006, y: 3.193104, z: 2.4000006}
   m_Center: {x: 0.0000009536743, y: 0.39655197, z: -0.0000007152557}
+--- !u!114 &82579997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4036071833501312730, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+  m_PrefabInstance: {fileID: 1952783676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &89529221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7402,6 +7413,10 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1952783679}
+    - target: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: generalManager
+      value: 
+      objectReference: {fileID: 1938127363}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14556,6 +14571,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7836917760872967727, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
   m_PrefabInstance: {fileID: 6044773166048516169}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938127363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+  m_PrefabInstance: {fileID: 6044773166048516169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514f69c88d49e694c9827899d23ad2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeneralManager
 --- !u!1001 &1952783676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16398,6 +16424,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1316548802}
     m_Modifications:
+    - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 82579997}
     - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
       propertyPath: timerText
       value: 

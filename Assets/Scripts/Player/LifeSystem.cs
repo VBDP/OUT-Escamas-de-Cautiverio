@@ -9,11 +9,13 @@ using UnityEngine.UI;
 
 public class LifeSystem : MonoBehaviour  
 {
+    [SerializeField] private GeneralManager generalManager;
     public float MaxHealth; //Vida maxima 
     public float CurrentHealth; //Vida actual
     public Image healthImage; // Imagen del HUD
     private Vector3 PlayerSpawnPosition;
     private Quaternion PlayerSpawnRotation;
+    
    
 
     /*-------- Void Start && Void Update ---------*/
@@ -77,6 +79,8 @@ public class LifeSystem : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         CurrentHealth = 100f;
         LifeImageFillAmount();
+        generalManager.decreaseScore(200);
+
     }
 
     public void LifeImageFillAmount()
