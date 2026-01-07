@@ -2,31 +2,31 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float TimePlayed { get; private set; }
+    public float timePlayed { get; private set; }
     private bool running;
 
     public void StartTimer()
     {
-        TimePlayed = 0f;
+        timePlayed = 0f;
         running = true;
     }
 
     public void Tick(float deltaTime)
     {
         if (!running) return;
-        TimePlayed += deltaTime;
+        timePlayed += deltaTime;
     }
 
     public string GetFormattedTime()
     {
-        int minutes = Mathf.FloorToInt(TimePlayed / 60f);
-        int seconds = Mathf.FloorToInt(TimePlayed % 60f);
+        int minutes = Mathf.FloorToInt(timePlayed / 60f);
+        int seconds = Mathf.FloorToInt(timePlayed % 60f);
         return $"{minutes:0}:{seconds:00}";
     }
 
     public void SaveTime()
     {
-        PlayerPrefs.SetFloat("TimePlayed", TimePlayed);
+        PlayerPrefs.SetFloat("TimePlayed", timePlayed);
     }
 
     public float LoadTime()

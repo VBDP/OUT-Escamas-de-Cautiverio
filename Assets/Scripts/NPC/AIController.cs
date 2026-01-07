@@ -7,15 +7,14 @@ public class AIController : MonoBehaviour
     private NavMeshAgent agent;
     public Transform[] points;
     private int currentPoint = 0;
-   
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         GoNextPoint();
-
     }
 
-   
+
     void Update()
     {
         if (!agent.pathPending && agent.remainingDistance < 0.5f)

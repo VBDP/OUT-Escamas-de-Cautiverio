@@ -12,7 +12,7 @@ public class KeyController : MonoBehaviour
     private RaycastController raycast;
     private bool take;
     private TextMeshProUGUI keyText;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,30 +22,30 @@ public class KeyController : MonoBehaviour
 
     private void Update()
     {
-        if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)") 
+        if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)")
         {
             prison.interactionTextForKey();
-    if (Input.GetMouseButtonDown(0))
-    {
-        SaveOnInventory();
-        GetComponent<Renderer>().enabled = false;
-        transform.Find("Luz").gameObject.SetActive(false);
+            if (Input.GetMouseButtonDown(0))
+            {
+                SaveOnInventory();
+                GetComponent<Renderer>().enabled = false;
+                transform.Find("Luz").gameObject.SetActive(false);
 
-        audioSource.PlayOneShot(audioClip);
+                audioSource.PlayOneShot(audioClip);
 
-        Destroy(gameObject, 1f);
-    }
+                Destroy(gameObject, 1f);
+            }
         }
     }
 
     private void SaveOnInventory()
     {
-      take = true;
+        take = true;
     }
 
     public bool GetKey()
     {
-      return take;
+        return take;
     }
 
 

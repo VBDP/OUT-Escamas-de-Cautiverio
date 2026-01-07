@@ -19030,7 +19030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be052edd6b70de84c8c9265d83bd0ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrisonGate
-  Raycast: {fileID: 221654232}
   player: {fileID: 1962466874}
   InteractionText: {fileID: 1856556546}
   keyImage: {fileID: 1570664807}

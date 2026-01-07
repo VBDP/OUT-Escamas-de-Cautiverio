@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class TutorialFases : MonoBehaviour
 {
-      public TutorialSystem TutorialSystem;
-    public TextMeshProUGUI textTutorial;
+    public TutorialSystem tutorialSystem;
+    public TextMeshProUGUI textHolderTutorial;
     public Image imageTutorial;
-    public string TextoTutorial;
+    public string textTutorial;
     private int finalizado = 0;
     public Sprite spriteTutorial;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,18 +26,17 @@ public class TutorialFases : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            TutorialSystem.PanelDeactivate();
-            textTutorial.text = "";
+            tutorialSystem.PanelDeactivate();
+            textHolderTutorial.text = "";
         }
     }
 
     public void MostrarPanel()
     {
         imageTutorial.sprite = spriteTutorial;
-        textTutorial.text = TextoTutorial + "  Pulsa la tecla E para continuar";
+        textHolderTutorial.text = textTutorial + "  Pulsa la tecla E para continuar";
         finalizado = 1;
-        TutorialSystem.PanelActivate();
-        
+        tutorialSystem.PanelActivate();
     }
 
 }

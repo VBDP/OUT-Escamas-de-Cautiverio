@@ -11,7 +11,7 @@ public class TutorialSystem : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.None;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            PanelDeactivate(); 
+            PanelDeactivate();
         }
     }
 
@@ -25,6 +25,6 @@ public class TutorialSystem : MonoBehaviour
     public void PanelDeactivate()
     {
         tutorialPanel.SetActive(false);
-        playerMovement.UnblockCamera();         
+        playerMovement.UnblockCamera();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 
 public class GeneralManager : MonoBehaviour
-{   
+{
     [SerializeField] private List<GameObject> panelsToDeactivate;
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private PlayerMovement playerMovement;
@@ -13,20 +13,20 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI interactionText;
-    
+
 
     private float scoreIntervalTimer = 0f;
-     private float scoreInterval = 60f;
-     private int scorePenalty = 100;
+    private float scoreInterval = 60f;
+    private int scorePenalty = 100;
     void Awake()
     {
-    timer = new Timer();
-    timer.StartTimer();
-}
+        timer = new Timer();
+        timer.StartTimer();
+    }
     void Update()
-    { 
-         timer.Tick(Time.deltaTime);
-         timerText.text = timer.GetFormattedTime();
+    {
+        timer.Tick(Time.deltaTime);
+        timerText.text = timer.GetFormattedTime();
 
 
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
@@ -38,23 +38,23 @@ public class GeneralManager : MonoBehaviour
         {
             playerMovement.UnblockCamera();
             ClosePauseMenu();
-        } 
+        }
 
         Score();
 
         if (!pauseMenuActive)
-{
-    scoreIntervalTimer += Time.deltaTime;
+        {
+            scoreIntervalTimer += Time.deltaTime;
 
-    if (scoreIntervalTimer >= scoreInterval)
-    {
-        decreaseScore(scorePenalty);
-        scoreIntervalTimer = 0f;
-    }
-}
+            if (scoreIntervalTimer >= scoreInterval)
+            {
+                decreaseScore(scorePenalty);
+                scoreIntervalTimer = 0f;
+            }
+        }
     }
 
-//Pause Menu Management
+    //Pause Menu Management
     void OpenPauseMenu()
     {
         foreach (GameObject panel in panelsToDeactivate)
@@ -65,7 +65,7 @@ public class GeneralManager : MonoBehaviour
         pauseMenuActive = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
+
     }
 
     void ClosePauseMenu()
@@ -74,29 +74,29 @@ public class GeneralManager : MonoBehaviour
         panelsToDeactivate[0].gameObject.SetActive(true);
         pauseMenuActive = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; 
+        Cursor.visible = false;
     }
 
- //Score Management
+    //Score Management
     void Score()
     {
         if (score < 0) score = 0;
         PlayerPrefs.SetInt("Score", score);
-        scoreText.text = "Score: " + score.ToString();  
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void decreaseScore(int amount)
     {
         score -= amount;
         if (score < 0) score = 0;
-    }   
+    }
 
     public void increaseScore(int amount)
     {
         score += amount;
     }
 
-//Timer Save on Quit
+    //Timer Save on Quit
     void OnApplicationQuit()
     {
         timer.SaveTime();
