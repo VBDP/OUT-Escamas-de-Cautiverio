@@ -1902,6 +1902,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1325920169}
     - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 8996305538339441905}
+    - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
       propertyPath: panelsToDeactivate.Array.size
       value: 3
       objectReference: {fileID: 0}

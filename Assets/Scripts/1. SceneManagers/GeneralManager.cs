@@ -12,6 +12,7 @@ public class GeneralManager : MonoBehaviour
     private int score = 1000;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI interactionText;
     
 
     private float scoreIntervalTimer = 0f;

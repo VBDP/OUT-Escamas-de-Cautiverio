@@ -147,8 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KeyController
   prison: {fileID: 0}
   whatDoorOpens: Prison Gate
-  AudioSource: {fileID: 1610240119571368154}
-  AudioClip: {fileID: 8300000, guid: daefb1ac75fbfbd4d9ff677c3b58f155, type: 3}
+  audioSource: {fileID: 1610240119571368154}
+  audioClip: {fileID: 8300000, guid: daefb1ac75fbfbd4d9ff677c3b58f155, type: 3}
 --- !u!82 &1610240119571368154
 AudioSource:
   m_ObjectHideFlags: 0
