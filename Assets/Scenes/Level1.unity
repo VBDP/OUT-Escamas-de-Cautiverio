@@ -18308,7 +18308,7 @@ GameObject:
   - component: {fileID: 6306761107567464567}
   - component: {fileID: 7973902496174798638}
   - component: {fileID: 406964044934611622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18431,7 +18431,7 @@ GameObject:
   - component: {fileID: 6216499066624385366}
   - component: {fileID: 1082256286965040608}
   - component: {fileID: 7309440454989712157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoubleDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18671,7 +18671,7 @@ GameObject:
   - component: {fileID: 4381496491246914550}
   - component: {fileID: 8882649257488742553}
   - component: {fileID: 5201101861699120119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wicket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18704,7 +18704,7 @@ GameObject:
   - component: {fileID: 3387456379487572092}
   - component: {fileID: 7758282288951218071}
   - component: {fileID: 4243230974884626606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18725,7 +18725,7 @@ GameObject:
   - component: {fileID: 8904685523261374811}
   - component: {fileID: 2662200033608516725}
   - component: {fileID: 5000077577348557143}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Trigger
   m_Icon: {fileID: 0}
@@ -18855,7 +18855,7 @@ GameObject:
   - component: {fileID: 5954906981981908862}
   - component: {fileID: 2678008964715908052}
   - component: {fileID: 8751494303920162005}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19011,7 +19011,7 @@ GameObject:
   - component: {fileID: 4532825147332586407}
   - component: {fileID: 7477570381674791007}
   - component: {fileID: 7477570381674791008}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Prison Gate
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -19083,7 +19083,7 @@ GameObject:
   - component: {fileID: 5521005776648633084}
   - component: {fileID: 2153456311688395697}
   - component: {fileID: 7348540371697197816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
