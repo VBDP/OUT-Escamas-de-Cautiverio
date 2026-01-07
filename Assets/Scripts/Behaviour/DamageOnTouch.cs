@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class DamageOnTouch : MonoBehaviour
 {
     public int customDamage = 50;
-    private LifeSystem LifeSystem;
+    private LifeSystem lifeSystem;
 
     void Start()
     {
-        LifeSystem = GameObject.Find("Player").GetComponent<LifeSystem>();
+        lifeSystem = FindObjectOfType<LifeSystem>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,14 +16,14 @@ public class DamageOnTouch : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            if (LifeSystem.CurrentHealth - customDamage > 0)
+            if (lifeSystem.CurrentHealth - customDamage > 0)
             {
-                LifeSystem.DamagePlayer(customDamage);
-                LifeSystem.LifeImageFillAmount();
+                lifeSystem.DamagePlayer(customDamage);
+                lifeSystem.LifeImageFillAmount();
             }
             else
             {
-                LifeSystem.KillPlayer();
+                lifeSystem.KillPlayer();
             }
                     
         }

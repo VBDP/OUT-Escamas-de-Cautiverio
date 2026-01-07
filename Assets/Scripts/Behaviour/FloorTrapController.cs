@@ -6,12 +6,12 @@ using UnityEngine;
 public class FloorTrapController : MonoBehaviour
 {
     Animator anim;
-    AudioSource AudioSource;
+    AudioSource audioSource;
    public AudioClip clip;
         private void Start()
     {
         anim = GetComponent<Animator>();
-        AudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
     public void ActivarTrampa()
     {
@@ -49,7 +49,7 @@ public class FloorTrapController : MonoBehaviour
     public void ActivateTrap()
     {
         anim.SetBool("Activated", true);
-        AudioSource.Play();
+        audioSource.Play();
 
     }
 }
