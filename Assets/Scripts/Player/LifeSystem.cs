@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class LifeSystem : MonoBehaviour  
 {
-    [SerializeField] private GeneralManager generalManager;
+    private GeneralManager generalManager;
     public float MaxHealth; //Vida maxima 
     public float CurrentHealth; //Vida actual
     public Image healthImage; // Imagen del HUD
@@ -26,6 +26,7 @@ public class LifeSystem : MonoBehaviour
         CurrentHealth = MaxHealth;
         PlayerSpawnPosition = transform.position;
         PlayerSpawnRotation = transform.rotation; 
+        generalManager = FindObjectOfType<GeneralManager>();
     }
 
     public void DamagePlayer(float damage)
@@ -79,7 +80,10 @@ public class LifeSystem : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         CurrentHealth = 100f;
         LifeImageFillAmount();
-        generalManager.decreaseScore(200);
+        if (generalManager != null)
+        {
+            generalManager.decreaseScore(200);
+        }
 
     }
 
