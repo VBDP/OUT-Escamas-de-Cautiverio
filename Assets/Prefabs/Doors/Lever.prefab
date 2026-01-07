@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7252058235951609649}
   - component: {fileID: 6740374925804097640}
   - component: {fileID: 3929306005660673504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7306828351319574032}
   - component: {fileID: 4334313324094530214}
   - component: {fileID: 6220095638287264859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoubleDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 9204492161492245946}
   - component: {fileID: 3368969880834137335}
   - component: {fileID: 6258072543253054910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 2026840815915333434}
   - component: {fileID: 6379513764885948625}
   - component: {fileID: 702734499707316200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 5238158155989870109}
   - component: {fileID: 1715987498177225523}
   - component: {fileID: 8521295698662526481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Trigger
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 7027432926117611576}
   - component: {fileID: 1587610867261615250}
   - component: {fileID: 5355321918878491539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1147382726978776240}
   - component: {fileID: 5217388510483931103}
   - component: {fileID: 8866575895556213937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wicket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,8 +20,8 @@ public class EnableDialogue : MonoBehaviour
     {
         outline.OutlineColor = new Color(0,0,0,0);
         if(raycast.GetHitObjectName() == "NPC")
-        outline.OutlineColor = new Color(1,1,1,1);
         {
+            outline.OutlineColor = new Color(1,1,1,1);
             if (Input.GetMouseButtonDown(0))
           {
             canvas.SetActive(true);

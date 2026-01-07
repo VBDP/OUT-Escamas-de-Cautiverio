@@ -9,7 +9,7 @@ public class RaycastController : MonoBehaviour
     public void Update()
     {
        // Si el raycast de la cámara golpea algo, guarda el nombre y la etiqueta del objeto golpeado         
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 10))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 10, LayerMask.GetMask("Interactable")))
         {
                    objectName = hit.collider.gameObject.name;
                    objectTag = hit.collider.gameObject.tag; 

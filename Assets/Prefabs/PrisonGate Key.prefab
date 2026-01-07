@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1948798842868762074}
   - component: {fileID: -355387083003160797}
   - component: {fileID: 1610240119571368154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PrisonGate Key
   m_TagString: Collectable
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3684def153472e04592f83da2fda612f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KeyController
+  prison: {fileID: 0}
   whatDoorOpens: Prison Gate
   AudioSource: {fileID: 1610240119571368154}
   AudioClip: {fileID: 8300000, guid: daefb1ac75fbfbd4d9ff677c3b58f155, type: 3}
@@ -256,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 122648, guid: 66e0018a9e63c4348b7a340890e5b30c, type: 3}
       propertyPath: m_Name
       value: Luz
+      objectReference: {fileID: 0}
+    - target: {fileID: 122648, guid: 66e0018a9e63c4348b7a340890e5b30c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 436056, guid: 66e0018a9e63c4348b7a340890e5b30c, type: 3}
       propertyPath: m_LocalScale.x
