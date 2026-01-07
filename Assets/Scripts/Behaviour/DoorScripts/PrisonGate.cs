@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PrisonGate : MonoBehaviour,DoorInterface
 {
-    [SerializeField] private RaycastController Raycast; //Adquirimos el Raycast desde la escena.
+    private RaycastController raycast; //Adquirimos el Raycast desde la escena.
     [SerializeField] private Transform player;
     [SerializeField] private TextMeshProUGUI InteractionText;
     [SerializeField] private Image keyImage;
@@ -18,7 +18,12 @@ public class PrisonGate : MonoBehaviour,DoorInterface
 
 
     private bool haveKey = false;
-        public void Start() { objectOutline = GetComponent<Outline>(); animator = GetComponent<Animator>(); key = GameObject.Find("PrisonGate Key(Clone)").GetComponent<KeyController>();}
+        public void Start() { 
+            objectOutline = GetComponent<Outline>(); 
+            animator = GetComponent<Animator>(); 
+            key = GameObject.Find("PrisonGate Key(Clone)").GetComponent<KeyController>();
+            raycast = FindObjectOfType<RaycastController>();
+            }
     public void Update()
     {
         haveKey = key.GetKey();
@@ -27,15 +32,15 @@ public class PrisonGate : MonoBehaviour,DoorInterface
 
         if (haveKey) 
         { 
-        CalculatePlayerPosition(); //Calculamos si está delante o detrás de la puerta.
-        ((DoorInterface)this).OpenCloseDoor(); //Si el usuario está delante de la puerta, la abre, si está detrás la cierra
+        CalculatePlayerPosition(); //Calculamos si estï¿½ delante o detrï¿½s de la puerta.
+        ((DoorInterface)this).OpenCloseDoor(); //Si el usuario estï¿½ delante de la puerta, la abre, si estï¿½ detrï¿½s la cierra
         }
     }
 
-    public void OutlineChanger() { if (Raycast.GetHitObjectName() == "Prison Gate") { objectOutline.OutlineColor = Color.white; objectOutline.OutlineWidth = 2.0f; } else { objectOutline.OutlineColor = new Color(0, 0, 0, 0); } }
+    public void OutlineChanger() { if (raycast.GetHitObjectName() == "Prison Gate") { objectOutline.OutlineColor = Color.white; objectOutline.OutlineWidth = 2.0f; } else { objectOutline.OutlineColor = new Color(0, 0, 0, 0); } }
     public void CalculatePlayerPosition() { Vector3 dir = (player.position - transform.position).normalized; dot = Vector3.Dot(transform.right, dir);}
-    public void ChangeInteractionText() { if (Raycast.GetHitObjectName() == "Prison Gate") { if (!haveKey) { InteractionText.text = "Necesitas una llave para abrir esta puerta"; } } else { InteractionText.text = ""; } }
-    void DoorInterface.OpenCloseDoor() { if (Raycast.GetHitObjectName() == "Prison Gate" && Input.GetMouseButton(0)) { if (animator.GetFloat("DoorRotation") < 5 && dot >= 0) { DoorRotation += 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } else if (animator.GetFloat("DoorRotation") >= 0 && dot < 0) { if (dot > -2) { DoorRotation -= 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } } } }
+    public void ChangeInteractionText() { if (raycast.GetHitObjectName() == "Prison Gate") { if (!haveKey) { InteractionText.text = "Necesitas una llave para abrir esta puerta"; } } else { InteractionText.text = ""; } }
+    void DoorInterface.OpenCloseDoor() { if (raycast.GetHitObjectName() == "Prison Gate" && Input.GetMouseButton(0)) { if (animator.GetFloat("DoorRotation") < 5 && dot >= 0) { DoorRotation += 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } else if (animator.GetFloat("DoorRotation") >= 0 && dot < 0) { if (dot > -2) { DoorRotation -= 1.5f * Time.deltaTime; animator.SetFloat("DoorRotation", DoorRotation); } } } }
 
     public void interactionTextForKey() { InteractionText.text = "Click to grab the key"; }
     
