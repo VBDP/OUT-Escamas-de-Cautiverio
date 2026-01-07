@@ -1345,6 +1345,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5206571888918822019, guid: 62da2351a023d774a83df9e674d01bbb, type: 3}
   m_PrefabInstance: {fileID: 940928164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &991162844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4036071833501312730, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+  m_PrefabInstance: {fileID: 7866015484057888486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &995622011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305536178}
+  - component: {fileID: 1305536179}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -1853,6 +1865,18 @@ Transform:
   - {fileID: 378085346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305536179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305536177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec52bd767e998ea4cb77038becaa315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Timer
 --- !u!1001 &1323175153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1861,6 +1885,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1305536178}
     m_Modifications:
+    - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 991162844}
+    - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 7866015484057888487}
     - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
       propertyPath: pauseMenuPanel
       value: 
@@ -104086,6 +104118,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+--- !u!114 &7866015484057888487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7876438157504518014, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
+  m_PrefabInstance: {fileID: 7866015484057888486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!33 &7877378696618315256
 MeshFilter:
   m_ObjectHideFlags: 0
