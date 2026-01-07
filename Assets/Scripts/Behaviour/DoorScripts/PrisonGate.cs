@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PrisonGate : MonoBehaviour,DoorInterface
 {
-    private RaycastController raycast; //Adquirimos el Raycast desde la escena.
+    private RaycastController raycast; 
     [SerializeField] private Transform player;
     [SerializeField] private TextMeshProUGUI InteractionText;
     [SerializeField] private Image keyImage;
