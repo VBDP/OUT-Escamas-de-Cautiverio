@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3426042973360413181}
   - component: {fileID: 5110912934515427896}
   - component: {fileID: 4700481953037602693}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 907188075328590479}
   - component: {fileID: 7587160373698108192}
   - component: {fileID: 7767109137883503943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Healing Potion
   m_TagString: Collectable
   m_Icon: {fileID: 0}
@@ -232,8 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fe0fd5f56fe75488eaf6957f3f56c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionHealing
-  Raycast: {fileID: 0}
-  lifeSystem: {fileID: 0}
 --- !u!136 &7587160373698108192
 CapsuleCollider:
   m_ObjectHideFlags: 0

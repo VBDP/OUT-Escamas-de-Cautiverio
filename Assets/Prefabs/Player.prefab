@@ -247,7 +247,7 @@ PrefabInstance:
       addedObject: {fileID: 8263304775106130123}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2920641915299968081}
+      addedObject: {fileID: 7498027955412760335}
   m_SourcePrefab: {fileID: 100100000, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
 --- !u!4 &7460408368793930548 stripped
 Transform:
@@ -259,8 +259,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
   m_PrefabInstance: {fileID: 6918101456921636063}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2920641915299968081
-BoxCollider:
+--- !u!136 &7498027955412760335
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -277,9 +277,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5189819, y: 2.0160067, z: 0.29832643}
-  m_Center: {x: -0.013472496, y: -0.30987272, z: 0.033473484}
+  serializedVersion: 2
+  m_Radius: 0.22833437
+  m_Height: 1.7437245
+  m_Direction: 1
+  m_Center: {x: 0.00046050543, y: -0.4016264, z: -0.059627045}
 --- !u!1 &7837214768348795278 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f98c8c3bc8ca4ab4db3dd84f49d0789b, type: 3}
@@ -353,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9cb32ddbef7a42a9c75703ed07a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
+  generalManager: {fileID: 0}
   MaxHealth: 100
   CurrentHealth: 100
   healthImage: {fileID: 0}

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class MainMenuManager : MonoBehaviour
 {
 
-  [SerializeField] private List<GameObject> Panels;
+  [SerializeField] private List<GameObject> panels;
   public void OpenTutorial()
     {
         SceneManager.LoadSceneAsync("Tutorial");
@@ -20,38 +20,38 @@ public class MainMenuManager : MonoBehaviour
 
         public void OpenMenu()
     {
-    foreach (GameObject panel in Panels)
+    foreach (GameObject panel in panels)
     {
         panel.SetActive(false);
     }
-      Panels[0].SetActive(true);
+      panels[0].SetActive(true);
     }
 
     public void OpenCredits()
     {
-    foreach (GameObject panel in Panels)
+    foreach (GameObject panel in panels)
     {
         panel.SetActive(false);
     }
-      Panels[1].SetActive(true);
+      panels[1].SetActive(true);
     }
 
         public void OpenOptions()
     {
-    foreach (GameObject panel in Panels)
+    foreach (GameObject panel in panels)
     {
         panel.SetActive(false);
     }
-      Panels[2].SetActive(true);
+      panels[2].SetActive(true);
     }
 
         public void OpenLeaderboard()
     {
-    foreach (GameObject panel in Panels)
+    foreach (GameObject panel in panels)
     {
         panel.SetActive(false);
     }
-      Panels[3].SetActive(true);
+      panels[3].SetActive(true);
     }
     
 

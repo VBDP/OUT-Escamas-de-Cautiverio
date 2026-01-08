@@ -7,34 +7,35 @@ using UnityEngine.UI;
   Tambien permite sanar al jugador con pociones, objetos especiales...
 */
 
-public class LifeSystem : MonoBehaviour  
+public class LifeSystem : MonoBehaviour
 {
-    [SerializeField] private GeneralManager generalManager;
-    public float MaxHealth; //Vida maxima 
-    public float CurrentHealth; //Vida actual
+    private GeneralManager generalManager;
+    public float maxHealth; //Vida maxima 
+    public float currentHealth; //Vida actual
     public Image healthImage; // Imagen del HUD
-    private Vector3 PlayerSpawnPosition;
-    private Quaternion PlayerSpawnRotation;
-    
-   
+    private Vector3 playerSpawnPosition;
+    private Quaternion playerSpawnRotation;
+
+
 
     /*-------- Void Start && Void Update ---------*/
     void Start()
     {
         // Inicializamos la vida al maximo
-        MaxHealth = 100f;
-        CurrentHealth = MaxHealth;
-        PlayerSpawnPosition = transform.position;
-        PlayerSpawnRotation = transform.rotation; 
+        maxHealth = 100f;
+        currentHealth = maxHealth;
+        playerSpawnPosition = transform.position;
+        playerSpawnRotation = transform.rotation;
+        generalManager = FindObjectOfType<GeneralManager>();
     }
 
     public void DamagePlayer(float damage)
     {
         //Programa para recibir damage
-        if (CurrentHealth > 0)
+        if (currentHealth > 0)
         {
-            CurrentHealth -= damage;
-            CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+            currentHealth -= damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
         else
         {
@@ -42,27 +43,27 @@ public class LifeSystem : MonoBehaviour
         }
 
         LifeImageFillAmount();
-        Debug.Log("Te han dañado" + CurrentHealth);
+        Debug.Log("Te han dañado" + currentHealth);
 
     }
 
     public void HealPlayer(float heal)
     {
         //Programa para sanar
-        if(CurrentHealth > 0)
+        if (currentHealth > 0)
         {
-            if(CurrentHealth + heal <= MaxHealth)
+            if (currentHealth + heal <= maxHealth)
             {
-                CurrentHealth += heal;
-                CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+                currentHealth += heal;
+                currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             }
-            else 
+            else
             {
-                CurrentHealth = 100f;
+                currentHealth = 100f;
             }
             LifeImageFillAmount();
-            Debug.Log("TE ha curado hasta " + CurrentHealth + "% de vida");
-            
+            Debug.Log("TE ha curado hasta " + currentHealth + "% de vida");
+
         }
         else
         {
@@ -71,21 +72,24 @@ public class LifeSystem : MonoBehaviour
     }
 
     public void KillPlayer()
-    {      
-        transform.position = PlayerSpawnPosition;
-        transform.rotation = PlayerSpawnRotation;
+    {
+        transform.position = playerSpawnPosition;
+        transform.rotation = playerSpawnRotation;
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        CurrentHealth = 100f;
+        currentHealth = 100f;
         LifeImageFillAmount();
-        generalManager.decreaseScore(200);
+        if (generalManager != null)
+        {
+            generalManager.DecreaseScore(200);
+        }
 
     }
 
     public void LifeImageFillAmount()
     {
-            healthImage.fillAmount = CurrentHealth / MaxHealth;
+        healthImage.fillAmount = currentHealth / maxHealth;
     }
 
 }

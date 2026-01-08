@@ -4,16 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> Panels;
+    [SerializeField] private List<GameObject> panels;
 
     public void ReturnToGame()
     {
-        foreach (GameObject panel in Panels)
-    {
-        panel.SetActive(false);
-    }
-      Panels[0].SetActive(true);
-      Cursor.lockState = CursorLockMode.Locked;
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
+        panels[0].SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
