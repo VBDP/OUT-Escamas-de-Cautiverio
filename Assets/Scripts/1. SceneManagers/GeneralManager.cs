@@ -101,4 +101,20 @@ public class GeneralManager : MonoBehaviour
     {
         timer.SaveTime();
     }
+
+    /*
+        Control de los cambios en el HUD.
+         - Interaction Text
+         - Health Bar   
+    */
+    //Interaction Text Management
+    public void UpdateInteractionText(string newText)
+    {
+        interactionText.text = newText;
+    }
+
+    public void ClearInteractionText()
+    {
+        interactionText.text = "";
+    }
 }
