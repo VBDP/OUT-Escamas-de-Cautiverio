@@ -87,7 +87,7 @@ public class PrisonGate : MonoBehaviour, DoorInterface
         }
     }
 
-    public void interactionTextForKey()
+    public void InteractionTextForKey()
     {
         interactionText.text = "Click to grab the key";
     }
