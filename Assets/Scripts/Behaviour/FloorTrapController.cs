@@ -7,8 +7,8 @@ public class FloorTrapController : MonoBehaviour
 {
     Animator anim;
     AudioSource audioSource;
-   public AudioClip clip;
-        private void Start()
+    public AudioClip clip;
+    private void Start()
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -27,11 +27,11 @@ public class FloorTrapController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Trampa activada");
-            
+
             StartCoroutine(Wait(0.5f, () => ActivateTrap())); //Espera 1 segundo
 
         }
@@ -41,7 +41,7 @@ public class FloorTrapController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-             Debug.Log("Trampa desactivada");
+            Debug.Log("Trampa desactivada");
             StartCoroutine(Wait(0.5f, () => anim.SetBool("Activated", false))); //Espera 1 segundo
         }
     }

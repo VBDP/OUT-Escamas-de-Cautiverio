@@ -13,10 +13,10 @@ public class DamageOnTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.gameObject.tag == "Player")
         {
-            if (lifeSystem.CurrentHealth - customDamage > 0)
+            if (lifeSystem.currentHealth - customDamage > 0)
             {
                 lifeSystem.DamagePlayer(customDamage);
                 lifeSystem.LifeImageFillAmount();
@@ -25,7 +25,7 @@ public class DamageOnTouch : MonoBehaviour
             {
                 lifeSystem.KillPlayer();
             }
-                    
+
         }
     }
 }

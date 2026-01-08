@@ -11,41 +11,44 @@ public class KeyController : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     private RaycastController raycast;
     private bool take;
-    private TextMeshProUGUI keyText;
-    
+    private TextMeshProUGUI interactionText;
+    private Outline outline;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         raycast = FindObjectOfType<RaycastController>();
         prison = FindObjectOfType<PrisonGate>();
+        outline = GetComponent<Outline>();
     }
 
     private void Update()
     {
-        if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)") 
+        prison.ClearText();
+        if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)")
         {
             prison.interactionTextForKey();
-    if (Input.GetMouseButtonDown(0))
-    {
-        SaveOnInventory();
-        GetComponent<Renderer>().enabled = false;
-        transform.Find("Luz").gameObject.SetActive(false);
+            if (Input.GetMouseButtonDown(0))
+            {
+                SaveOnInventory();
+                GetComponent<Renderer>().enabled = false;
+                transform.Find("Luz").gameObject.SetActive(false);
 
-        audioSource.PlayOneShot(audioClip);
+                audioSource.PlayOneShot(audioClip);
 
-        Destroy(gameObject, 1f);
-    }
+                Destroy(gameObject, 1f);
+            }
         }
     }
 
     private void SaveOnInventory()
     {
-      take = true;
+        take = true;
     }
 
     public bool GetKey()
     {
-      return take;
+        return take;
     }
 
 

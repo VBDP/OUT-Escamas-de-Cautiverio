@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CameraRotation()
     {
-        if(cameraUnlocked)
+        if (cameraUnlocked)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         cameraUnlocked = false;
     }
 
-        public void UnblockCamera()
+    public void UnblockCamera()
     {
         cameraUnlocked = true;
     }

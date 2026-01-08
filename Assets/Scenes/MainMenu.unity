@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c318285167237e746b68c6f172bfb50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  Panels:
+  panels:
   - {fileID: 1158868333}
   - {fileID: 1158868332}
   - {fileID: 1158868331}

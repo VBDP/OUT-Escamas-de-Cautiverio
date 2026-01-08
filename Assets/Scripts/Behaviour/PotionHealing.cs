@@ -3,8 +3,8 @@ using TMPro;
 
 public class PotionHealing : MonoBehaviour
 {
-     private RaycastController raycast;
-     private LifeSystem lifeSystem;
+    private RaycastController raycast;
+    private LifeSystem lifeSystem;
 
     void Start()
     {
@@ -13,8 +13,8 @@ public class PotionHealing : MonoBehaviour
 
         if (lifeSystem == null || raycast == null)
         {
-              Debug.LogError("LifeSystem or RaycastController not found in the scene.");
-              return;   
+            Debug.LogError("LifeSystem or RaycastController not found in the scene.");
+            return;
         }
     }
 
@@ -27,7 +27,7 @@ public class PotionHealing : MonoBehaviour
                 lifeSystem.HealPlayer(50); // Heals the player by 50 health points
                 Destroy(gameObject);
             }
-            
+
         }
     }
 }
