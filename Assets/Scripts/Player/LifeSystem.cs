@@ -82,7 +82,7 @@ public class LifeSystem : MonoBehaviour
         LifeImageFillAmount();
         if (generalManager != null)
         {
-            generalManager.decreaseScore(200);
+            generalManager.DecreaseScore(200);
         }
 
     }

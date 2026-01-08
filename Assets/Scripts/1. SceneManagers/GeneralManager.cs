@@ -48,7 +48,7 @@ public class GeneralManager : MonoBehaviour
 
             if (scoreIntervalTimer >= scoreInterval)
             {
-                decreaseScore(scorePenalty);
+                DecreaseScore(scorePenalty);
                 scoreIntervalTimer = 0f;
             }
         }
@@ -85,13 +85,13 @@ public class GeneralManager : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
-    public void decreaseScore(int amount)
+    public void DecreaseScore(int amount)
     {
         score -= amount;
         if (score < 0) score = 0;
     }
 
-    public void increaseScore(int amount)
+    public void IncreaseScore(int amount)
     {
         score += amount;
     }
