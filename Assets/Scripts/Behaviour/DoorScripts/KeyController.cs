@@ -11,17 +11,20 @@ public class KeyController : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     private RaycastController raycast;
     private bool take;
-    private TextMeshProUGUI keyText;
+    private TextMeshProUGUI interactionText;
+    private Outline outline;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         raycast = FindObjectOfType<RaycastController>();
         prison = FindObjectOfType<PrisonGate>();
+        outline = GetComponent<Outline>();
     }
 
     private void Update()
     {
+        prison.ClearText();
         if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)")
         {
             prison.interactionTextForKey();

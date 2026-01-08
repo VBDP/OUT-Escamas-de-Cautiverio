@@ -92,4 +92,9 @@ public class PrisonGate : MonoBehaviour, DoorInterface
         interactionText.text = "Click to grab the key";
     }
 
+    public void ClearText()
+    {
+        interactionText.text = "";
+    }
+
 }
