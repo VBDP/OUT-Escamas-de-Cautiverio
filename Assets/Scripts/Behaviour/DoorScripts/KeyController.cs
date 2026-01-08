@@ -27,7 +27,7 @@ public class KeyController : MonoBehaviour
         prison.ClearText();
         if (raycast.GetHitObjectName() == "PrisonGate Key(Clone)")
         {
-            prison.interactionTextForKey();
+            prison.InteractionTextForKey();
             if (Input.GetMouseButtonDown(0))
             {
                 SaveOnInventory();

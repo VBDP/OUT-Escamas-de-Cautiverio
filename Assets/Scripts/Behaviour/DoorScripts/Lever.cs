@@ -14,9 +14,9 @@ public class Lever : MonoBehaviour
     private void Update()
     {
         outline.OutlineColor = new Color(0, 0, 0, 0);
-        openDoor();
+        OpenDoor();
     }
-    public void openDoor()
+    public void OpenDoor()
     {
         if (raycast.GetHitObjectName() == "Lever")
         {
