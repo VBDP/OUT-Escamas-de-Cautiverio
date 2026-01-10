@@ -1,25 +1,45 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
 public class GeneralManager : MonoBehaviour
 {
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    Player and Timer References
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
+    [SerializeField] private PlayerMovement playerMovement;
+    private Timer timer;
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    * Pause menu management variables
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     [SerializeField] private List<GameObject> panelsToDeactivate;
     [SerializeField] private GameObject pauseMenuPanel;
-    [SerializeField] private PlayerMovement playerMovement;
     private bool pauseMenuActive = false;
-    private Timer timer;
-    private int score = 1000;
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    * UI Elements
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI interactionText;
-
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    * Score management variables
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
+    private int score = 1000;
     private float scoreIntervalTimer = 0f;
     private float scoreInterval = 60f;
     private int scorePenalty = 100;
+
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    Void Awake() and Update() Methods
+    · Void Awake() and Update() Methods
     ----------------------------------------------------------------------------------------------------------------------------
     */
     void Awake()
@@ -43,7 +63,7 @@ public class GeneralManager : MonoBehaviour
             playerMovement.UnblockCamera();
             ClosePauseMenu();
         }
-        
+
         Score(); //Actualiza el marcador en pantalla.
 
         if (!pauseMenuActive)
@@ -57,10 +77,9 @@ public class GeneralManager : MonoBehaviour
             }
         }
     }
-
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    Pause Menu Management
+    · Pause Menu Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
     void OpenPauseMenu()
@@ -75,7 +94,6 @@ public class GeneralManager : MonoBehaviour
         Cursor.visible = true;
 
     }
-
     void ClosePauseMenu()
     {
         pauseMenuPanel.SetActive(false);
@@ -84,10 +102,9 @@ public class GeneralManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    Score Management
+    · Score Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
     void Score()
@@ -107,13 +124,11 @@ public class GeneralManager : MonoBehaviour
     {
         score += amount;
     }
-
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    Interaction Text Management
+    · Interaction Text Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
-
     public void SetInteractionText(string text)
     {
         interactionText.text = text;
@@ -126,7 +141,7 @@ public class GeneralManager : MonoBehaviour
 
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    On Application Quit
+    · On Application Quit
     ----------------------------------------------------------------------------------------------------------------------------
     */
     void OnApplicationQuit()
