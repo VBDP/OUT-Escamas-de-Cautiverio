@@ -6,7 +6,7 @@ public class PrisonGate : MonoBehaviour, DoorInterface
 {
     private RaycastController raycast;
     [SerializeField] private Transform player;
-    [SerializeField] private TextMeshProUGUI interactionText;
+    private GeneralManager generalManager;
     [SerializeField] private Image keyImage;
     KeyController key;
     private string objectName;
@@ -15,26 +15,27 @@ public class PrisonGate : MonoBehaviour, DoorInterface
     private Animator animator;
     private float doorRotation = 0f;
     private float dot;
+    private bool haveKey;
 
-
-    private bool haveKey = false;
     public void Start()
     {
         objectOutline = GetComponent<Outline>();
         animator = GetComponent<Animator>();
         key = GameObject.Find("PrisonGate Key(Clone)").GetComponent<KeyController>();
         raycast = FindObjectOfType<RaycastController>();
+        generalManager = FindObjectOfType<GeneralManager>();
+        haveKey = false;
     }
+
     public void Update()
     {
         haveKey = key.GetKey();
         OutlineChanger(); //Cambia el color del outline.
-        ChangeInteractionText();
-
+        ChangeInteractionText(); 
         if (haveKey)
         {
             CalculatePlayerPosition(); //Calculamos si est� delante o detr�s de la puerta.
-            ((DoorInterface)this).OpenCloseDoor(); //Si el usuario est� delante de la puerta, la abre, si est� detr�s la cierra
+            ((DoorInterface)this).OpenCloseDoor(); //Si el usuario est� delante de la puerta, la abre, si est� detr�s la cierra 
         }
     }
 
@@ -60,12 +61,12 @@ public class PrisonGate : MonoBehaviour, DoorInterface
         {
             if (!haveKey)
             {
-                interactionText.text = "Necesitas una llave para abrir esta puerta";
+                generalManager.SetInteractionText("Necesitas una llave para abrir esta puerta");
             }
-        }
-        else
-        {
-            interactionText.text = "";
+            else
+            {
+                generalManager.SetInteractionText("Click para abrir/cerrar la puerta");
+            }      
         }
     }
 
@@ -86,15 +87,4 @@ public class PrisonGate : MonoBehaviour, DoorInterface
             }
         }
     }
-
-    public void InteractionTextForKey()
-    {
-        interactionText.text = "Click to grab the key";
-    }
-
-    public void ClearText()
-    {
-        interactionText.text = "";
-    }
-
 }

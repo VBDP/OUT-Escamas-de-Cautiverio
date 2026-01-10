@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
@@ -14,10 +14,14 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI interactionText;
 
-
     private float scoreIntervalTimer = 0f;
     private float scoreInterval = 60f;
     private int scorePenalty = 100;
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    Void Awake() and Update() Methods
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     void Awake()
     {
         timer = new Timer();
@@ -39,8 +43,8 @@ public class GeneralManager : MonoBehaviour
             playerMovement.UnblockCamera();
             ClosePauseMenu();
         }
-
-        Score();
+        
+        Score(); //Actualiza el marcador en pantalla.
 
         if (!pauseMenuActive)
         {
@@ -54,7 +58,11 @@ public class GeneralManager : MonoBehaviour
         }
     }
 
-    //Pause Menu Management
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    Pause Menu Management
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     void OpenPauseMenu()
     {
         foreach (GameObject panel in panelsToDeactivate)
@@ -77,7 +85,11 @@ public class GeneralManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    //Score Management
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    Score Management
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     void Score()
     {
         if (score < 0) score = 0;
@@ -96,7 +108,27 @@ public class GeneralManager : MonoBehaviour
         score += amount;
     }
 
-    //Timer Save on Quit
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    Interaction Text Management
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
+
+    public void SetInteractionText(string text)
+    {
+        interactionText.text = text;
+    }
+
+    public void ClearInteractionText()
+    {
+        interactionText.text = "";
+    }
+
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    On Application Quit
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
     void OnApplicationQuit()
     {
         timer.SaveTime();

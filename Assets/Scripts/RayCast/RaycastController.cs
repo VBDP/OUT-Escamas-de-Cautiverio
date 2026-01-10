@@ -5,6 +5,12 @@ public class RaycastController : MonoBehaviour
     public string objectName;
     public string objectTag;
     public Outline outline;
+    private GeneralManager generalManager;
+
+    public void Start()
+    {
+        generalManager = FindObjectOfType<GeneralManager>();
+    }
 
     public void Update()
     {
@@ -15,6 +21,13 @@ public class RaycastController : MonoBehaviour
             objectTag = hit.collider.gameObject.tag;
             outline = hit.collider.gameObject.GetComponent<Outline>();
 
+        }
+        else
+        {
+            generalManager.ClearInteractionText();
+            objectName = null;
+            objectTag = null;
+            outline = null;
         }
     }
 
