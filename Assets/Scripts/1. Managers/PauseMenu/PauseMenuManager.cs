@@ -17,6 +17,24 @@ public class PauseMenuManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void OpenSettingsMenu()
+    {
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
+        panels[3].SetActive(true);
+    }
+
+    public void OpenOptionsMenu()
+    {
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
+        panels[4].SetActive(true);
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadSceneAsync("MainMenu");

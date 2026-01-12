@@ -7,7 +7,6 @@ using System;
 
 public class GeneralManager : MonoBehaviour
 {
-
     String actualScene;
 
     /*
@@ -42,6 +41,10 @@ public class GeneralManager : MonoBehaviour
     private float scoreIntervalTimer = 0f;
     private float scoreInterval = 60f;
     private int scorePenalty = 100;
+
+    /*
+    * Music and SFX Audio Mixers
+    */
 
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +84,7 @@ public class GeneralManager : MonoBehaviour
                 scoreIntervalTimer = 0f;
             }
         }
-            Score();
+        Score();
     }
 
     /*
@@ -163,86 +166,10 @@ public class GeneralManager : MonoBehaviour
     {
         timer.SaveTime();
     }
-}
-/*
-PlayerPrefs:
-- MusicVolume (float)
-- SFXVolume (float)
-- Item_<itemID> (int: 0 o 1)
-*/
-public class DataManager : MonoBehaviour
-{
-    [Header("Audio")]
-    public AudioMixer audioMixer;     // Mixer con Music y SFX
-    public string musicParam = "MusicVolume";
-    public string sfxParam = "SFXVolume";
 
-    [Header("Inventario (IDs)")]
-    public string[] inventoryItems;
-
-    public static DataManager Instance;
-
-    void Awake()
-    {
-        // Singleton (persiste entre escenas)
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadSettings();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    // =========================
-    // AUDIO
-    // =========================
-
-    public void SetMusicVolume(float value)
-    {
-        audioMixer.SetFloat(musicParam, Mathf.Log10(value) * 20);
-        PlayerPrefs.SetFloat("MusicVolume", value);
-    }
-
-    public void SetSFXVolume(float value)
-    {
-        audioMixer.SetFloat(sfxParam, Mathf.Log10(value) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", value);
-    }
-
-    // =========================
-    // INVENTARIO
-    // =========================
-
-    public void SetItem(string itemID, bool obtained)
-    {
-        PlayerPrefs.SetInt("Item_" + itemID, obtained ? 1 : 0);
-    }
-
-    public bool HasItem(string itemID)
-    {
-        return PlayerPrefs.GetInt("Item_" + itemID, 0) == 1;
-    }
-
-    // =========================
-    // CARGA
-    // =========================
-
-    void LoadSettings()
-    {
-        // Audio
-        float music = PlayerPrefs.GetFloat("MusicVolume", 0.8f);
-        float sfx = PlayerPrefs.GetFloat("SFXVolume", 0.8f);
-
-        audioMixer.SetFloat(musicParam, Mathf.Log10(music) * 20);
-        audioMixer.SetFloat(sfxParam, Mathf.Log10(sfx) * 20);
-    }
-
-    public void SaveAll()
-    {
-        PlayerPrefs.Save();
-    }
+    /*
+    ----------------------------------------------------------------------------------------------------------------------------
+    · Music Volume Management
+    ----------------------------------------------------------------------------------------------------------------------------
+    */
 }
