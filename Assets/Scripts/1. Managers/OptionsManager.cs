@@ -1,19 +1,21 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Audio;    
+using UnityEngine.Audio;
 using Unity.VisualScripting;
 
 public class OptionsManager : MonoBehaviour
 {
     private GeneralManager generalManager;
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
+    private AudioSource musicSource;
+    private AudioSource sfxSource;
 
 
     void Awake()
     {
         generalManager = FindObjectOfType<GeneralManager>();
+        musicSource = generalManager.musicSource;
+        sfxSource = generalManager.sfxSource;
         // Initialize sliders and texts with default values
         musicVolumeSlider.value = musicVolumeLevel;
         musicVolumeText.text = (musicVolumeLevel * 100).ToString("0") + "%";
@@ -25,8 +27,17 @@ public class OptionsManager : MonoBehaviour
         mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
     }
 
+    void start()
+    {
+        musicSource = generalManager.musicSource;
+        sfxSource = generalManager.sfxSource;
+
+        SetMusicVolume(musicVolumeLevel);
+        SetSFXVolume(sfxVolumeLevel);
+    }
+
     // Music Volume management variables
-    private float musicVolumeLevel = 0.75f;
+    private float musicVolumeLevel = 0.50f;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private TextMeshProUGUI musicVolumeText;
 
@@ -39,7 +50,7 @@ public class OptionsManager : MonoBehaviour
     }
 
     //SFX Volume management variables
-    private float sfxVolumeLevel = 0.75f;
+    private float sfxVolumeLevel = 0.50f;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private TextMeshProUGUI sfxVolumeText;
 

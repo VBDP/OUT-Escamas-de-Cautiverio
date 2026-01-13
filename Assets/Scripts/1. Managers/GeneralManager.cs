@@ -43,8 +43,11 @@ public class GeneralManager : MonoBehaviour
     private int scorePenalty = 100;
 
     /*
-    * Music and SFX Audio Mixers
+    * Music and SFX Audio Sources
     */
+
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
 
     /*
     ----------------------------------------------------------------------------------------------------------------------------
