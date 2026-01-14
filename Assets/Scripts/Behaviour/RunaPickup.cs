@@ -5,6 +5,7 @@ public class RunaPickup : MonoBehaviour
 {
     private RaycastController raycast;
     private LifeSystem lifeSystem;
+    private Inventory inventario;
     [SerializeField] private GameObject hitObject;
     [SerializeField] private Transform tpPoint;
 
@@ -12,6 +13,7 @@ public class RunaPickup : MonoBehaviour
     {
         lifeSystem = FindObjectOfType<LifeSystem>();
         raycast = FindObjectOfType<RaycastController>();
+        inventario = FindObjectOfType<Inventory>();
     }
 
     private void Update()
@@ -20,8 +22,14 @@ public class RunaPickup : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                hitObject.transform.position = tpPoint.position;
-                hitObject.transform.rotation = tpPoint.rotation;
+                if (hitObject.name == "Jera")
+                {
+                    inventario.Jera = true;
+                }
+                else if (hitObject.name == "Othilla")
+                {
+                    inventario.Othilla = true;
+                }
             }
         }
     }
