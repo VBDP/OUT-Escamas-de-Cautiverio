@@ -5,6 +5,7 @@ public class RaycastController : MonoBehaviour
     public string objectName;
     public string objectTag;
     public Outline outline;
+    public GameObject objectPrefab;
     private GeneralManager generalManager;
 
     public void Start()
@@ -20,6 +21,7 @@ public class RaycastController : MonoBehaviour
             objectName = hit.collider.gameObject.name;
             objectTag = hit.collider.gameObject.tag;
             outline = hit.collider.gameObject.GetComponent<Outline>();
+            objectPrefab = hit.collider.gameObject;
 
         }
         else
@@ -28,6 +30,7 @@ public class RaycastController : MonoBehaviour
             objectName = null;
             objectTag = null;
             outline = null;
+            objectPrefab = null;
         }
     }
 
@@ -59,6 +62,18 @@ public class RaycastController : MonoBehaviour
         if (outline != null)
         {
             return outline;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public GameObject GetHitGameObject()
+    {
+        if (objectPrefab != null)
+        {
+            return objectPrefab;
         }
         else
         {
