@@ -25,6 +25,7 @@ public class LifeSystem : MonoBehaviour
     {
         // Inicializamos la vida al maximo
         generalManager = FindFirstObjectByType<GeneralManager>();
+        interactionText = generalManager.interactionText;
         maxHealth = 100f;
         currentHealth = maxHealth;
         healthImage = generalManager.healthBar;

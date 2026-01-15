@@ -4,16 +4,14 @@ using UnityEngine;
 public class RunaPickup : MonoBehaviour
 {
     private RaycastController raycast;
-    private LifeSystem lifeSystem;
     private Inventory inventario;
     [SerializeField] private GameObject hitObject;
     [SerializeField] private Transform tpPoint;
 
     void Start()
     {
-        lifeSystem = FindObjectOfType<LifeSystem>();
-        raycast = FindObjectOfType<RaycastController>();
-        inventario = FindObjectOfType<Inventory>();
+        raycast = FindFirstObjectByType<RaycastController>();
+        inventario = FindFirstObjectByType<Inventory>();
     }
 
     private void Update()
@@ -30,6 +28,7 @@ public class RunaPickup : MonoBehaviour
                 {
                     inventario.Othilla = true;
                 }
+                transform.position = new Vector3(0,-1000,0);
             }
         }
     }

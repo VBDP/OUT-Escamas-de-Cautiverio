@@ -31,7 +31,7 @@ public class GeneralManager : MonoBehaviour
     */
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI interactionText;
+    public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     * Score management variables

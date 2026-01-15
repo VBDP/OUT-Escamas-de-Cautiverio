@@ -464,6 +464,9 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 1985717393}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 708456806}
     - targetCorrespondingSourceObject: {fileID: -8265944352880360275, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1319534932}
@@ -3059,6 +3062,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8369922, y: 3.53582, z: 3.1475248}
   m_Center: {x: 0.0000019073486, y: -1.4458175, z: -1.4226005}
+--- !u!1 &426279407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
+  m_PrefabInstance: {fileID: 686359365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &428571767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6013040812453938592, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
@@ -4923,8 +4931,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 639124733}
+  - component: {fileID: 639124734}
+  - component: {fileID: 639124735}
   m_Layer: 6
-  m_Name: TPPoint
+  m_Name: JeraTPPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4945,6 +4955,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 686359366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &639124734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639124732}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02998969, y: 0.03462929, z: 0.039768975}
+  m_Center: {x: 0.0020061044, y: 0.012314523, z: 0.0041439715}
+--- !u!114 &639124735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639124732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4826bd6a06a5e434193071c3b9b11cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunePosition
+  runeType: 0
+  tpPoint: {fileID: 639124733}
+  runeObject: {fileID: 774616021}
 --- !u!1001 &642657504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5438,6 +5484,9 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 639124733}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 686359367}
     - targetCorrespondingSourceObject: {fileID: 7090775452919025242, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 774616025}
@@ -5450,6 +5499,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
   m_PrefabInstance: {fileID: 686359365}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &686359367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426279407}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &687024345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5859356350128798482, guid: 502b7489185fc924c8176c98a11ee091, type: 3}
@@ -5589,6 +5659,32 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: acc4f9f4b0c0cdc4a99434c6c699e875, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &708456805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
+  m_PrefabInstance: {fileID: 27745478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &708456806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708456805}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &721434141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17378,8 +17474,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1985717393}
+  - component: {fileID: 1985717394}
+  - component: {fileID: 1985717395}
   m_Layer: 6
-  m_Name: TPPoint
+  m_Name: OthillaTPPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17400,6 +17498,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 27745479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1985717394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985717392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02998969, y: 0.03462929, z: 0.039768975}
+  m_Center: {x: 0.0020061044, y: 0.012314523, z: 0.0041439715}
+--- !u!114 &1985717395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985717392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4826bd6a06a5e434193071c3b9b11cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunePosition
+  runeType: 1
+  tpPoint: {fileID: 1985717393}
+  runeObject: {fileID: 1319534928}
 --- !u!1001 &1992875516
 PrefabInstance:
   m_ObjectHideFlags: 0
