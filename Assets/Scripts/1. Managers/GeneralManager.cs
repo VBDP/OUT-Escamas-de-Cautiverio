@@ -3,6 +3,7 @@ using UnityEngine.Audio;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 
 public class GeneralManager : MonoBehaviour
@@ -49,6 +50,10 @@ public class GeneralManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
+    /*
+    * Health
+    */
+    public Image healthBar;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Void Awake() and Update() Methods

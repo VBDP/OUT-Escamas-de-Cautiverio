@@ -19,7 +19,6 @@ public class DamageOnTouch : MonoBehaviour
             if (lifeSystem.currentHealth - customDamage > 0)
             {
                 lifeSystem.DamagePlayer(customDamage);
-                lifeSystem.LifeImageFillAmount();
             }
             else
             {

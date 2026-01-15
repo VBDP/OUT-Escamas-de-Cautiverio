@@ -22,11 +22,13 @@ public class LifeSystem : MonoBehaviour
     void Start()
     {
         // Inicializamos la vida al maximo
+        generalManager = FindObjectOfType<GeneralManager>();
         maxHealth = 100f;
         currentHealth = maxHealth;
+        healthImage = generalManager.healthBar;
         playerSpawnPosition = transform.position;
         playerSpawnRotation = transform.rotation;
-        generalManager = FindObjectOfType<GeneralManager>();
+        
     }
 
     public void DamagePlayer(float damage)
