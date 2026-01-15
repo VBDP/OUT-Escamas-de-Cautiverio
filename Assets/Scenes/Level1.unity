@@ -438,12 +438,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 678590085555601218, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.757
+      objectReference: {fileID: 0}
+    - target: {fileID: 678590085555601218, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2897434
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 678590085555601218, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9160283
+      value: 10.29
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ea1394eaa43e6e45a5c0e9a3c2641c4, type: 3}
       propertyPath: m_Name
@@ -4991,6 +4995,7 @@ MonoBehaviour:
   runeType: 0
   tpPoint: {fileID: 639124733}
   runeObject: {fileID: 774616021}
+  moveDuration: 1.2
 --- !u!1001 &642657504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5459,11 +5464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2915285917470131377, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.286
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2915285917470131377, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.941
+      value: 22.52
       objectReference: {fileID: 0}
     - target: {fileID: 3953554938169320685, guid: 8512ec3ab75caba45aaf7a0d5a54b5fe, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -17534,6 +17539,7 @@ MonoBehaviour:
   runeType: 1
   tpPoint: {fileID: 1985717393}
   runeObject: {fileID: 1319534928}
+  moveDuration: 1.2
 --- !u!1001 &1992875516
 PrefabInstance:
   m_ObjectHideFlags: 0

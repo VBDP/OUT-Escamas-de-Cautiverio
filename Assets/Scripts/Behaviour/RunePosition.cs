@@ -1,11 +1,5 @@
 using UnityEngine;
-
-public class RunePosition : MonoBehaviour
-{
-    [SerializeField] private RuneType runeType;
-    [SerializeField] private Transform tpPoint;
-    [SerializeField] private GameObject runeObject;
-
+using System.Collections;
     public enum RuneType
 {
     Jera,
@@ -13,7 +7,15 @@ public class RunePosition : MonoBehaviour
 }
 
 
+public class RunePosition : MonoBehaviour
+{
+    [SerializeField] private RuneType runeType;
+    [SerializeField] private Transform tpPoint;
+    [SerializeField] private GameObject runeObject;
+    [SerializeField] private float moveDuration = 1.2f;
+
     private Inventory inventario;
+    private Coroutine moveCoroutine;
 
     void Start()
     {
@@ -24,22 +26,45 @@ public class RunePosition : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        switch (runeType)
-        {
-            case RuneType.Jera:
-                if (inventario.Jera)
-                    TeleportRune();
-                break;
+        if (runeType == RuneType.Jera && inventario.Jera)
+            StartMove();
 
-            case RuneType.Othilla:
-                if (inventario.Othilla)
-                    TeleportRune();
-                break;
-        }
+        if (runeType == RuneType.Othilla && inventario.Othilla)
+            StartMove();
     }
 
-    private void TeleportRune()
+    void StartMove()
     {
+        if (moveCoroutine != null)
+            StopCoroutine(moveCoroutine);
+
+        moveCoroutine = StartCoroutine(MoveRuneSmooth());
+    }
+
+    IEnumerator MoveRuneSmooth()
+    {
+        Vector3 startPos = runeObject.transform.position;
+        Quaternion startRot = runeObject.transform.rotation;
+
+        float time = 0f;
+
+        while (time < moveDuration)
+        {
+            float t = time / moveDuration;
+
+            // suavizado (ease in-out)
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            runeObject.transform.position =
+                Vector3.Lerp(startPos, tpPoint.position, t);
+
+            runeObject.transform.rotation =
+                Quaternion.Slerp(startRot, tpPoint.rotation, t);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
         runeObject.transform.SetPositionAndRotation(
             tpPoint.position,
             tpPoint.rotation

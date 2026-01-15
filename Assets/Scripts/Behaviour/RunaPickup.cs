@@ -28,7 +28,7 @@ public class RunaPickup : MonoBehaviour
                 {
                     inventario.Othilla = true;
                 }
-                transform.position = new Vector3(0,-1000,0);
+                transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z +2);
             }
         }
     }
