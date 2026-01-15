@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 /*--------  ---------*/
@@ -15,6 +16,7 @@ public class LifeSystem : MonoBehaviour
     public Image healthImage; // Imagen del HUD
     private Vector3 playerSpawnPosition;
     private Quaternion playerSpawnRotation;
+    public TextMeshProUGUI interactionText;
 
 
 
@@ -22,7 +24,7 @@ public class LifeSystem : MonoBehaviour
     void Start()
     {
         // Inicializamos la vida al maximo
-        generalManager = FindObjectOfType<GeneralManager>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
         maxHealth = 100f;
         currentHealth = maxHealth;
         healthImage = generalManager.healthBar;
@@ -64,7 +66,7 @@ public class LifeSystem : MonoBehaviour
                 currentHealth = 100f;
             }
             LifeImageFillAmount();
-            Debug.Log("TE ha curado hasta " + currentHealth + "% de vida");
+            Debug.Log("Te ha curado hasta " + currentHealth + "% de vida");
 
         }
         else

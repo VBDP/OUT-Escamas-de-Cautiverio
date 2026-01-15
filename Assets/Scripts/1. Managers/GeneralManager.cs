@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class GeneralManager : MonoBehaviour
 {
     String actualScene;
-
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     Player and Timer References
