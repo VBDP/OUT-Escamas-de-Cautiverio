@@ -21957,6 +21957,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8738877020563204255, guid: 01102a114103e314d9426fb5357b454a, type: 3}
+      propertyPath: m_Name
+      value: FinalDoorLevel1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8738877020563204255, guid: 01102a114103e314d9426fb5357b454a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -6544031525081664630, guid: 01102a114103e314d9426fb5357b454a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.70710576
@@ -22047,6 +22055,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8738877020563204255, guid: 01102a114103e314d9426fb5357b454a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 211071979}
+    - targetCorrespondingSourceObject: {fileID: -8738877020563204255, guid: 01102a114103e314d9426fb5357b454a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 211071987}
   m_SourcePrefab: {fileID: 100100000, guid: 01102a114103e314d9426fb5357b454a, type: 3}
 --- !u!1 &211071977 stripped
 GameObject:
@@ -22102,6 +22113,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5133378042767878019, guid: 01102a114103e314d9426fb5357b454a, type: 3}
+--- !u!114 &211071987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211071977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7d2c530f5febf449c384c4c8bd3a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinalDoorLevel1
+  finalDoorLevel1: {fileID: 211071977}
 --- !u!1001 &211103553
 PrefabInstance:
   m_ObjectHideFlags: 0
