@@ -7,6 +7,8 @@ public class RunaPickup : MonoBehaviour
     private Inventory inventario;
     [SerializeField] private GameObject hitObject;
     [SerializeField] private Transform tpPoint;
+    [SerializeField] private GameObject blockLeft;
+    [SerializeField] private GameObject blockRight;
 
     void Start()
     {
@@ -23,10 +25,12 @@ public class RunaPickup : MonoBehaviour
                 if (hitObject.name == "Jera")
                 {
                     inventario.Jera = true;
+                    blockRight.SetActive(true);
                 }
                 else if (hitObject.name == "Othilla")
                 {
                     inventario.Othilla = true;
+                    blockLeft.SetActive(true);
                 }
                 transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z +1000);
             }
