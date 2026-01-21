@@ -31,6 +31,7 @@ public class GeneralManager : MonoBehaviour
     */
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject decreaseScoreText;
     public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -39,8 +40,8 @@ public class GeneralManager : MonoBehaviour
     */
     public int score = 1000;
     private float scoreIntervalTimer = 0f;
-    private float scoreInterval = 60f;
-    private int scorePenalty = 100;
+    private float scoreInterval = 10f;
+    private int scorePenalty = 25;
 
     /*
     * Music and SFX Audio Sources
@@ -49,6 +50,7 @@ public class GeneralManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
+    public AudioClip decreaseScoreClip;
     /*
     * Health
     */
@@ -89,6 +91,8 @@ public class GeneralManager : MonoBehaviour
             {
                 DecreaseScore(scorePenalty);
                 scoreIntervalTimer = 0f;
+                EnableDecreaseText();
+                Invoke(nameof(DisableDecreaseText), 2f);
             }
         }
         Score();
@@ -179,4 +183,15 @@ public class GeneralManager : MonoBehaviour
     · Music Volume Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
+
+    private void EnableDecreaseText()
+    {
+        decreaseScoreText.SetActive(true);
+        sfxSource.PlayOneShot(decreaseScoreClip);
+    }
+    
+    private void DisableDecreaseText()
+    {
+        decreaseScoreText.SetActive(false);
+    }
 }
