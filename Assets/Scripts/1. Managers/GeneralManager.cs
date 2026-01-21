@@ -91,8 +91,8 @@ public class GeneralManager : MonoBehaviour
             {
                 DecreaseScore(scorePenalty);
                 scoreIntervalTimer = 0f;
-                EnableDecreaseText();
-                Invoke(nameof(DisableDecreaseText), 2f);
+                EnableDecreaseText(scorePenalty);
+                DisableDecreaseTextDelayed(2f);
             }
         }
         Score();
@@ -145,6 +145,7 @@ public class GeneralManager : MonoBehaviour
 
     public void DecreaseScore(int amount)
     {
+        scorePenalty = amount;
         score -= amount;
         if (score < 0) score = 0;
     }
@@ -184,14 +185,20 @@ public class GeneralManager : MonoBehaviour
     ----------------------------------------------------------------------------------------------------------------------------
     */
 
-    private void EnableDecreaseText()
+    public void EnableDecreaseText(int amount)
     {
         decreaseScoreText.SetActive(true);
+        decreaseScoreText.GetComponent<TextMeshProUGUI>().text = "-" + amount.ToString();
         sfxSource.PlayOneShot(decreaseScoreClip);
     }
     
-    private void DisableDecreaseText()
+    public void DisableDecreaseText()
     {
         decreaseScoreText.SetActive(false);
+    }
+    
+    public void DisableDecreaseTextDelayed(float delay)
+    {
+        Invoke(nameof(DisableDecreaseText), delay);
     }
 }

@@ -88,6 +88,9 @@ public class LifeSystem : MonoBehaviour
         if (generalManager != null)
         {
             generalManager.DecreaseScore(200);
+            generalManager.EnableDecreaseText(200);
+            generalManager.DisableDecreaseTextDelayed(2f);
+            
         }
 
     }
