@@ -8,6 +8,10 @@ public class Inventory : MonoBehaviour
     public bool Jera = false;
 
     public bool Othilla = false;
+
+    public bool othillaPlaced = false;
+    public bool jeraPlaced  = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -16,21 +16,30 @@ public class RunePosition : MonoBehaviour
 
     private Inventory inventario;
     private Coroutine moveCoroutine;
+    
+    public bool jera;
+    public bool othilla;
 
     void Start()
     {
         inventario = FindFirstObjectByType<Inventory>();
+        jera = false;
+        othilla = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
         if (runeType == RuneType.Jera && inventario.Jera)
+        {
             StartMove();
+            inventario.jeraPlaced = true;
+        }
+        else if (runeType == RuneType.Othilla && inventario.Othilla)
+        {
+            StartMove();
+            inventario.othillaPlaced = true;
+        }
 
-        if (runeType == RuneType.Othilla && inventario.Othilla)
-            StartMove();
     }
 
     void StartMove()
