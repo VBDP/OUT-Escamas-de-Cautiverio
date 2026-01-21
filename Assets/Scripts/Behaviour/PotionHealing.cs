@@ -37,7 +37,6 @@ public class PotionHealing : MonoBehaviour
         }
         else
         {
-            interactionText.text = "";
             if (outline != null)
             {
                 outline.OutlineColor = Color.clear;
