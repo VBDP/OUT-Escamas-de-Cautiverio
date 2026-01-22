@@ -74,9 +74,7 @@ public class GeneralManager : MonoBehaviour
     {
         timer.Tick(Time.deltaTime);
         timerText.text = timer.GetFormattedTime();
-       
-
-
+        
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
         {
             playerMovement.BlockCamera();
