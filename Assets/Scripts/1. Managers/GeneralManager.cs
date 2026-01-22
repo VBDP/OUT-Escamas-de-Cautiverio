@@ -15,6 +15,7 @@ public class GeneralManager : MonoBehaviour
     ----------------------------------------------------------------------------------------------------------------------------
     */
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody playerRb;
     private Timer timer;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -34,6 +35,7 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private GameObject decreaseScoreText;
     [SerializeField] private TextMeshProUGUI potionText; 
     [SerializeField] private GameObject keyImage;
+    [SerializeField] private GameObject deathPanel;
     public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -72,6 +74,7 @@ public class GeneralManager : MonoBehaviour
     {
         timer.Tick(Time.deltaTime);
         timerText.text = timer.GetFormattedTime();
+       
 
 
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
@@ -147,7 +150,6 @@ public class GeneralManager : MonoBehaviour
 
     public void DecreaseScore(int amount)
     {
-        scorePenalty = amount;
         score -= amount;
         if (score < 0) score = 0;
     }
@@ -212,5 +214,24 @@ public class GeneralManager : MonoBehaviour
     public void EnableKeyImage()
     {
         keyImage.SetActive(true);
+    }
+
+    public void EnableDeathPanel()
+    {
+        deathPanel.SetActive(true);
+        playerMovement.BlockCamera();
+        playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+    }
+
+    public void DisableDeathPanel()
+    {
+        deathPanel.SetActive(false);
+        playerMovement.UnblockCamera();
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

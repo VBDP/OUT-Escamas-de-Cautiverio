@@ -90,6 +90,7 @@ public class LifeSystem : MonoBehaviour
             generalManager.DecreaseScore(200);
             generalManager.EnableDecreaseText(200);
             generalManager.DisableDecreaseTextDelayed(2f);
+            generalManager.EnableDeathPanel();
             
         }
 
