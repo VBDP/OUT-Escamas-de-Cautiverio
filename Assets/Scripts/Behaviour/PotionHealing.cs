@@ -8,6 +8,7 @@ public class PotionHealing : MonoBehaviour
     private Outline outline;
     private TextMeshProUGUI interactionText;
     private Inventory inventory;
+    private GeneralManager generalManager;
     
 
     void Start()
@@ -16,6 +17,7 @@ public class PotionHealing : MonoBehaviour
         raycast = FindFirstObjectByType<RaycastController>();
         interactionText = lifeSystem.interactionText;
         inventory=FindFirstObjectByType<Inventory>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
         if (lifeSystem == null || raycast == null)
         {
             Debug.LogError("LifeSystem or RaycastController not found in the scene.");
@@ -33,6 +35,7 @@ public class PotionHealing : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 inventory.pociones += 1;
+                generalManager.ChangePotionText(inventory.pociones.ToString());
                 Destroy(gameObject);
             }
 

@@ -32,6 +32,7 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject decreaseScoreText;
+    [SerializeField]  private TextMeshProUGUI potionText; 
     public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -200,5 +201,10 @@ public class GeneralManager : MonoBehaviour
     public void DisableDecreaseTextDelayed(float delay)
     {
         Invoke(nameof(DisableDecreaseText), delay);
+    }
+
+    public void ChangePotionText(string text)
+    {
+        potionText.text = text;
     }
 }

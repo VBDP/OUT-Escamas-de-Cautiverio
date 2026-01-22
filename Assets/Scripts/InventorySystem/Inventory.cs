@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
-    public Inventory inventory;
-    public LifeSystem lifeSystem;
+    private GeneralManager generalManager;
+    private LifeSystem lifeSystem;
 
     public bool keyFirstDoor = false;
 
@@ -19,8 +18,8 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventory = FindFirstObjectByType<Inventory>();
         lifeSystem = FindObjectOfType<LifeSystem>();
+        generalManager = FindObjectOfType<GeneralManager>();
     }
 
     // Update is called once per frame
@@ -43,6 +42,7 @@ public class Inventory : MonoBehaviour
             Debug.Log("Has usado una poción");
             lifeSystem.HealPlayer(50);
             pociones -= 1;
+            generalManager.ChangePotionText(pociones.ToString());
         }
     }
 }
