@@ -7,6 +7,7 @@ public class PotionHealing : MonoBehaviour
     private LifeSystem lifeSystem;
     private Outline outline;
     private TextMeshProUGUI interactionText;
+    private Inventory inventory;
     
 
     void Start()
@@ -14,6 +15,7 @@ public class PotionHealing : MonoBehaviour
         lifeSystem = FindFirstObjectByType<LifeSystem>();
         raycast = FindFirstObjectByType<RaycastController>();
         interactionText = lifeSystem.interactionText;
+        inventory=FindFirstObjectByType<Inventory>();
         if (lifeSystem == null || raycast == null)
         {
             Debug.LogError("LifeSystem or RaycastController not found in the scene.");
@@ -30,7 +32,7 @@ public class PotionHealing : MonoBehaviour
             interactionText.text = "Click para beber poción de curación";
             if (Input.GetMouseButtonDown(0))
             {
-                lifeSystem.HealPlayer(50); // Heals the player by 50 health points
+                inventory.pociones += 1;
                 Destroy(gameObject);
             }
 
