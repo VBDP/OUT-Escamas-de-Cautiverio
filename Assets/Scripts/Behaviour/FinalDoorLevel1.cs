@@ -32,14 +32,14 @@ public class FinalDoorLevel1 : MonoBehaviour
             generalManager.SetInteractionText("Haz click para abrir la puerta");
             outline.OutlineColor = Color.white;
         }
-        else
-        {
-            generalManager.SetInteractionText("Necesitas colocar las 2 runas para abrir esta puerta");
-        }
         
         if (raycast.GetHitObjectName() == "FinalDoorLevel1")
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!inventario.jeraPlaced || !inventario.othillaPlaced)
+            {
+                generalManager.SetInteractionText("Debes colocar las dos runas en las paredes de los lados para avanzar");
+            }
+            else if (Input.GetMouseButtonDown(0))
             {
                 if (inventario.othillaPlaced == true && inventario.jeraPlaced == true)
                 {
