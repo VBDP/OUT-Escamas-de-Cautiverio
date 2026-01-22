@@ -32,7 +32,8 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject decreaseScoreText;
-    [SerializeField]  private TextMeshProUGUI potionText; 
+    [SerializeField] private TextMeshProUGUI potionText; 
+    [SerializeField] private GameObject keyImage;
     public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -206,5 +207,10 @@ public class GeneralManager : MonoBehaviour
     public void ChangePotionText(string text)
     {
         potionText.text = text;
+    }
+
+    public void EnableKeyImage()
+    {
+        keyImage.SetActive(true);
     }
 }

@@ -36,7 +36,6 @@ public class KeyController : MonoBehaviour
                 transform.Find("Luz").gameObject.SetActive(false);
                 AudioSource.PlayClipAtPoint(audioClip, transform.position);
                 Destroy(gameObject);
-
             }
         }
     }
@@ -44,6 +43,7 @@ public class KeyController : MonoBehaviour
     private void SaveOnInventory()
     {
         take = true;
+        generalManager.EnableKeyImage();
     }
 
     public bool GetKey()
