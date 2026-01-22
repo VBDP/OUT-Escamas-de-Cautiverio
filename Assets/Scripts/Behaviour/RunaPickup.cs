@@ -1,0 +1,66 @@
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class RunaPickup : MonoBehaviour
+{
+    private RaycastController raycast;
+    private Inventory inventario;
+    [SerializeField] private GameObject hitObject;
+    [SerializeField] private Transform tpPoint;
+    [SerializeField] private GameObject blockLeft;
+    [SerializeField] private GameObject blockRight;
+    
+    [SerializeField] private Image space1;
+    [SerializeField] private Image space2;
+    [SerializeField] private Sprite othillaSprite;
+    [SerializeField] private Sprite jeraSprite;
+
+    void Start()
+    {
+        raycast = FindFirstObjectByType<RaycastController>();
+        inventario = FindFirstObjectByType<Inventory>();
+    }
+
+    private void Update()
+    {
+        if (raycast.GetHitObjectName() == hitObject.name)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hitObject.name == "Jera")
+                {
+                    inventario.Jera = true;
+                    blockRight.SetActive(true);
+                    
+                    if (space1.sprite == null)
+                    {
+                        space1.sprite = jeraSprite;
+                        space1.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        space2.sprite = jeraSprite;
+                        space2.gameObject.SetActive(true);
+                    }
+                }
+                else if (hitObject.name == "Othilla")
+                {
+                    inventario.Othilla = true;
+                    blockLeft.SetActive(true);
+                    if (space1.sprite == null)
+                    {
+                        space1.sprite = othillaSprite;
+                        space1.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        space2.sprite = othillaSprite;
+                        space2.gameObject.SetActive(true);
+                    }
+                }
+                transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z +1000);
+            }
+        }
+    }
+}

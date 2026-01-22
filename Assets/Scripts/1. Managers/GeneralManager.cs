@@ -3,18 +3,19 @@ using UnityEngine.Audio;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 
 public class GeneralManager : MonoBehaviour
 {
     String actualScene;
-
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     Player and Timer References
     ----------------------------------------------------------------------------------------------------------------------------
     */
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Rigidbody playerRb;
     private Timer timer;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -31,21 +32,33 @@ public class GeneralManager : MonoBehaviour
     */
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI interactionText;
+    [SerializeField] private GameObject decreaseScoreText;
+    [SerializeField] private TextMeshProUGUI potionText; 
+    [SerializeField] private GameObject keyImage;
+    [SerializeField] private GameObject deathPanel;
+    public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     * Score management variables
     ----------------------------------------------------------------------------------------------------------------------------
     */
-    private int score = 1000;
+    public int score = 1000;
     private float scoreIntervalTimer = 0f;
-    private float scoreInterval = 60f;
-    private int scorePenalty = 100;
+    private float scoreInterval = 10f;
+    private int scorePenalty = 25;
 
     /*
-    * Music and SFX Audio Mixers
+    * Music and SFX Audio Sources
     */
 
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
+
+    public AudioClip decreaseScoreClip;
+    /*
+    * Health
+    */
+    public Image healthBar;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Void Awake() and Update() Methods
@@ -61,8 +74,7 @@ public class GeneralManager : MonoBehaviour
     {
         timer.Tick(Time.deltaTime);
         timerText.text = timer.GetFormattedTime();
-
-
+        
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
         {
             playerMovement.BlockCamera();
@@ -82,6 +94,8 @@ public class GeneralManager : MonoBehaviour
             {
                 DecreaseScore(scorePenalty);
                 scoreIntervalTimer = 0f;
+                EnableDecreaseText(scorePenalty);
+                DisableDecreaseTextDelayed(2f);
             }
         }
         Score();
@@ -172,4 +186,50 @@ public class GeneralManager : MonoBehaviour
     · Music Volume Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
+
+    public void EnableDecreaseText(int amount)
+    {
+        decreaseScoreText.SetActive(true);
+        decreaseScoreText.GetComponent<TextMeshProUGUI>().text = "-" + amount.ToString();
+        sfxSource.PlayOneShot(decreaseScoreClip);
+    }
+    
+    public void DisableDecreaseText()
+    {
+        decreaseScoreText.SetActive(false);
+    }
+    
+    public void DisableDecreaseTextDelayed(float delay)
+    {
+        Invoke(nameof(DisableDecreaseText), delay);
+    }
+
+    public void ChangePotionText(string text)
+    {
+        potionText.text = text;
+    }
+
+    public void EnableKeyImage()
+    {
+        keyImage.SetActive(true);
+    }
+
+    public void EnableDeathPanel()
+    {
+        deathPanel.SetActive(true);
+        playerMovement.BlockCamera();
+        playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+    }
+
+    public void DisableDeathPanel()
+    {
+        deathPanel.SetActive(false);
+        playerMovement.UnblockCamera();
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }
