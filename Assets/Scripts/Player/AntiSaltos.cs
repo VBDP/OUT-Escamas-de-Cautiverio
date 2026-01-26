@@ -9,6 +9,7 @@ public class AntiSaltos : MonoBehaviour
         if (other.tag == "Player")
         {
             rb.constraints = RigidbodyConstraints.FreezePositionY;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
 

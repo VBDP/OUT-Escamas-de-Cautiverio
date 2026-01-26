@@ -37,12 +37,27 @@ public class Inventory : MonoBehaviour
 
     public void usarPociones()
     {
-        if (Input.GetKeyUp(KeyCode.Alpha1) && pociones > 0)
+        if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            Debug.Log("Has usado una poción");
-            lifeSystem.HealPlayer(50);
-            pociones -= 1;
-            generalManager.ChangePotionText(pociones.ToString());
+            if (pociones > 0)
+            {
+                Debug.Log("Has usado una poción");
+
+                if (lifeSystem.currentHealth < 100)
+                {
+                    lifeSystem.HealPlayer(50);
+                    pociones -= 1;
+                    generalManager.ChangePotionText(pociones.ToString());
+                }
+                else
+                {
+                    Debug.Log("Ya tenías toda la vida");
+                }
+            }
+            else
+            {
+                Debug.Log("No tienes pociones");
+            }
         }
     }
 }
