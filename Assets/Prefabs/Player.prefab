@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6693797254880467695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.682, z: 0.061}
+  m_LocalPosition: {x: 0, y: 1.682, z: 0.312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -153,6 +153,7 @@ MonoBehaviour:
   objectName: 
   objectTag: 
   outline: {fileID: 0}
+  objectPrefab: {fileID: 0}
 --- !u!1001 &6918101456921636063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,7 +327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b13a63226083d48bdabb73d7694a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  KeyFirstDoor: 0
+  keyFirstDoor: 0
+  Jera: 0
+  Othilla: 0
+  othillaPlaced: 0
+  jeraPlaced: 0
+  pociones: 0
 --- !u!114 &8409082892013544502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9cb32ddbef7a42a9c75703ed07a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LifeSystem
-  generalManager: {fileID: 0}
-  MaxHealth: 100
-  CurrentHealth: 100
+  maxHealth: 0
+  currentHealth: 0
   healthImage: {fileID: 0}
+  interactionText: {fileID: 0}
