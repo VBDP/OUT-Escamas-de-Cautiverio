@@ -27,18 +27,18 @@ public class PotionHealing : MonoBehaviour
 
     void Update()
     {
-        if (raycast.GetHitObjectName() == "Healing Potion")
+        if (raycast.GetHitGameObject() == gameObject)
         {
-            outline = raycast.GetHitObjectOutline();
+            outline = GetComponent<Outline>();
             outline.OutlineColor = Color.white;
             interactionText.text = "Click para guardar, numpad '1' para consumir";
+
             if (Input.GetMouseButtonDown(0))
             {
                 inventory.pociones += 1;
                 generalManager.ChangePotionText(inventory.pociones.ToString());
                 Destroy(gameObject);
             }
-
         }
         else
         {
@@ -48,4 +48,5 @@ public class PotionHealing : MonoBehaviour
             }
         }
     }
+
 }
