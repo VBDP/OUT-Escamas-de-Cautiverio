@@ -24,7 +24,6 @@ public class DamageOnTouch : MonoBehaviour
             {
                 lifeSystem.KillPlayer();
             }
-
         }
     }
 }
