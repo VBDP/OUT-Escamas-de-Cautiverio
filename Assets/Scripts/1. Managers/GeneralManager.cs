@@ -42,7 +42,7 @@ public class GeneralManager : MonoBehaviour
     * Score management variables
     ----------------------------------------------------------------------------------------------------------------------------
     */
-    public int score = 1000;
+    public int score = 5000;
     private float scoreIntervalTimer = 0f;
     private float scoreInterval = 10f;
     private int scorePenalty = 25;
