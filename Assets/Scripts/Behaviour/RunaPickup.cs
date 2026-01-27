@@ -10,7 +10,7 @@ public class RunaPickup : MonoBehaviour
     [SerializeField] private Transform tpPoint;
     [SerializeField] private GameObject blockLeft;
     [SerializeField] private GameObject blockRight;
-    
+
     [SerializeField] private Image space1;
     [SerializeField] private Image space2;
     [SerializeField] private Sprite othillaSprite;
@@ -32,7 +32,7 @@ public class RunaPickup : MonoBehaviour
                 {
                     inventario.Jera = true;
                     blockRight.SetActive(true);
-                    
+
                     if (space1.sprite == null)
                     {
                         space1.sprite = jeraSprite;
@@ -59,7 +59,8 @@ public class RunaPickup : MonoBehaviour
                         space2.gameObject.SetActive(true);
                     }
                 }
-                transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z +1000);
+
+                transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z + 1000);
             }
         }
     }

@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9c1bf42c-d40e-40a4-be6d-a884682d7093" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OUT Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OUT Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/HUD System.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/HUD System.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Behaviour/PotionHealing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Behaviour/PotionHealing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Behaviour/RunaPickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Behaviour/RunaPickup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Dev",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
@@ -108,6 +112,7 @@
       <workItem from="1768988025539" duration="8101000" />
       <workItem from="1769071345997" duration="1940000" />
       <workItem from="1769073937336" duration="5943000" />
+      <workItem from="1769505408821" duration="609000" />
     </task>
     <servers />
   </component>

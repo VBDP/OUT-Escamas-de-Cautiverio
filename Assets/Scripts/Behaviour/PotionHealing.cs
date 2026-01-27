@@ -31,7 +31,7 @@ public class PotionHealing : MonoBehaviour
         {
             outline = raycast.GetHitObjectOutline();
             outline.OutlineColor = Color.white;
-            interactionText.text = "Click para beber poción de curación";
+            interactionText.text = "Click para guardar, numpad '1' para consumir";
             if (Input.GetMouseButtonDown(0))
             {
                 inventory.pociones += 1;
