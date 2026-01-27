@@ -5,7 +5,6 @@ public class FinalDoorLevel1 : MonoBehaviour
 {
     private RaycastController raycast;
     private Inventory inventario;
-    private int score;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] private GameObject finalDoorLevel1;
     [SerializeField] private Rigidbody rb;
@@ -21,7 +20,6 @@ public class FinalDoorLevel1 : MonoBehaviour
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
         text.text = "";
-        score = generalManager.score;
     }
 
     // Update is called once per frame
@@ -44,7 +42,7 @@ public class FinalDoorLevel1 : MonoBehaviour
                 if (inventario.othillaPlaced == true && inventario.jeraPlaced == true)
                 {
                     winPanel.SetActive(true);
-                    text.text = "Has ganado y has obtenido"+ score + " puntos.";
+                    text.text = "Has ganado y has obtenido " + generalManager.score + " puntos.";
                     playerMovement.BlockCamera();
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;

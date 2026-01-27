@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c1bf42c-d40e-40a4-be6d-a884682d7093" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Behaviour/FinalDoorLevel1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Behaviour/FinalDoorLevel1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <workItem from="1768988025539" duration="8101000" />
       <workItem from="1769071345997" duration="1940000" />
       <workItem from="1769073937336" duration="5943000" />
-      <workItem from="1769505408821" duration="1225000" />
+      <workItem from="1769505408821" duration="1605000" />
     </task>
     <servers />
   </component>
