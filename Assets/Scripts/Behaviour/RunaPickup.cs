@@ -20,6 +20,8 @@ public class RunaPickup : MonoBehaviour
     {
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
+        blockLeft.SetActive(false);
+        blockRight.SetActive(false);
     }
 
     private void Update()

@@ -20,6 +20,9 @@ public class RunePosition : MonoBehaviour
 
     public bool jera;
     public bool othilla;
+    
+    [SerializeField] private AudioSource sfx;
+    [SerializeField] private AudioClip stoneHitSound;
 
     void Start()
     {
@@ -32,11 +35,26 @@ public class RunePosition : MonoBehaviour
     {
         if (runeType == RuneType.Jera && inventario.Jera)
         {
+            if (!inventario.jeraPlaced)
+            {
+                if (sfx != null && stoneHitSound != null)
+                {
+                    sfx.PlayOneShot(stoneHitSound);
+                }
+            }
             StartMove();
             inventario.jeraPlaced = true;
+            
         }
         else if (runeType == RuneType.Othilla && inventario.Othilla)
         {
+            if (!inventario.othillaPlaced)
+            {
+                if (sfx != null && stoneHitSound != null)
+                {
+                    sfx.PlayOneShot(stoneHitSound);
+                }
+            }
             StartMove();
             inventario.othillaPlaced = true;
         }
@@ -76,12 +94,14 @@ public class RunePosition : MonoBehaviour
             tpPoint.position,
             tpPoint.rotation
         );
-
+        
         // 🔒 Desactivar el componente RunaPickup
         var pickup = runeObject.GetComponent<RunaPickup>();
         if (pickup != null)
         {
             pickup.enabled = false;
         }
+        
+            
     }
 }
