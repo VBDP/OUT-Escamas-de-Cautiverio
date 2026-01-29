@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-    public enum RuneType
+
+public enum RuneType
 {
     Jera,
     Othilla
@@ -16,7 +17,7 @@ public class RunePosition : MonoBehaviour
 
     private Inventory inventario;
     private Coroutine moveCoroutine;
-    
+
     public bool jera;
     public bool othilla;
 
@@ -39,7 +40,6 @@ public class RunePosition : MonoBehaviour
             StartMove();
             inventario.othillaPlaced = true;
         }
-
     }
 
     void StartMove()
@@ -60,8 +60,6 @@ public class RunePosition : MonoBehaviour
         while (time < moveDuration)
         {
             float t = time / moveDuration;
-
-            // suavizado (ease in-out)
             t = Mathf.SmoothStep(0f, 1f, t);
 
             runeObject.transform.position =
@@ -78,5 +76,12 @@ public class RunePosition : MonoBehaviour
             tpPoint.position,
             tpPoint.rotation
         );
+
+        // 🔒 Desactivar el componente RunaPickup
+        var pickup = runeObject.GetComponent<RunaPickup>();
+        if (pickup != null)
+        {
+            pickup.enabled = false;
+        }
     }
 }
