@@ -68,4 +68,5 @@ Assets/Bakery/*.meta
 Assets/BakeryLightmaps/
 Assets/BakeryLightmaps/*.meta
 Assets/Editor/
+Assets/Editor/*.dll
 Assets/Editor/*.meta
