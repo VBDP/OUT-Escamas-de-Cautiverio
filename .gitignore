@@ -62,6 +62,10 @@ mono_crash.*
 
 # --- Adaptaciones específicas para tu proyecto ---
 # Ignorar Bakery y lightmaps generados
+# Ignorar Bakery y lightmaps generados
 Assets/Bakery/
+Assets/Bakery/*.meta
 Assets/BakeryLightmaps/
+Assets/BakeryLightmaps/*.meta
 Assets/Editor/
+Assets/Editor/*.meta
