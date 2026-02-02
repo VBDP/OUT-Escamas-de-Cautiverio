@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 /*--------  ---------*/
 /*
   Este Script es un sistema que permite al juego restar salud del jugador con diversos eventos.
@@ -18,7 +19,8 @@ public class LifeSystem : MonoBehaviour
     private Quaternion playerSpawnRotation;
     public TextMeshProUGUI interactionText;
     private AudioSource playerAudio;
-   [SerializeField] private AudioClip playerDamage;
+    [SerializeField] private AudioClip playerDamage;
+    [SerializeField] private AudioClip playerDie;
 
 
     /*-------- Void Start && Void Update ---------*/
@@ -33,7 +35,6 @@ public class LifeSystem : MonoBehaviour
         playerSpawnPosition = transform.position;
         playerSpawnRotation = transform.rotation;
         playerAudio = GetComponent<AudioSource>();
-        
     }
 
     public void DamagePlayer(float damage)
@@ -52,7 +53,6 @@ public class LifeSystem : MonoBehaviour
 
         LifeImageFillAmount();
         Debug.Log("Te han dañado" + currentHealth);
-
     }
 
     public void HealPlayer(float heal)
@@ -69,9 +69,9 @@ public class LifeSystem : MonoBehaviour
             {
                 currentHealth = 100f;
             }
+
             LifeImageFillAmount();
             Debug.Log("Te ha curado hasta " + currentHealth + "% de vida");
-
         }
         else
         {
@@ -94,14 +94,12 @@ public class LifeSystem : MonoBehaviour
             generalManager.EnableDecreaseText(200);
             generalManager.DisableDecreaseTextDelayed(2f);
             generalManager.EnableDeathPanel();
-            
+            playerAudio.PlayOneShot(playerDie);
         }
-
     }
 
     public void LifeImageFillAmount()
     {
         healthImage.fillAmount = currentHealth / maxHealth;
     }
-
 }

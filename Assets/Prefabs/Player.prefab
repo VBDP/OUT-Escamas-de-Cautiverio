@@ -586,6 +586,7 @@ MonoBehaviour:
   healthImage: {fileID: 0}
   interactionText: {fileID: 0}
   playerDamage: {fileID: 8300000, guid: 0a097f1eca7161c4dbbf3791c758b5dd, type: 3}
+  playerDie: {fileID: 8300000, guid: 7572a4c2b97aaf64887febd1dc39cf1a, type: 3}
 --- !u!82 &388682046284565898
 AudioSource:
   m_ObjectHideFlags: 0
