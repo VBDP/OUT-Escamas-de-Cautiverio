@@ -17,7 +17,8 @@ public class LifeSystem : MonoBehaviour
     private Vector3 playerSpawnPosition;
     private Quaternion playerSpawnRotation;
     public TextMeshProUGUI interactionText;
-
+    private AudioSource playerAudio;
+   [SerializeField] private AudioClip playerDamage;
 
 
     /*-------- Void Start && Void Update ---------*/
@@ -31,6 +32,7 @@ public class LifeSystem : MonoBehaviour
         healthImage = generalManager.healthBar;
         playerSpawnPosition = transform.position;
         playerSpawnRotation = transform.rotation;
+        playerAudio = GetComponent<AudioSource>();
         
     }
 
@@ -41,6 +43,7 @@ public class LifeSystem : MonoBehaviour
         {
             currentHealth -= damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            playerAudio.PlayOneShot(playerDamage);
         }
         else
         {

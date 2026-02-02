@@ -49,7 +49,7 @@ public class FloorTrapController : MonoBehaviour
     public void ActivateTrap()
     {
         anim.SetBool("Activated", true);
-        audioSource.Play();
+        audioSource.PlayOneShot(clip);
 
     }
 }
