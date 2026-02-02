@@ -417,6 +417,7 @@ MonoBehaviour:
   othillaPlaced: 0
   jeraPlaced: 0
   pociones: 0
+  potionDrink: {fileID: 8300000, guid: 2ee867847405cc94893255995245001c, type: 3}
 --- !u!114 &8409082892013544502
 MonoBehaviour:
   m_ObjectHideFlags: 0

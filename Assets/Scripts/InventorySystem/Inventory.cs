@@ -15,11 +15,16 @@ public class Inventory : MonoBehaviour
     public bool jeraPlaced  = false;
 
     public int pociones = 0;
+
+    private AudioSource sfx;
+
+    [SerializeField] private AudioClip potionDrink;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         lifeSystem = FindObjectOfType<LifeSystem>();
         generalManager = FindObjectOfType<GeneralManager>();
+        sfx = generalManager.sfxSource;
     }
 
     // Update is called once per frame
@@ -48,6 +53,7 @@ public class Inventory : MonoBehaviour
                     lifeSystem.HealPlayer(50);
                     pociones -= 1;
                     generalManager.ChangePotionText(pociones.ToString());
+                    sfx.PlayOneShot(potionDrink);
                 }
                 else
                 {

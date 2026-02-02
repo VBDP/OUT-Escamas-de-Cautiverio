@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fe0fd5f56fe75488eaf6957f3f56c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionHealing
+  takePotion: {fileID: 8300000, guid: 8735e03976178474a8d363cb5d9922eb, type: 3}
 --- !u!136 &7587160373698108192
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class PotionHealing : MonoBehaviour
     private TextMeshProUGUI interactionText;
     private Inventory inventory;
     private GeneralManager generalManager;
+    private AudioSource sfx;
+    [SerializeField] private AudioClip takePotion;
     
 
     void Start()
@@ -18,6 +20,7 @@ public class PotionHealing : MonoBehaviour
         interactionText = lifeSystem.interactionText;
         inventory=FindFirstObjectByType<Inventory>();
         generalManager = FindFirstObjectByType<GeneralManager>();
+        sfx = generalManager.sfxSource;
         if (lifeSystem == null || raycast == null)
         {
             Debug.LogError("LifeSystem or RaycastController not found in the scene.");
@@ -37,6 +40,7 @@ public class PotionHealing : MonoBehaviour
             {
                 inventory.pociones += 1;
                 generalManager.ChangePotionText(inventory.pociones.ToString());
+                sfx.PlayOneShot(takePotion);
                 Destroy(gameObject);
             }
         }
