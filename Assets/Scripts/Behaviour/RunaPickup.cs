@@ -6,6 +6,7 @@ public class RunaPickup : MonoBehaviour
 {
     private RaycastController raycast;
     private Inventory inventario;
+    private GeneralManager generalManager;
     [SerializeField] private GameObject hitObject;
     [SerializeField] private Transform tpPoint;
     [SerializeField] private GameObject blockLeft;
@@ -15,13 +16,17 @@ public class RunaPickup : MonoBehaviour
     [SerializeField] private Image space2;
     [SerializeField] private Sprite othillaSprite;
     [SerializeField] private Sprite jeraSprite;
+    private AudioSource sfx;
+    [SerializeField] private  AudioClip runePickup;
 
     void Start()
     {
+        generalManager = FindObjectOfType<GeneralManager>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
         blockLeft.SetActive(false);
         blockRight.SetActive(false);
+        sfx = generalManager.sfxSource;
     }
 
     private void Update()
@@ -30,8 +35,10 @@ public class RunaPickup : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                
                 if (hitObject.name == "Jera")
                 {
+                    sfx.PlayOneShot(runePickup);
                     inventario.Jera = true;
                     blockRight.SetActive(true);
 
@@ -48,6 +55,7 @@ public class RunaPickup : MonoBehaviour
                 }
                 else if (hitObject.name == "Othilla")
                 {
+                    sfx.PlayOneShot(runePickup);
                     inventario.Othilla = true;
                     blockLeft.SetActive(true);
                     if (space1.sprite == null)

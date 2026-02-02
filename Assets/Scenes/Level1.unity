@@ -84080,6 +84080,7 @@ MonoBehaviour:
   space2: {fileID: 702937005}
   othillaSprite: {fileID: 21300000, guid: c5d36df96097a834c84a63ef893c0219, type: 3}
   jeraSprite: {fileID: 21300000, guid: 8b88b6a5c1820b544af9fbb4a5d93a4b, type: 3}
+  runePickup: {fileID: 8300000, guid: d0bf7ef948b6c82418ab0899acfec1e7, type: 3}
 --- !u!114 &774616030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149371,6 +149372,7 @@ MonoBehaviour:
   space2: {fileID: 702937005}
   othillaSprite: {fileID: 21300000, guid: c5d36df96097a834c84a63ef893c0219, type: 3}
   jeraSprite: {fileID: 21300000, guid: 8b88b6a5c1820b544af9fbb4a5d93a4b, type: 3}
+  runePickup: {fileID: 8300000, guid: d0bf7ef948b6c82418ab0899acfec1e7, type: 3}
 --- !u!114 &1319534934
 MonoBehaviour:
   m_ObjectHideFlags: 0
