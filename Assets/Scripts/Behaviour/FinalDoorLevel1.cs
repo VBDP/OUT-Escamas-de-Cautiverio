@@ -31,7 +31,6 @@ public class FinalDoorLevel1 : MonoBehaviour
 
         // Reset del texto por defecto
         string interactionText = "";
-        outline.OutlineColor = Color.clear;
 
         // PUERTA FINAL
         if (hitObject == "FinalDoorLevel1")

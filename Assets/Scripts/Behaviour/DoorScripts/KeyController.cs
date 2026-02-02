@@ -16,6 +16,7 @@ public class KeyController : MonoBehaviour
     {
         raycast = FindObjectOfType<RaycastController>();
         outline = GetComponent<Outline>();
+        outline.enabled = true;
         audioSource = GetComponent<AudioSource>();   
         generalManager = FindObjectOfType<GeneralManager>();
         
