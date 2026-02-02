@@ -42,6 +42,7 @@ public class RunePosition : MonoBehaviour
                 if (sfx != null && stoneHitSound != null)
                 {
                     sfx.PlayOneShot(stoneHitSound);
+                    jeraEffects.SetActive(false);
                 }
             }
             StartMove();
@@ -55,6 +56,7 @@ public class RunePosition : MonoBehaviour
                 if (sfx != null && stoneHitSound != null)
                 {
                     sfx.PlayOneShot(stoneHitSound);
+                    othillaEffects.SetActive(false);
                 }
             }
             StartMove();
