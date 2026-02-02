@@ -24,6 +24,8 @@ public class RunePosition : MonoBehaviour
     [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioClip stoneHitSound;
 
+    [SerializeField] private GameObject othillaEffects;
+    [SerializeField] private GameObject jeraEffects;
     void Start()
     {
         inventario = FindFirstObjectByType<Inventory>();
