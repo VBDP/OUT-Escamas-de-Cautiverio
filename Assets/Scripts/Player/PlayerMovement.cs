@@ -1,87 +1,102 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float mouseSensitivity = 2f;
-    [SerializeField] private float verticalRotation = 0f;
+    [Header("Movement Settings")]
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float sprintSpeed = 10f;
     [SerializeField] private float jumpForce = 5f;
-    private bool isGrounded;
+    [SerializeField] private float groundCheckDistance = 0.1f;
+
+    [Header("Camera Settings")]
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private float mouseSensitivity = 2f;
+    [SerializeField] private float maxVerticalAngle = 60f;
+
+    private Rigidbody rb;
+    private float verticalRotation = 0f;
     private bool cameraUnlocked = true;
-    Transform playerCamera;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool isGrounded = true;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true; // Evita rotación física
+        if (!playerCamera && transform.childCount > 0)
+            playerCamera = transform.GetChild(0);
+    }
+
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        isGrounded = true;
-        playerCamera = transform.GetChild(0);
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        CameraRotation();
+        HandleCameraRotation();
+        CheckGrounded();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        float inputH = Input.GetAxis("Horizontal");
-        float inputV = Input.GetAxis("Vertical");
+        HandleMovement();
+    }
 
-        Vector3 moveDirection = (transform.forward * inputV + transform.right * inputH).normalized
-         * moveSpeed * Time.deltaTime;
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.MovePosition(rb.position + moveDirection);
+    #region Movement
+    private void HandleMovement()
+    {
+        float inputH = Input.GetAxisRaw("Horizontal");
+        float inputV = Input.GetAxisRaw("Vertical");
 
+        Vector3 moveDir = (transform.forward * inputV + transform.right * inputH).normalized;
+
+        float currentSpeed = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            ? sprintSpeed
+            : walkSpeed;
+
+        // Calculamos velocidad horizontal
+        Vector3 targetVelocity = moveDir * currentSpeed;
+        // Mantener velocidad vertical para saltos/gravedad
+        targetVelocity.y = rb.linearVelocity.y;
+
+        rb.linearVelocity = targetVelocity;
+
+        // Saltar
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // reset vertical
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
-
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            moveSpeed = 10f;
-        }
-        else
-        {
-            moveSpeed = 5f;
-        }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void CheckGrounded()
     {
-        if (collision.gameObject.CompareTag("Ground") && !isGrounded)
-        {
-            if (collision.transform.position.y - transform.position.y < 1f)
-            {
-                isGrounded = true;
-            }
-        }
+        // Raycast hacia abajo para detectar si está en el suelo
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance + 0.1f);
     }
+    #endregion
 
-    public void CameraRotation()
+    #region Camera
+    private void HandleCameraRotation()
     {
-        if (cameraUnlocked)
-        {
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        if (!cameraUnlocked) return;
 
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -maxVerticalAngle, maxVerticalAngle);
+
+        if (playerCamera != null)
             playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
-        }
+
+        transform.Rotate(Vector3.up * mouseX);
     }
 
-    public void BlockCamera()
-    {
-        cameraUnlocked = false;
-    }
-
-    public void UnblockCamera()
-    {
-        cameraUnlocked = true;
-    }
+    public void BlockCamera() => cameraUnlocked = false;
+    public void UnblockCamera() => cameraUnlocked = true;
+    #endregion
 }
