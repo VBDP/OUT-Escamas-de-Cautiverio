@@ -18,7 +18,7 @@ public class LifeSystem : MonoBehaviour
     private Vector3 playerSpawnPosition;
     private Quaternion playerSpawnRotation;
     public TextMeshProUGUI interactionText;
-    private AudioSource playerAudio;
+    private AudioSource sfxSource;
     [SerializeField] private AudioClip playerDamage;
     [SerializeField] private AudioClip playerDie;
 
@@ -34,7 +34,7 @@ public class LifeSystem : MonoBehaviour
         healthImage = generalManager.healthBar;
         playerSpawnPosition = transform.position;
         playerSpawnRotation = transform.rotation;
-        playerAudio = GetComponent<AudioSource>();
+        sfxSource = generalManager.sfxSource;
     }
 
     public void DamagePlayer(float damage)
@@ -44,7 +44,7 @@ public class LifeSystem : MonoBehaviour
         {
             currentHealth -= damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            playerAudio.PlayOneShot(playerDamage);
+            sfxSource.PlayOneShot(playerDamage);
         }
         else
         {
@@ -94,7 +94,7 @@ public class LifeSystem : MonoBehaviour
             generalManager.EnableDecreaseText(200);
             generalManager.DisableDecreaseTextDelayed(2f);
             generalManager.EnableDeathPanel();
-            playerAudio.PlayOneShot(playerDie);
+            sfxSource.PlayOneShot(playerDie);
         }
     }
 
