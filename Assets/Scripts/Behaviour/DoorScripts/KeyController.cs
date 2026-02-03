@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class KeyController : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    private AudioSource sfxAudioSource;
     [SerializeField] private AudioClip audioClip;
     private GeneralManager generalManager;
     private RaycastController raycast;
@@ -14,11 +14,11 @@ public class KeyController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        generalManager = FindFirstObjectByType<GeneralManager>();
         raycast = FindObjectOfType<RaycastController>();
         outline = GetComponent<Outline>();
         outline.enabled = true;
-        audioSource = GetComponent<AudioSource>();   
-        generalManager = FindObjectOfType<GeneralManager>();
+        sfxAudioSource = generalManager.sfxSource; 
         
     }
 
@@ -35,7 +35,7 @@ public class KeyController : MonoBehaviour
                 SaveOnInventory();
                 GetComponent<Renderer>().enabled = false;
                 transform.Find("Luz").gameObject.SetActive(false);
-                AudioSource.PlayClipAtPoint(audioClip, transform.position);
+                sfxAudioSource.PlayOneShot(audioClip);
                 Destroy(gameObject);
             }
         }
