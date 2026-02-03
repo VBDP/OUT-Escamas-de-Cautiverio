@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class FloorTrapController : MonoBehaviour
 {
-    Animator anim;
-    AudioSource audioSource;
+    private GeneralManager generalManager;
+    private Animator anim;
+    private AudioSource audioSource;
     public AudioClip clip;
     private void Start()
     {
+        generalManager = FindFirstObjectByType<GeneralManager>();
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = generalManager.sfxSource;
     }
     public void ActivarTrampa()
     {
