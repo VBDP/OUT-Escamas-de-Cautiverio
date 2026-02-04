@@ -24,8 +24,8 @@ public class RunaPickup : MonoBehaviour
         generalManager = FindObjectOfType<GeneralManager>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
-        blockLeft.SetActive(false);
-        blockRight.SetActive(false);
+        //blockLeft.SetActive(false);
+        //blockRight.SetActive(false);
         sfx = generalManager.sfxSource;
     }
 
