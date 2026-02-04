@@ -15,14 +15,25 @@ public class RaycastController : MonoBehaviour
 
     public void Update()
     {
-        // Si el raycast de la cámara golpea algo, guarda el nombre y la etiqueta del objeto golpeado         
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 10, LayerMask.GetMask("Interactable")))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
         {
-            objectName = hit.collider.gameObject.name;
-            objectTag = hit.collider.gameObject.tag;
-            outline = hit.collider.gameObject.GetComponent<Outline>();
-            objectPrefab = hit.collider.gameObject;
-
+            // Verifica si es interactuable
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            {
+                objectName = hit.collider.gameObject.name;
+                objectTag = hit.collider.gameObject.tag;
+                outline = hit.collider.gameObject.GetComponent<Outline>();
+                objectPrefab = hit.collider.gameObject;
+            }
+            else
+            {
+                // Golpeó algo que bloquea pero no es interactuable
+                generalManager.ClearInteractionText();
+                objectName = null;
+                objectTag = null;
+                outline = null;
+                objectPrefab = null;
+            }
         }
         else
         {
@@ -46,6 +57,7 @@ public class RaycastController : MonoBehaviour
             return "No hit";
         }
     }
+
     public string GetHitObjectTag() //Recupera la etiqueta del objeto golpeado
     {
         if (objectTag != null)
@@ -57,6 +69,7 @@ public class RaycastController : MonoBehaviour
             return "No hit";
         }
     }
+
     public Outline GetHitObjectOutline() //Recupera el componente Outline del objeto golpeado
     {
         if (outline != null)
