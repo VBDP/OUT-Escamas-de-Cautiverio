@@ -7,13 +7,13 @@ public class FloorTrapController : MonoBehaviour
 {
     private GeneralManager generalManager;
     private Animator anim;
-    private AudioSource audioSource;
+    private AudioSource sfxAudioSource;
     public AudioClip clip;
     private void Start()
     {
         generalManager = FindFirstObjectByType<GeneralManager>();
         anim = GetComponent<Animator>();
-        audioSource = generalManager.sfxSource;
+        sfxAudioSource = generalManager.sfxSource;
     }
     public void ActivarTrampa()
     {
@@ -51,7 +51,7 @@ public class FloorTrapController : MonoBehaviour
     public void ActivateTrap()
     {
         anim.SetBool("Activated", true);
-        audioSource.PlayOneShot(clip);
+        sfxAudioSource.PlayOneShot(clip);
 
     }
 }
