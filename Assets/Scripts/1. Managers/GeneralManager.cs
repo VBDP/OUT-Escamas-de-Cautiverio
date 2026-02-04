@@ -36,6 +36,7 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI potionText; 
     [SerializeField] private GameObject keyImage;
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] private TextMeshProUGUI textDeathPanel;
     public TextMeshProUGUI interactionText;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +99,7 @@ public class GeneralManager : MonoBehaviour
                 DisableDecreaseTextDelayed(2f);
             }
         }
-        Score();
+        UpdateScore();
     }
 
     /*
@@ -131,12 +132,11 @@ public class GeneralManager : MonoBehaviour
     · Score Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
-    void Score()
+    void UpdateScore()
     {
         if (actualScene != "Tutorial")
         {
             if (score < 0) score = 0;
-            PlayerPrefs.SetInt("Score", score);
             scoreText.text = "Score: " + score.ToString();
         }
         else
@@ -156,6 +156,12 @@ public class GeneralManager : MonoBehaviour
     {
         score += amount;
     }
+
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt("Score", score);
+    }
+    
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Interaction Text Management
@@ -189,9 +195,12 @@ public class GeneralManager : MonoBehaviour
 
     public void EnableDecreaseText(int amount)
     {
-        decreaseScoreText.SetActive(true);
-        decreaseScoreText.GetComponent<TextMeshProUGUI>().text = "-" + amount.ToString();
-        sfxSource.PlayOneShot(decreaseScoreClip);
+        if (actualScene != "Tutorial")
+        {
+            decreaseScoreText.SetActive(true);
+            decreaseScoreText.GetComponent<TextMeshProUGUI>().text = "-" + amount.ToString();
+            sfxSource.PlayOneShot(decreaseScoreClip);
+        }
     }
     
     public void DisableDecreaseText()
@@ -221,6 +230,15 @@ public class GeneralManager : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints.FreezeAll;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (actualScene != "Tutorial")
+        {
+            textDeathPanel.text = "Has muerto, ¡¡Dame 200 puntos y vuelve a empezar!!";
+        }
+        else
+        {
+            textDeathPanel.text = "¡Has muerto, reapareces al inicio del nivel!";
+        }
 
     }
 

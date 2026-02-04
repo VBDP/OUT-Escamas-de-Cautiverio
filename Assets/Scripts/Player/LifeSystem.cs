@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ using UnityEngine.UI;
 
 public class LifeSystem : MonoBehaviour
 {
+    String actualScene;
     private GeneralManager generalManager;
     public float maxHealth; //Vida maxima 
     public float currentHealth; //Vida actual
@@ -35,6 +37,7 @@ public class LifeSystem : MonoBehaviour
         playerSpawnPosition = transform.position;
         playerSpawnRotation = transform.rotation;
         sfxSource = generalManager.sfxSource;
+        actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
     }
 
     public void DamagePlayer(float damage)
