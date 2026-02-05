@@ -74,4 +74,34 @@ public class RunaPickup : MonoBehaviour
             }
         }
     }
+
+    public void ResetJera()
+    {
+        inventario.Jera = false;
+        if (space1.sprite == jeraSprite)
+        {
+            space1.sprite = null;
+            space1.gameObject.SetActive(false);
+        }
+        else if (space2.sprite == jeraSprite)
+        {
+            space2.sprite = null;
+            space2.gameObject.SetActive(false);
+        }
+    }
+
+    public void ResetOthilla()
+    {
+        inventario.Othilla = false;
+        if (space1.sprite == othillaSprite)
+        {
+            space1.sprite = null;
+            space1.gameObject.SetActive(false);
+        }
+        else if (space2.sprite == othillaSprite)
+        {
+            space2.sprite = null;
+            space2.gameObject.SetActive(false);
+        }
+    }
 }

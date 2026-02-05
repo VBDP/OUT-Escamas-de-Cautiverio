@@ -69145,6 +69145,7 @@ MonoBehaviour:
   tpPoint: {fileID: 639124733}
   runeObject: {fileID: 774616021}
   moveDuration: 1.2
+  runaPickup: {fileID: 774616026}
   jera: 0
   othilla: 0
   sfx: {fileID: 79658025}
@@ -227497,6 +227498,7 @@ MonoBehaviour:
   tpPoint: {fileID: 1985717393}
   runeObject: {fileID: 1319534928}
   moveDuration: 1.2
+  runaPickup: {fileID: 1319534933}
   jera: 0
   othilla: 0
   sfx: {fileID: 79658025}

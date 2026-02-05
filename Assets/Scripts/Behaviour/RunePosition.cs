@@ -14,6 +14,7 @@ public class RunePosition : MonoBehaviour
     [SerializeField] private Transform tpPoint;
     [SerializeField] private GameObject runeObject;
     [SerializeField] private float moveDuration = 1.2f;
+    [SerializeField] private RunaPickup runaPickup;
 
     private Inventory inventario;
     private Coroutine moveCoroutine;
@@ -47,6 +48,8 @@ public class RunePosition : MonoBehaviour
             }
             StartMove();
             inventario.jeraPlaced = true;
+            runaPickup.ResetJera();
+
             
         }
         else if (runeType == RuneType.Othilla && inventario.Othilla)
@@ -61,6 +64,7 @@ public class RunePosition : MonoBehaviour
             }
             StartMove();
             inventario.othillaPlaced = true;
+            runaPickup.ResetOthilla();
         }
     }
 
