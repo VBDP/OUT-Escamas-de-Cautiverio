@@ -7,14 +7,12 @@ public class EnemyPatrol : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
-    [Header("Patrol")]
-    [SerializeField] private Transform[] patrolPoints;
+    [Header("Patrol")] [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float waitTimeAtPoint = 3f;
     [SerializeField] private float rotationSpeed = 5f;
     private int currentPointIndex = 0;
 
-    [Header("Vision")]
-    [SerializeField] private Transform player;
+    [Header("Vision")] [SerializeField] private Transform player;
     [SerializeField] private float viewDistance = 10f;
     [SerializeField] private float viewAngle = 60f;
     [SerializeField] private LayerMask playerMask;
@@ -22,8 +20,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float losePlayerTime = 3f;
 
 
-    [Header("Attack")]
-    [SerializeField] private float attackDistance = 1.5f;
+    [Header("Attack")] [SerializeField] private float attackDistance = 1.5f;
     [SerializeField] private float attackCooldown = 1.2f;
     private float attackTimer = 0f;
     private bool isAttacking = false;
@@ -94,7 +91,6 @@ public class EnemyPatrol : MonoBehaviour
 
         HandleRotation();
     }
-
 
 
     private void HandleRotation()
@@ -171,7 +167,7 @@ public class EnemyPatrol : MonoBehaviour
             return false;
 
         if (Physics.Raycast(origin, dirToPlayer.normalized, out RaycastHit hit,
-                             viewDistance, obstacleMask | playerMask))
+                viewDistance, obstacleMask | playerMask))
         {
             return ((1 << hit.collider.gameObject.layer) & playerMask) != 0;
         }
@@ -193,27 +189,26 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     private IEnumerator AttackRoutine()
-{
-    isAttacking = true;
-    attackTimer = attackCooldown;
-
-    agent.isStopped = true;
-    animator.SetFloat("Speed", 0f);
-    animator.SetTrigger("Attack"); // Trigger en el Animator
-
-    // Mirar al jugador mientras ataca
-    float attackDuration = 0.6f; // ajusta a tu animación
-    float timer = 0f;
-
-    while (timer < attackDuration)
     {
-        RotateTowards(player.position);
-        timer += Time.deltaTime;
-        yield return null;
+        isAttacking = true;
+        attackTimer = attackCooldown;
+
+        agent.isStopped = true;
+        animator.SetFloat("Speed", 0f);
+        animator.SetTrigger("Attack"); // Trigger en el Animator
+
+        // Mirar al jugador mientras ataca
+        float attackDuration = 0.6f; // ajusta a tu animación
+        float timer = 0f;
+
+        while (timer < attackDuration)
+        {
+            RotateTowards(player.position);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        agent.isStopped = false;
+        isAttacking = false;
     }
-
-    agent.isStopped = false;
-    isAttacking = false;
-}
-
 }
