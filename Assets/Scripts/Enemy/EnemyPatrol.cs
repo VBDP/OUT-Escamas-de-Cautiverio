@@ -4,13 +4,14 @@ using System.Collections;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    [Header("Components")] private NavMeshAgent agent;
     private Animator animator;
 
     [Header("Patrol")] [SerializeField] private Transform[] patrolPoints;
     [SerializeField] private float waitTimeAtPoint = 3f;
     [SerializeField] private float rotationSpeed = 5f;
     private int currentPointIndex = 0;
+    private Coroutine patrolCoroutine;
 
     [Header("Vision")] [SerializeField] private Transform player;
     [SerializeField] private float viewDistance = 10f;
@@ -18,52 +19,57 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private float losePlayerTime = 3f;
+    private bool chasingPlayer = false;
+    private float losePlayerTimer = 0f;
 
-
-    [Header("Attack")] [SerializeField] private float attackDistance = 1.5f;
-    [SerializeField] private float attackCooldown = 1.2f;
+    [Header("Attack")] [SerializeField] private float attackCooldown = 1.2f;
     private float attackTimer = 0f;
     private bool isAttacking = false;
 
-    private bool chasingPlayer = false;
-    private float losePlayerTimer = 0f;
-    private Coroutine patrolCoroutine;
+    [Header("NavMesh Settings")] [SerializeField]
+    private float stoppingDistanceToPlayer = 1f;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
+        animator = GetComponent<Animator>();
+
+        agent.updateRotation = false; // controlamos rotación manual
+        agent.stoppingDistance = stoppingDistanceToPlayer;
 
         patrolCoroutine = StartCoroutine(PatrolRoutine());
     }
 
     void Update()
     {
+        if (isAttacking) return;
+
         if (chasingPlayer)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            // ATAQUE
-            if (distanceToPlayer <= attackDistance && attackTimer <= 0f)
+            if (distanceToPlayer <= agent.stoppingDistance && attackTimer <= 0f)
             {
                 StartCoroutine(AttackRoutine());
                 return;
             }
 
-            // PERSECUCIÓN
-            if (!isAttacking)
+            if (distanceToPlayer > agent.stoppingDistance)
             {
                 agent.SetDestination(player.position);
                 animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
-                RotateTowards(player.position);
+            }
+            else
+            {
+                agent.ResetPath();
+                animator.SetFloat("Speed", 0f);
             }
 
-            // Pérdida del jugador por tiempo
+            HandleRotation();
+
             if (!CanSeePlayer())
             {
                 losePlayerTimer -= Time.deltaTime;
-
                 if (losePlayerTimer <= 0f)
                 {
                     chasingPlayer = false;
@@ -79,19 +85,17 @@ public class EnemyPatrol : MonoBehaviour
             return;
         }
 
-        // INICIAR PERSECUCIÓN
         if (CanSeePlayer())
         {
             chasingPlayer = true;
             losePlayerTimer = losePlayerTime;
-
-            if (patrolCoroutine != null)
-                StopCoroutine(patrolCoroutine);
+            if (patrolCoroutine != null) StopCoroutine(patrolCoroutine);
         }
 
         HandleRotation();
     }
 
+    #region Rotation
 
     private void HandleRotation()
     {
@@ -101,11 +105,7 @@ public class EnemyPatrol : MonoBehaviour
         if (velocity.magnitude > 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(velocity);
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -114,23 +114,25 @@ public class EnemyPatrol : MonoBehaviour
         Vector3 direction = targetPosition - transform.position;
         direction.y = 0;
 
-        if (direction.sqrMagnitude < 0.01f)
-            return;
+        if (direction.sqrMagnitude < 0.01f) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
+
+    #endregion
+
+    #region Patrol
 
     private IEnumerator PatrolRoutine()
     {
         while (true)
         {
-            agent.SetDestination(patrolPoints[currentPointIndex].position);
+            // Destino actual
+            Transform currentTarget = patrolPoints[currentPointIndex];
+            agent.SetDestination(currentTarget.position);
 
+            // Moverse hasta llegar
             while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
             {
                 float speed = agent.velocity.magnitude / agent.speed;
@@ -138,36 +140,62 @@ public class EnemyPatrol : MonoBehaviour
                 yield return null;
             }
 
+            // Llegó al punto
             animator.SetFloat("Speed", 0f);
+            agent.ResetPath(); // detener al agente
 
-            float timer = waitTimeAtPoint;
-            while (timer > 0f)
+            // Girar inmediatamente hacia el siguiente punto
+            int nextIndex = (currentPointIndex + 1) % patrolPoints.Length;
+            Transform nextTarget = patrolPoints[nextIndex];
+
+            Quaternion startRotation = transform.rotation;
+            Quaternion targetRotation = Quaternion.LookRotation((nextTarget.position - transform.position).normalized);
+
+            float rotateTime = 1f; // tiempo que tarda en girar
+            float t = 0f;
+
+            while (t < 1f)
             {
-                if (chasingPlayer)
-                    yield break;
-
-                timer -= Time.deltaTime;
+                t += Time.deltaTime / rotateTime;
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
                 yield return null;
             }
 
-            currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
+            // Esperar X segundos antes de moverse al siguiente punto
+            float waitTime = 10f; // tiempo que se queda quieto antes de ir al siguiente punto
+            float timer = 0f;
+            while (timer < waitTime)
+            {
+                timer += Time.deltaTime;
+
+                // Si detecta al jugador mientras espera, interrumpe la espera
+                if (chasingPlayer)
+                    yield break;
+
+                yield return null;
+            }
+
+            // Pasar al siguiente punto
+            currentPointIndex = nextIndex;
         }
     }
+
+    #endregion
+
+    #region Vision
 
     private bool CanSeePlayer()
     {
         Vector3 origin = transform.position + Vector3.up * 1.6f;
         Vector3 dirToPlayer = player.position - origin;
 
-        if (dirToPlayer.magnitude > viewDistance)
-            return false;
+        if (dirToPlayer.magnitude > viewDistance) return false;
 
         float angle = Vector3.Angle(transform.forward, dirToPlayer);
-        if (angle > viewAngle * 0.5f)
-            return false;
+        if (angle > viewAngle * 0.5f) return false;
 
-        if (Physics.Raycast(origin, dirToPlayer.normalized, out RaycastHit hit,
-                viewDistance, obstacleMask | playerMask))
+        if (Physics.Raycast(origin, dirToPlayer.normalized, out RaycastHit hit, viewDistance,
+                obstacleMask | playerMask))
         {
             return ((1 << hit.collider.gameObject.layer) & playerMask) != 0;
         }
@@ -188,6 +216,10 @@ public class EnemyPatrol : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + right * viewDistance);
     }
 
+    #endregion
+
+    #region Attack
+
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
@@ -195,10 +227,9 @@ public class EnemyPatrol : MonoBehaviour
 
         agent.isStopped = true;
         animator.SetFloat("Speed", 0f);
-        animator.SetTrigger("Attack"); // Trigger en el Animator
+        animator.SetTrigger("Attack");
 
-        // Mirar al jugador mientras ataca
-        float attackDuration = 0.6f; // ajusta a tu animación
+        float attackDuration = 0.6f;
         float timer = 0f;
 
         while (timer < attackDuration)
@@ -211,4 +242,6 @@ public class EnemyPatrol : MonoBehaviour
         agent.isStopped = false;
         isAttacking = false;
     }
+
+    #endregion
 }
