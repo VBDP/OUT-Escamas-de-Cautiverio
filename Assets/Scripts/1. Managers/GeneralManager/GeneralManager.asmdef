@@ -1,0 +1,20 @@
+{
+    "name": "GeneralManager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:af8025c807c4ffe428b8b14a71645ad3",
+        "GUID:56639ad0ac958d442b83e09b38ab00ce"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

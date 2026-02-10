@@ -3003,37 +3003,6 @@ Transform:
   - {fileID: 8790385993692514560}
   m_Father: {fileID: 6434625491507022200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3575508639201787521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 619865774260193023}
-  m_Layer: 9
-  m_Name: WayPoint5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &619865774260193023
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3575508639201787521}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1953269811818453885}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3614307149964729549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6492,37 +6461,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4776917384325950613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6967292968235597613
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7585973419989357896}
-  m_Layer: 9
-  m_Name: WayPoint3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7585973419989357896
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967292968235597613}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.45, y: 0, z: 7.18}
-  m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1953269811818453885}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7106565016046327104
 GameObject:
   m_ObjectHideFlags: 0
@@ -7717,37 +7655,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4776917384325950613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8697324022520232242
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7315806307047260670}
-  m_Layer: 9
-  m_Name: WayPoint4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7315806307047260670
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697324022520232242}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.45, y: 0, z: 0.27}
-  m_LocalScale: {x: 0.58823526, y: 0.58823526, z: 0.58823526}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1953269811818453885}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8734369085106210229
 GameObject:
   m_ObjectHideFlags: 0
@@ -8262,9 +8169,6 @@ Transform:
   - {fileID: 9016469363660351755}
   - {fileID: 7227592051293160351}
   - {fileID: 3864549950008821348}
-  - {fileID: 7585973419989357896}
-  - {fileID: 7315806307047260670}
-  - {fileID: 619865774260193023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &43780387335560933
@@ -8326,11 +8230,8 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 7227592051293160351}
   - {fileID: 3864549950008821348}
-  - {fileID: 7585973419989357896}
-  - {fileID: 7315806307047260670}
-  - {fileID: 619865774260193023}
   waitTimeAtPoint: 10
-  rotationSpeed: 5
+  rotationSpeed: 3
   player: {fileID: 0}
   viewDistance: 10
   viewAngle: 60
@@ -8340,9 +8241,9 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
-  losePlayerTime: 3
-  attackCooldown: 1.2
-  stoppingDistanceToPlayer: 1
+  losePlayerTime: 5
+  attackCooldown: 0.5
+  stoppingDistanceToPlayer: 1.5
 --- !u!136 &1265825837553736802
 CapsuleCollider:
   m_ObjectHideFlags: 0
