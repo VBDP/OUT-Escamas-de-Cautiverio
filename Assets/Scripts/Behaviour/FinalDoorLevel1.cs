@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FinalDoorLevel1 : MonoBehaviour
 {
+    private ScoreSender scoreSender;
     private RaycastController raycast;
     private Inventory inventario;
     [SerializeField] PlayerMovement playerMovement;
@@ -22,6 +23,7 @@ public class FinalDoorLevel1 : MonoBehaviour
         inventario = FindFirstObjectByType<Inventory>();
         text.text = "";
         hitObject = raycast.GetHitObjectName();
+        scoreSender = new ScoreSender();
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class FinalDoorLevel1 : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     rb.constraints = RigidbodyConstraints.FreezeAll;
+                    scoreSender.SendScore(this, "V", generalManager.score);
                 }
             }
         }
