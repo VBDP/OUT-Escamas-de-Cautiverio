@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class RaycastController : MonoBehaviour
@@ -15,7 +16,7 @@ public class RaycastController : MonoBehaviour
 
     public void Update()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 4))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 8f))
         {
             // Verifica si es interactuable
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))

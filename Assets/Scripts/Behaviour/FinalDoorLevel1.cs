@@ -6,6 +6,8 @@ public class FinalDoorLevel1 : MonoBehaviour
     private ScoreSender scoreSender;
     private RaycastController raycast;
     private Inventory inventario;
+    private bool scoreSent = false;
+
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] private GameObject finalDoorLevel1;
     [SerializeField] private Rigidbody rb;
@@ -46,8 +48,9 @@ public class FinalDoorLevel1 : MonoBehaviour
                 interactionText = "Haz click para abrir la puerta";
                 outline.OutlineColor = Color.white;
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !scoreSent) // Click izquierdo para abrir la puerta
                 {
+
                     winPanel.SetActive(true);
                     text.text = "Has ganado y has obtenido " + generalManager.score + " puntos.";
                     playerMovement.BlockCamera();
@@ -55,6 +58,8 @@ public class FinalDoorLevel1 : MonoBehaviour
                     Cursor.visible = true;
                     rb.constraints = RigidbodyConstraints.FreezeAll;
                     scoreSender.SendScore(this, "V", generalManager.score);
+                    scoreSent = true;
+                    this.enabled = false;
                 }
             }
         }
