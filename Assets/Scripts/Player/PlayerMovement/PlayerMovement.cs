@@ -1,13 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float walkSpeed = 5f;
-    [SerializeField] private float sprintSpeed = 10f;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float groundCheckDistance = 0.1f;
+    [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float sprintSpeed = 5f;
+    [SerializeField] private float jumpForce = 3f;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform playerCamera;
@@ -15,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxVerticalAngle = 60f;
 
     private Rigidbody rb;
+    private CapsuleCollider capsule;
     private float verticalRotation = 0f;
     private bool cameraUnlocked = true;
     private bool isGrounded = true;
@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        capsule = GetComponent<CapsuleCollider>();
+
         rb.freezeRotation = true; // Evita rotación física
         if (!playerCamera && transform.childCount > 0)
             playerCamera = transform.GetChild(0);
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HandleCameraRotation();
-        CheckGrounded();
+        HandleJump();
     }
 
     private void FixedUpdate()
@@ -56,14 +58,13 @@ public class PlayerMovement : MonoBehaviour
             ? sprintSpeed
             : walkSpeed;
 
-        // Calculamos velocidad horizontal
         Vector3 targetVelocity = moveDir * currentSpeed;
-        // Mantener velocidad vertical para saltos/gravedad
-        targetVelocity.y = rb.linearVelocity.y;
-
+        targetVelocity.y = rb.linearVelocity.y; // mantener velocidad vertical
         rb.linearVelocity = targetVelocity;
+    }
 
-        // Saltar
+    private void HandleJump()
+    {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // reset vertical
@@ -72,10 +73,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void CheckGrounded()
+    private void OnCollisionStay(Collision collision)
     {
-        // Raycast hacia abajo para detectar si está en el suelo
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance + 0.1f);
+        // Considera que el suelo es cualquier contacto con normal cercana a Vector3.up
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (Vector3.Dot(contact.normal, Vector3.up) > 0.5f)
+            {
+                isGrounded = true;
+                break;
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
     }
     #endregion
 
