@@ -33,7 +33,7 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject decreaseScoreText;
-    [SerializeField] private TextMeshProUGUI potionText; 
+    [SerializeField] private TextMeshProUGUI potionText;
     [SerializeField] private GameObject keyImage;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private TextMeshProUGUI textDeathPanel;
@@ -70,12 +70,19 @@ public class GeneralManager : MonoBehaviour
         timer = new Timer();
         timer.StartTimer();
         actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+        // Cargar volúmenes guardados
+        float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f); // 0.5 por defecto
+        float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+
+        if (musicSource != null) musicSource.volume = savedMusicVolume;
+        if (sfxSource != null) sfxSource.volume = savedSFXVolume;
     }
     void Update()
     {
         timer.Tick(Time.deltaTime);
         timerText.text = timer.GetFormattedTime();
-        
+
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
         {
             playerMovement.BlockCamera();
@@ -161,7 +168,7 @@ public class GeneralManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", score);
     }
-    
+
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Interaction Text Management
@@ -202,12 +209,12 @@ public class GeneralManager : MonoBehaviour
             sfxSource.PlayOneShot(decreaseScoreClip);
         }
     }
-    
+
     public void DisableDecreaseText()
     {
         decreaseScoreText.SetActive(false);
     }
-    
+
     public void DisableDecreaseTextDelayed(float delay)
     {
         Invoke(nameof(DisableDecreaseText), delay);
