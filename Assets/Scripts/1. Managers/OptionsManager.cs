@@ -72,7 +72,13 @@ public class OptionsManager : MonoBehaviour
         mouseSensitivityLevel = mouseSensitivitySlider.value;
         mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivityLevel);
-        // Aquí normalmente actualizarías la sensibilidad real del ratón en tu PlayerMovement
+
+        // Actualizar la sensibilidad del jugador
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
+        if (player != null)
+        {
+            player.SetMouseSensitivity(mouseSensitivityLevel * 10f); // Escala si quieres valores más grandes
+        }
     }
 
     public void SetMusicVolume(float value)

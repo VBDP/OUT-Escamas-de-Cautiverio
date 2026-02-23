@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "OUTProject.slnx"
+    "dotnet.defaultSolution": "OUT-Escamas-de-Cautiverio.slnx"
 }

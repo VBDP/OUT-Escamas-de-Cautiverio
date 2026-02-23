@@ -24,9 +24,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
 
-        rb.freezeRotation = true; // Evita rotación física
+        rb.freezeRotation = true;
+
         if (!playerCamera && transform.childCount > 0)
             playerCamera = transform.GetChild(0);
+
+        // Cargar sensibilidad desde PlayerPrefs
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity);
+        // Si no hay valor guardado, usa el valor por defecto del inspector
     }
 
     private void Start()
@@ -106,6 +111,11 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    public void SetMouseSensitivity(float value)
+    {
+        mouseSensitivity = value;
     }
 
     public void BlockCamera() => cameraUnlocked = false;
