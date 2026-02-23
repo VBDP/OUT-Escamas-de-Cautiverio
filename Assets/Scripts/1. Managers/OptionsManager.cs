@@ -10,12 +10,12 @@ public class OptionsManager : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource sfxSource;
 
-
     void Awake()
     {
         generalManager = FindObjectOfType<GeneralManager>();
         musicSource = generalManager.musicSource;
         sfxSource = generalManager.sfxSource;
+
         // Initialize sliders and texts with default values
         musicVolumeSlider.value = musicVolumeLevel;
         musicVolumeText.text = (musicVolumeLevel * 100).ToString("0") + "%";
@@ -49,7 +49,7 @@ public class OptionsManager : MonoBehaviour
         SetMusicVolume(musicVolumeLevel);
     }
 
-    //SFX Volume management variables
+    // SFX Volume management variables
     private float sfxVolumeLevel = 0.50f;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private TextMeshProUGUI sfxVolumeText;
@@ -62,7 +62,7 @@ public class OptionsManager : MonoBehaviour
         SetSFXVolume(sfxVolumeLevel);
     }
 
-    //Mouse Sensitivity management variables
+    // Mouse Sensitivity management variables
     private float mouseSensitivityLevel = 0.5f;
     [SerializeField] private Slider mouseSensitivitySlider;
     [SerializeField] private TextMeshProUGUI mouseSensitivityText;
@@ -72,7 +72,7 @@ public class OptionsManager : MonoBehaviour
         mouseSensitivityLevel = mouseSensitivitySlider.value;
         mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivityLevel);
-        // Here you would typically also update the actual mouse sensitivity in your input manager
+        // Aquí normalmente actualizarías la sensibilidad real del ratón en tu PlayerMovement
     }
 
     public void SetMusicVolume(float value)
