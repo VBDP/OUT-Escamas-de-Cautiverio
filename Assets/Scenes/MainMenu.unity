@@ -455,67 +455,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &792497088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 792497090}
-  - component: {fileID: 792497089}
-  m_Layer: 0
-  m_Name: GeneralManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &792497089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792497088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 514f69c88d49e694c9827899d23ad2f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GeneralManager::GeneralManager
-  playerMovement: {fileID: 0}
-  playerRb: {fileID: 0}
-  panelsToDeactivate: []
-  pauseMenuPanel: {fileID: 0}
-  timerText: {fileID: 0}
-  scoreText: {fileID: 0}
-  decreaseScoreText: {fileID: 0}
-  potionText: {fileID: 0}
-  keyImage: {fileID: 0}
-  deathPanel: {fileID: 0}
-  textDeathPanel: {fileID: 0}
-  interactionText: {fileID: 0}
-  score: 5000
-  musicSource: {fileID: 1970228009}
-  sfxSource: {fileID: 0}
-  decreaseScoreClip: {fileID: 0}
-  healthBar: {fileID: 0}
---- !u!4 &792497090
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792497088}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -124.73799, y: 126.50199, z: -517.7836}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &954287620
 GameObject:
   m_ObjectHideFlags: 0
@@ -10143,7 +10082,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 792497090}
   - {fileID: 2116270865}
   - {fileID: 1970228010}
   - {fileID: 954287622}
