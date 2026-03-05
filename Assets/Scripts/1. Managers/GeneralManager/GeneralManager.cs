@@ -33,7 +33,7 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject decreaseScoreText;
-    [SerializeField] private TextMeshProUGUI potionText; 
+    [SerializeField] private TextMeshProUGUI potionText;
     [SerializeField] private GameObject keyImage;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private TextMeshProUGUI textDeathPanel;
@@ -60,6 +60,7 @@ public class GeneralManager : MonoBehaviour
     * Health
     */
     public Image healthBar;
+    [SerializeField] private GameObject LoginPanel;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Void Awake() and Update() Methods
@@ -73,9 +74,17 @@ public class GeneralManager : MonoBehaviour
     }
     void Update()
     {
+
+        if (LoginPanel.activeSelf)
+        {
+            playerMovement.BlockCamera();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         timer.Tick(Time.deltaTime);
         timerText.text = timer.GetFormattedTime();
-        
+
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuActive == false)
         {
             playerMovement.BlockCamera();
@@ -161,7 +170,7 @@ public class GeneralManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", score);
     }
-    
+
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Interaction Text Management
@@ -202,12 +211,12 @@ public class GeneralManager : MonoBehaviour
             sfxSource.PlayOneShot(decreaseScoreClip);
         }
     }
-    
+
     public void DisableDecreaseText()
     {
         decreaseScoreText.SetActive(false);
     }
-    
+
     public void DisableDecreaseTextDelayed(float delay)
     {
         Invoke(nameof(DisableDecreaseText), delay);

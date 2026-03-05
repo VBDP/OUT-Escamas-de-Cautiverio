@@ -20154,7 +20154,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 181089740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2056995403}
+        m_TargetAssemblyTypeName: UserDataSaver, Assembly-CSharp
+        m_MethodName: saveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &181089740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239814,6 +239826,7 @@ GameObject:
   - component: {fileID: 2056995400}
   - component: {fileID: 2056995402}
   - component: {fileID: 2056995401}
+  - component: {fileID: 2056995403}
   m_Layer: 5
   m_Name: Login Panel
   m_TagString: Untagged
@@ -239881,6 +239894,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056995399}
   m_CullTransparentMesh: 1
+--- !u!114 &2056995403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056995399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a957f4ebb1e16204480120c199d0357c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UserDataSaver
+  nameInputField: {fileID: 469693352}
+  mailInputField: {fileID: 1239345049}
+  LoginPanel: {fileID: 2056995399}
+  HudPanel: {fileID: 1331804279}
 --- !u!1001 &2057004277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251335,6 +251364,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 2078131108}
+    - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
+      propertyPath: LoginPanel
+      value: 
+      objectReference: {fileID: 2056995399}
     - target: {fileID: 2751879419635830531, guid: d16c81b8cbb1bae40856048b2c00a1e3, type: 3}
       propertyPath: deathPanel
       value: 
