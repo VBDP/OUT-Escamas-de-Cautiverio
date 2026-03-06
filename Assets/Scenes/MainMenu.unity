@@ -10066,7 +10066,6 @@ GameObject:
   - component: {fileID: 3123200166456360603}
   - component: {fileID: 8427139333134848224}
   - component: {fileID: 5213285952118663008}
-  - component: {fileID: 8427139333134848225}
   m_Layer: 5
   m_Name: Leaderboard
   m_TagString: Untagged
@@ -11088,18 +11087,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7537824741449976265}
   m_CullTransparentMesh: 1
---- !u!114 &8427139333134848225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7537824741449976265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edeea421579633c4483ae5d21d4fef1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LeaderboardManager
 --- !u!1 &8466093544465614111
 GameObject:
   m_ObjectHideFlags: 0
