@@ -239964,6 +239964,7 @@ GameObject:
   - component: {fileID: 2056995402}
   - component: {fileID: 2056995401}
   - component: {fileID: 2056995403}
+  - component: {fileID: 2056995404}
   m_Layer: 5
   m_Name: Login Panel
   m_TagString: Untagged
@@ -240049,6 +240050,19 @@ MonoBehaviour:
   LoginPanel: {fileID: 2056995399}
   HudPanel: {fileID: 1331804279}
   errorText: {fileID: 1726411205}
+  saveButton: {fileID: 181089739}
+--- !u!225 &2056995404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056995399}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2057004277
 PrefabInstance:
   m_ObjectHideFlags: 0

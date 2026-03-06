@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
 using System.Text.RegularExpressions;
 using System.Collections;
+using UnityEngine.UI;
+
 public class UserDataSaver : MonoBehaviour
 {
 
@@ -11,70 +12,135 @@ public class UserDataSaver : MonoBehaviour
     [SerializeField] private GameObject LoginPanel;
     [SerializeField] private GameObject HudPanel;
     [SerializeField] private TMP_Text errorText;
-     private PlayerMovement playerMovement;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Button saveButton;
+
+    private CanvasGroup loginCanvas;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteAll();
+#endif
+
+        nameInputField.characterLimit = 10;
+
+        loginCanvas = LoginPanel.GetComponent<CanvasGroup>();
+
         errorText.text = "";
         playerMovement = FindFirstObjectByType<PlayerMovement>();
-        LoginPanel.SetActive(true);
+
+        nameInputField.onValueChanged.AddListener(delegate { ValidateInputs(); });
+        mailInputField.onValueChanged.AddListener(delegate { ValidateInputs(); });
+
+        saveButton.interactable = false;
+
+        if (PlayerPrefs.HasKey("name") && PlayerPrefs.HasKey("mail"))
+        {
+            nameInputField.text = PlayerPrefs.GetString("name");
+            mailInputField.text = PlayerPrefs.GetString("mail");
+
+            LoginPanel.SetActive(false);
+            HudPanel.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            playerMovement.UnblockCamera();
+        }
+        else
+        {
+            LoginPanel.SetActive(true);
+            HudPanel.SetActive(false);
+        }
     }
 
-public void saveData()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && saveButton.interactable)
+        {
+            saveData();
+        }
+    }
+
+    void ValidateInputs()
+    {
+        string name = nameInputField.text.Trim();
+        string mail = mailInputField.text.Trim();
+
+        bool nameValid =
+            !string.IsNullOrEmpty(name) &&
+            name.Length <= 10 &&
+            Regex.IsMatch(name, @"^[a-zA-Z0-9]{1,10}$");
+
+        bool mailValid =
+            !string.IsNullOrEmpty(mail) &&
+            Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+        saveButton.interactable = nameValid && mailValid;
+    }
+
+    public void saveData()
+    {
+        string name = nameInputField.text.Trim();
+        string mail = mailInputField.text.Trim();
+
+        errorText.text = "";
+
+        PlayerPrefs.SetString("name", name);
+        PlayerPrefs.SetString("mail", mail);
+        PlayerPrefs.Save();
+
+        Debug.Log("Data saved: " + name + ", " + mail);
+
+        StopAllCoroutines();
+        StartCoroutine(LoginSuccess());
+    }
+
+IEnumerator LoginSuccess()
 {
-    string name = nameInputField.text.Trim();
-    string mail = mailInputField.text.Trim();
+    errorText.text = "Data saved";
 
-    // Reset error
-    errorText.text = "";
+    yield return new WaitForSeconds(1.5f);
 
-    // ---- VALIDAR NOMBRE ----
-    if (string.IsNullOrEmpty(name))
-    {
-        errorText.text = "Name cannot be empty.";
-        return;
-    }
+    yield return StartCoroutine(FadeOutLogin());
 
-    if (name.Length > 10)
-    {
-        errorText.text = "Name cannot be longer than 10 characters.";
-        return;
-    }
-
-    // ---- VALIDAR EMAIL ----
-    if (string.IsNullOrEmpty(mail))
-    {
-        errorText.text = "Email cannot be empty.";
-        return;
-    }
-
-    // regex simple para email
-    if (!Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-    {
-        errorText.text = "Invalid email format.";
-        return;
-    }
-
-    // ---- GUARDAR DATOS ----
-    PlayerPrefs.SetString("name", name);
-    PlayerPrefs.SetString("mail", mail);
-
-    Debug.Log("Data saved: " + name + ", " + mail);
-    StartCoroutine(ShowTemporaryMessage("Data saved", 3f));
-}
-
-IEnumerator ShowTemporaryMessage(string message, float time)
-{
-    errorText.text = message;
-    yield return new WaitForSeconds(time);
-    errorText.text = "";
-    LoginPanel.SetActive(false);
-    HudPanel.SetActive(true);
-
+    // Forzar captura del cursor
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
 
+    // Resetea input para evitar que Unity espere clicks
+    Input.ResetInputAxes();
+
+    // Limpiar selección de UI si hay
+    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+
     playerMovement.UnblockCamera();
 }
+
+    IEnumerator FadeOutLogin()
+    {
+        float duration = 1f;
+        float time = 0;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            loginCanvas.alpha = 1 - (time / duration);
+            yield return null;
+        }
+
+        loginCanvas.alpha = 0;
+        LoginPanel.SetActive(false);
+        HudPanel.SetActive(true);
+
+        // Aquí también puedes asegurar que el cursor esté bloqueado
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
 }
