@@ -3,40 +3,31 @@ using UnityEngine;
 
 public class FinalDoorLevel1 : MonoBehaviour
 {
-    private ScoreSender scoreSender;
     private RaycastController raycast;
     private Inventory inventario;
-    private bool scoreSent = false;
 
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] private GameObject finalDoorLevel1;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
-
-    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject winPanel; // Panel de rating
     [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private GeneralManager generalManager;
     [SerializeField] private Outline outline;
+    private GeneralManager generalManager;
 
-    private string hitObject;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool ratingOpened = false;
+
     void Start()
     {
+        generalManager = FindFirstObjectByType<GeneralManager>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
         text.text = "";
-        hitObject = raycast.GetHitObjectName();
-        scoreSender = new ScoreSender();
     }
 
-    // Update is called once per frame
     void Update()
     {
         string hitObject = raycast.GetHitObjectName();
-
-        // Reset del texto por defecto
         string interactionText = "";
 
-        // PUERTA FINAL
         if (hitObject == "FinalDoorLevel1")
         {
             if (!inventario.jeraPlaced || !inventario.othillaPlaced)
@@ -48,36 +39,33 @@ public class FinalDoorLevel1 : MonoBehaviour
                 interactionText = "Haz click para abrir la puerta";
                 outline.OutlineColor = Color.white;
 
-                if (Input.GetMouseButtonDown(0) && !scoreSent) // Click izquierdo para abrir la puerta
+                if (Input.GetMouseButtonDown(0) && !ratingOpened)
                 {
-
+                    int score = generalManager.score; // Obtener el score actual del juego
+                    PlayerPrefs.SetInt("score", score); // Guardar el score actual para usarlo en el rating
+                    // Abrir panel de rating
                     winPanel.SetActive(true);
-                    text.text = "Has ganado y has obtenido " + generalManager.score + " puntos.";
+                    text.text = "¡Has ganado! Califica el juego para continuar.";
                     playerMovement.BlockCamera();
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     rb.constraints = RigidbodyConstraints.FreezeAll;
-                    scoreSender.SendScore(this, "V", generalManager.score);
-                    scoreSent = true;
-                    this.enabled = false;
+
+                    ratingOpened = true;
                 }
             }
         }
 
-        // POCIÓN
-        else if (hitObject.Contains("Potion")) // o el nombre exacto de la poción
+        else if (hitObject.Contains("Potion"))
         {
             interactionText = "Click para guardar, numpad 1 para curar";
         }
-
-        // OTROS OBJETOS → no interacción
         else
         {
             interactionText = "";
         }
 
-        // Finalmente, actualiza el texto de la UI
-        generalManager.SetInteractionText(interactionText);
+        // Actualizar UI
+        text.text = interactionText;
     }
-
 }

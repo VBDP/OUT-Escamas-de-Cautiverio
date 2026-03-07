@@ -35,10 +35,10 @@ public class UserDataSaver : MonoBehaviour
 
         saveButton.interactable = false;
 
-        if (PlayerPrefs.HasKey("name") && PlayerPrefs.HasKey("mail"))
+        if (PlayerPrefs.HasKey("username") && PlayerPrefs.HasKey("email"))
         {
-            nameInputField.text = PlayerPrefs.GetString("name");
-            mailInputField.text = PlayerPrefs.GetString("mail");
+            nameInputField.text = PlayerPrefs.GetString("username");
+            mailInputField.text = PlayerPrefs.GetString("email");
 
             LoginPanel.SetActive(false);
             HudPanel.SetActive(true);
@@ -87,8 +87,8 @@ public class UserDataSaver : MonoBehaviour
 
         errorText.text = "";
 
-        PlayerPrefs.SetString("name", name);
-        PlayerPrefs.SetString("mail", mail);
+        PlayerPrefs.SetString("username", name);
+        PlayerPrefs.SetString("email", mail);
         PlayerPrefs.Save();
 
         Debug.Log("Data saved: " + name + ", " + mail);
