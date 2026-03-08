@@ -1,22 +1,73 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Audio;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class OptionsManager : MonoBehaviour
 {
     private GeneralManager generalManager;
-    private AudioSource musicSource;
-    private AudioSource sfxSource;
+
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+
+    private PlayerMovement player;
+
+    // -------------------------
+    // Music
+    // -------------------------
+
+    private float musicVolumeLevel;
+
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private TextMeshProUGUI musicVolumeText;
+
+    // -------------------------
+    // SFX
+    // -------------------------
+
+    private float sfxVolumeLevel;
+
+    [SerializeField] private Slider sfxVolumeSlider;
+    [SerializeField] private TextMeshProUGUI sfxVolumeText;
+
+    // -------------------------
+    // Mouse Sensitivity
+    // -------------------------
+
+    private float mouseSensitivityLevel;
+
+    [SerializeField] private Slider mouseSensitivitySlider;
+    [SerializeField] private TextMeshProUGUI mouseSensitivityText;
 
     void Awake()
     {
-        generalManager = FindObjectOfType<GeneralManager>();
-        musicSource = generalManager.musicSource;
-        sfxSource = generalManager.sfxSource;
+        // Cargar valores guardados
+        musicVolumeLevel = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxVolumeLevel = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        mouseSensitivityLevel = PlayerPrefs.GetFloat("MouseSensitivity", 0.5f);
 
-        // Initialize sliders and texts with default values
+        // Buscar managers
+        generalManager = FindFirstObjectByType<GeneralManager>();
+
+        if (generalManager != null)
+        {
+            musicSource = generalManager.musicSource;
+            sfxSource = generalManager.sfxSource;
+        }
+
+        player = FindFirstObjectByType<PlayerMovement>();
+
+        // Aplicar valores
+        SetMusicVolume(musicVolumeLevel);
+        SetSFXVolume(sfxVolumeLevel);
+        ApplyMouseSensitivity();
+
+        // Inicializar UI
+        InitializeUI();
+    }
+
+    void InitializeUI()
+    {
         musicVolumeSlider.value = musicVolumeLevel;
         musicVolumeText.text = (musicVolumeLevel * 100).ToString("0") + "%";
 
@@ -27,67 +78,75 @@ public class OptionsManager : MonoBehaviour
         mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
     }
 
-    void start()
-    {
-        musicSource = generalManager.musicSource;
-        sfxSource = generalManager.sfxSource;
-
-        SetMusicVolume(musicVolumeLevel);
-        SetSFXVolume(sfxVolumeLevel);
-    }
-
-    // Music Volume management variables
-    private float musicVolumeLevel = 0.50f;
-    [SerializeField] private Slider musicVolumeSlider;
-    [SerializeField] private TextMeshProUGUI musicVolumeText;
+    // -------------------------
+    // MUSIC
+    // -------------------------
 
     public void OnMusicVolumeChanged()
     {
         musicVolumeLevel = musicVolumeSlider.value;
+
         musicVolumeText.text = (musicVolumeLevel * 100).ToString("0") + "%";
+
         PlayerPrefs.SetFloat("MusicVolume", musicVolumeLevel);
+        PlayerPrefs.Save();
+
         SetMusicVolume(musicVolumeLevel);
     }
 
-    // SFX Volume management variables
-    private float sfxVolumeLevel = 0.50f;
-    [SerializeField] private Slider sfxVolumeSlider;
-    [SerializeField] private TextMeshProUGUI sfxVolumeText;
+    void SetMusicVolume(float value)
+    {
+        if (musicSource != null)
+        {
+            musicSource.volume = value;
+        }
+    }
+
+    // -------------------------
+    // SFX
+    // -------------------------
 
     public void OnSFXVolumeChanged()
     {
         sfxVolumeLevel = sfxVolumeSlider.value;
+
         sfxVolumeText.text = (sfxVolumeLevel * 100).ToString("0") + "%";
+
         PlayerPrefs.SetFloat("SFXVolume", sfxVolumeLevel);
+        PlayerPrefs.Save();
+
         SetSFXVolume(sfxVolumeLevel);
     }
 
-    // Mouse Sensitivity management variables
-    private float mouseSensitivityLevel = 0.5f;
-    [SerializeField] private Slider mouseSensitivitySlider;
-    [SerializeField] private TextMeshProUGUI mouseSensitivityText;
+    void SetSFXVolume(float value)
+    {
+        if (sfxSource != null)
+        {
+            sfxSource.volume = value;
+        }
+    }
+
+    // -------------------------
+    // MOUSE SENSITIVITY
+    // -------------------------
 
     public void OnMouseSensitivityChanged()
     {
         mouseSensitivityLevel = mouseSensitivitySlider.value;
-        mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
-        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivityLevel);
 
-        // Actualizar la sensibilidad del jugador
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
+        mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
+
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivityLevel);
+        PlayerPrefs.Save();
+
+        ApplyMouseSensitivity();
+    }
+
+    void ApplyMouseSensitivity()
+    {
         if (player != null)
         {
-            player.SetMouseSensitivity(mouseSensitivityLevel * 10f); // Escala si quieres valores más grandes
+            player.SetMouseSensitivity(mouseSensitivityLevel * 10f);
         }
-    }
-
-    public void SetMusicVolume(float value)
-    {
-        musicSource.volume = value;
-    }
-
-    public void SetSFXVolume(float value)
-    {
-        sfxSource.volume = value;
     }
 }

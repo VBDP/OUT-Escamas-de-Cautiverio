@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -38.961487}
+  m_AnchoredPosition: {x: 0, y: -38.961426}
   m_SizeDelta: {x: -1820, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &67365506
@@ -1436,7 +1436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 854, y: -38.961487}
+  m_AnchoredPosition: {x: 854, y: -38.961426}
   m_SizeDelta: {x: -1820, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &954287620
@@ -1471,7 +1471,7 @@ MonoBehaviour:
   panels:
   - {fileID: 3662391138557226901}
   - {fileID: 5266623162854967095}
-  - {fileID: 0}
+  - {fileID: 1005756405}
   - {fileID: 7537824741449976265}
 --- !u!4 &954287622
 Transform:
@@ -1488,6 +1488,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1005756405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 197575683939360916, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
+  m_PrefabInstance: {fileID: 3906791741606432995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072691985
 GameObject:
   m_ObjectHideFlags: 0
@@ -5015,7 +5020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -29.175476, y: -58.038635}
+  m_AnchoredPosition: {x: -29.175537, y: -58.038574}
   m_SizeDelta: {x: -718.74646, y: 12.6622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2510941674109931040
@@ -6394,6 +6399,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4794752746649064538, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 954287621}
+    - target: {fileID: 4794752746649064538, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4794752746649064538, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4941582064881652848, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6438,6 +6455,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8973937168857733281, guid: 8e21f49f73ae1f74a9eed58aeaa42c30, type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 1970228009}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9807,7 +9828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -29.175476, y: -97}
+  m_AnchoredPosition: {x: -29.175537, y: -97}
   m_SizeDelta: {x: -718.74646, y: 12.6622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &7229193277254959705
