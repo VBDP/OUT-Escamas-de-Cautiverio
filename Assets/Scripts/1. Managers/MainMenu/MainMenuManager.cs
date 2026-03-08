@@ -2,67 +2,85 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-
-
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> panels;
 
-  [SerializeField] private List<GameObject> panels;
-  public void OpenTutorial()
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource musicSource;
+
+    void Start()
+    {
+        LoadAudioSettings();
+    }
+
+    void LoadAudioSettings()
+    {
+        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+
+        if (musicSource != null)
+            musicSource.volume = musicVolume;
+    }
+
+    // -----------------------
+    // SCENES
+    // -----------------------
+
+    public void OpenTutorial()
     {
         SceneManager.LoadSceneAsync("Tutorial");
     }
 
-      public void OpenLevel1()
+    public void OpenLevel1()
     {
         SceneManager.LoadSceneAsync("Level1");
     }
 
-        public void OpenMenu()
+    // -----------------------
+    // PANELS
+    // -----------------------
+
+    void DisableAllPanels()
     {
-    foreach (GameObject panel in panels)
-    {
-        panel.SetActive(false);
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
     }
-      panels[0].SetActive(true);
+
+    public void OpenMenu()
+    {
+        DisableAllPanels();
+        panels[0].SetActive(true);
     }
 
     public void OpenCredits()
     {
-    foreach (GameObject panel in panels)
-    {
-        panel.SetActive(false);
-    }
-      panels[1].SetActive(true);
+        DisableAllPanels();
+        panels[1].SetActive(true);
     }
 
-        public void OpenOptions()
+    public void OpenOptions()
     {
-    foreach (GameObject panel in panels)
-    {
-        panel.SetActive(false);
-    }
-      panels[2].SetActive(true);
+        DisableAllPanels();
+        panels[2].SetActive(true);
     }
 
-        public void OpenLeaderboard()
+    public void OpenLeaderboard()
     {
-    foreach (GameObject panel in panels)
+        DisableAllPanels();
+        panels[3].SetActive(true);
+    }
+
+    // -----------------------
+    // EXIT
+    // -----------------------
+
+    public void ExitGame()
     {
-        panel.SetActive(false);
-    }
-      panels[3].SetActive(true);
-    }
-    
-
-
-
-  public void ExitGame()
-{
 #if UNITY_EDITOR
-    UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
 #endif
-    Application.Quit();
-}
-
+        Application.Quit();
+    }
 }
