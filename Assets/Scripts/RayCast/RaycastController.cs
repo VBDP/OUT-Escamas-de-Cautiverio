@@ -11,7 +11,7 @@ public class RaycastController : MonoBehaviour
 
     public void Start()
     {
-        generalManager = FindObjectOfType<GeneralManager>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
     }
 
     public void Update()

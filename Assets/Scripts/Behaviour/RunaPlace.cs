@@ -7,8 +7,8 @@ public class RunaPlace : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        raycast = FindObjectOfType<RaycastController>();
-        inventario = FindObjectOfType<Inventory>();
+        raycast = FindFirstObjectByType<RaycastController>();
+        inventario = FindFirstObjectByType<Inventory>();
     }
 
     // Update is called once per frame

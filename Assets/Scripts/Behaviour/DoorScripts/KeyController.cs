@@ -15,7 +15,7 @@ public class KeyController : MonoBehaviour
     void Start()
     {
         generalManager = FindFirstObjectByType<GeneralManager>();
-        raycast = FindObjectOfType<RaycastController>();
+        raycast = FindFirstObjectByType<RaycastController>();
         outline = GetComponent<Outline>();
         outline.enabled = true;
         sfxAudioSource = generalManager.sfxSource; 

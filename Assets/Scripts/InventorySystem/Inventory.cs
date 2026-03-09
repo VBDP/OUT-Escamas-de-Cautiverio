@@ -22,8 +22,8 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lifeSystem = FindObjectOfType<LifeSystem>();
-        generalManager = FindObjectOfType<GeneralManager>();
+        lifeSystem = FindFirstObjectByType<LifeSystem>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
         sfx = generalManager.sfxSource;
     }
 

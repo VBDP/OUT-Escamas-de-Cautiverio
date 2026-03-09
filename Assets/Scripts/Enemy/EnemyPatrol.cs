@@ -8,7 +8,6 @@ public class EnemyPatrol : MonoBehaviour
     private Animator animator;
 
     [Header("Patrol")] [SerializeField] private Transform[] patrolPoints;
-    [SerializeField] private float waitTimeAtPoint = 3f;
     [SerializeField] private float rotationSpeed = 5f;
     private int currentPointIndex = 0;
     private Coroutine patrolCoroutine;

@@ -22,8 +22,8 @@ public class PrisonGate : MonoBehaviour, DoorInterface
         objectOutline = GetComponent<Outline>();
         animator = GetComponent<Animator>();
         key = GameObject.Find("PrisonGate Key(Clone)").GetComponent<KeyController>();
-        raycast = FindObjectOfType<RaycastController>();
-        generalManager = FindObjectOfType<GeneralManager>();
+        raycast = FindFirstObjectByType<RaycastController>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
         haveKey = false;
     }
 

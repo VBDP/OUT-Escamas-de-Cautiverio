@@ -9,7 +9,7 @@ public class Lever : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         outline = GetComponent<Outline>();
-        raycast = FindObjectOfType<RaycastController>();
+        raycast = FindFirstObjectByType<RaycastController>();
     }
     private void Update()
     {

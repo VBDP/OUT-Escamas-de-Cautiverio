@@ -71,11 +71,15 @@ public class GeneralManager : MonoBehaviour
         timer = new Timer();
         timer.StartTimer();
         actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (actualScene != "Tutorial")
+        {
+            LoginPanel.SetActive(true);
+        }
     }
+
     void Update()
     {
-
-        if (LoginPanel.activeSelf)
+        if (LoginPanel.activeSelf && actualScene != "Tutorial")
         {
             playerMovement.BlockCamera();
             Cursor.lockState = CursorLockMode.None;
