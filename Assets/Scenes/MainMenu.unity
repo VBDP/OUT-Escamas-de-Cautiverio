@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 353718471}
   - component: {fileID: 353718470}
   m_Layer: 5
-  m_Name: 'Usuario '
+  m_Name: "N\xBA en el ranking"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 383961349}
   - component: {fileID: 383961348}
   m_Layer: 5
-  m_Name: 'Usuario '
+  m_Name: "Puntuaci\xF3n"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,6 +1449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 954287622}
   - component: {fileID: 954287621}
+  - component: {fileID: 954287623}
   m_Layer: 0
   m_Name: MainMenuManager
   m_TagString: Untagged
@@ -1489,6 +1490,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &954287623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954287620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89126ebfbfc43c41bbd6ed440ea3ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Top5Scores
+  topScoresText: {fileID: 1494281206}
+  currentUserNameText: {fileID: 707995668}
+  currentUserScoreText: {fileID: 383961348}
+  currentUserRankingText: {fileID: 353718470}
 --- !u!1 &992253940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,22 +1565,22 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'El proyecto fue desarrollado con Unity y hace uso de los siguientes paquetes:
 
-    
+
 
     -
     Decrepit Dungeon LITE
 
     - Dungeon Deco Set - Proto Series
 
-    - Dungeon
-    Floor Traps
+    - Dungeon Floor
+    Traps
 
     - Dungeon Modular Pack
 
     - Free Simple Dungeon Props
 
-    -
-    Inferno World Free - Low Poly 3D Models
+    - Inferno
+    World Free - Low Poly 3D Models
 
     - Interactive Physical Door Pack
 
@@ -1574,26 +1591,26 @@ MonoBehaviour:
 
     - Orc Berserker3
 
-    -
-    Orc Caster and Fighter Pack
+    - Orc
+    Caster and Fighter Pack
 
     - Orc Warrior | Orc Character
 
-    - Quick
-    Outline
+    - Quick Outline
 
-    - Stylized Hand Painted Dungeon (Free)
+    -
+    Stylized Hand Painted Dungeon (Free)
 
     - The Red Prison
 
-    -
-    Volumetric Lines
+    - Volumetric
+    Lines
 
 
     Assets obtained from the Unity Asset Store.
 
-    Used
-    under the Unity Asset Store License.'
+    Used under the Unity
+    Asset Store License.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10337,7 +10354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7589772156411658853
 GameObject:
   m_ObjectHideFlags: 0
