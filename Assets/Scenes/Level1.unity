@@ -256124,8 +256124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6e6cfff7a27204387a303efbe0fd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptionsManager
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
+  musicSource: {fileID: 9023582217256189105}
+  sfxSource: {fileID: 5389525069616700676}
   musicVolumeSlider: {fileID: 3127142152872063747}
   musicVolumeText: {fileID: 8629734315888844189}
   sfxVolumeSlider: {fileID: 4530679170600739756}

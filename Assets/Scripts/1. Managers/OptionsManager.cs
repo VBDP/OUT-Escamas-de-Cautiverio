@@ -46,6 +46,10 @@ public class OptionsManager : MonoBehaviour
         sfxVolumeLevel = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         mouseSensitivityLevel = PlayerPrefs.GetFloat("MouseSensitivity", 0.5f);
 
+        musicVolumeSlider.value = musicVolumeLevel;
+        sfxVolumeSlider.value = sfxVolumeLevel;
+        mouseSensitivitySlider.value = mouseSensitivityLevel;
+
         // Buscar managers
         generalManager = FindFirstObjectByType<GeneralManager>();
 
