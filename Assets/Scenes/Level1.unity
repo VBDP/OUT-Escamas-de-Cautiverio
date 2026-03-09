@@ -23160,11 +23160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalDoorLevel1
   playerMovement: {fileID: 8409082892704000650}
-  finalDoorLevel1: {fileID: 211071977}
   rb: {fileID: 9091074268735520925}
   winPanel: {fileID: 5202589685061911171}
   text: {fileID: 962890579077397886}
-  generalManager: {fileID: 1938127363}
   outline: {fileID: 211071991}
 --- !u!114 &211071991
 MonoBehaviour:
@@ -256296,6 +256294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6e6cfff7a27204387a303efbe0fd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OptionsManager
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
   musicVolumeSlider: {fileID: 3127142152872063747}
   musicVolumeText: {fileID: 8629734315888844189}
   sfxVolumeSlider: {fileID: 4530679170600739756}
