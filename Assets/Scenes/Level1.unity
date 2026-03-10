@@ -248432,14 +248432,15 @@ MonoBehaviour:
   jugabilidadFilledImage: {fileID: 845669308}
   dificultadFilledImage: {fileID: 1207083580}
   graficosFilledImage: {fileID: 106341238}
-  generalFilledImage: {fileID: 157870136}
   concordanciaFilledImage: {fileID: 148368861}
+  generalFilledImage: {fileID: 157870136}
   jugabilidadRect: {fileID: 845669307}
   dificultadRect: {fileID: 1207083579}
   graficosRect: {fileID: 106341237}
-  generalRect: {fileID: 157870134}
   concordanciaRect: {fileID: 148368859}
+  generalRect: {fileID: 157870134}
   errorText: {fileID: 1902840215}
+  useAPI: 1
 --- !u!1001 &2121447511
 PrefabInstance:
   m_ObjectHideFlags: 0

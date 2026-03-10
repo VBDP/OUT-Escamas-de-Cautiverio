@@ -10,20 +10,42 @@ public class RatingSender
     private string rateUrl = "https://phpstack-1076337-5399863.cloudwaysapps.com/api/rateGame";
     private string scoreUrl = "https://phpstack-1076337-5399863.cloudwaysapps.com/api/classification";
 
+    // Flag para activar/desactivar la API
+    public bool useAPI = true;
+
+    // Clase interna para parsear la respuesta de verify
     [System.Serializable]
     private class VerifyResponse
     {
         public bool rated;
-        // puedes añadir aquí 'criterion' si quieres más info
     }
 
+    // Llamada principal para enviar todo
     public void SendAll(MonoBehaviour runner, string username, string email, int score,
                         int general, int jug, int dif, int gra, int concordancia,
                         System.Action onComplete = null)
     {
-        runner.StartCoroutine(VerifyScoreAndRate(username, email, score, general, jug, dif, gra, concordancia, onComplete));
+        if (useAPI)
+        {
+            runner.StartCoroutine(VerifyScoreAndRate(username, email, score, general, jug, dif, gra, concordancia, onComplete));
+        }
+        else
+        {
+            // Guardar internamente sin usar API
+            PlayerPrefs.SetInt("rating_general", general);
+            PlayerPrefs.SetInt("rating_jugabilidad", jug);
+            PlayerPrefs.SetInt("rating_dificultad", dif);
+            PlayerPrefs.SetInt("rating_graficos", gra);
+            PlayerPrefs.SetInt("rating_concordancia", concordancia);
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.Save();
+
+            Debug.Log("⚡ API desactivada: rating guardado localmente.");
+            onComplete?.Invoke();
+        }
     }
 
+    // Corrutina para enviar verify, score y rating
     private IEnumerator VerifyScoreAndRate(string username, string email, int score,
                                            int general, int jug, int dif, int gra, int concordancia,
                                            System.Action onComplete)
@@ -54,9 +76,13 @@ public class RatingSender
 
         // ------------------- Debug: rating previo -------------------
         if (verifyResp.rated)
+        {
             Debug.Log("⚠️ El jugador YA había enviado rating anteriormente.");
+        }
         else
+        {
             Debug.Log("✅ El jugador NO había enviado rating. Se procederá a enviar.");
+        }
 
         // ------------------- 2️⃣ Enviar puntuación -------------------
         PostScoreDTO scoreData = new PostScoreDTO
