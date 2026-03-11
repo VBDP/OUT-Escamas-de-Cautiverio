@@ -259059,6 +259059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitch
   selectedScene: MainMenu
   ratingPanel: {fileID: 2121392258}
+  hasRated: 1
+  submitText: {fileID: 962890579077397886}
 --- !u!1 &7464080033814110822
 GameObject:
   m_ObjectHideFlags: 0
@@ -259989,7 +259991,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7460642716396538409}
         m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: EnableRatingPanel
+        m_MethodName: selectAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
