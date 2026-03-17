@@ -13,6 +13,8 @@ public class UserDataSaver : MonoBehaviour
     [SerializeField] private GameObject HudPanel;
     [SerializeField] private TMP_Text errorText;
     [SerializeField] private Button saveButton;
+    [SerializeField] private TextMeshProUGUI winText;
+    [SerializeField] private TextMeshProUGUI submitText;
 
     private CanvasGroup loginCanvas;
     private PlayerMovement playerMovement;
@@ -175,6 +177,9 @@ public class UserDataSaver : MonoBehaviour
                 VerifyResponse response = JsonUtility.FromJson<VerifyResponse>(jsonResponse);
                 hasRated = response.rated;
                 Debug.Log("User hasRated: " + hasRated);
+
+                winText.text = hasRated ? "You already rated the game, go to Main Menu" : "You win, Rate the game now";
+                submitText.text = hasRated? "Return to Main Menu" : "Rate the game now";
             }
         }
     }

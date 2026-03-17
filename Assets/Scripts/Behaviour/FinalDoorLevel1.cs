@@ -11,7 +11,6 @@ public class FinalDoorLevel1 : MonoBehaviour
     [SerializeField] private GameObject winPanel;
 
     [SerializeField] private TextMeshProUGUI interactionText;
-    [SerializeField] private TextMeshProUGUI winText;
 
     private Outline outline;
     private GeneralManager generalManager;
@@ -26,7 +25,6 @@ public class FinalDoorLevel1 : MonoBehaviour
         outline = GetComponent<Outline>();
 
         interactionText.text = "";
-        winText.text = "";
     }
 
     void Update()
@@ -51,7 +49,6 @@ public class FinalDoorLevel1 : MonoBehaviour
                     PlayerPrefs.SetInt("score", score);
 
                     winPanel.SetActive(true);
-                    winText.text = "¡Has ganado! Califica el juego para continuar.";
 
                     playerMovement.BlockCamera();
 

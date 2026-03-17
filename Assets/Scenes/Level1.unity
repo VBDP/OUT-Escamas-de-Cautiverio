@@ -23423,7 +23423,6 @@ MonoBehaviour:
   rb: {fileID: 9091074268735520925}
   winPanel: {fileID: 5202589685061911171}
   interactionText: {fileID: 5615004411858207713}
-  winText: {fileID: 962890579077397886}
 --- !u!114 &211071991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241806,6 +241805,8 @@ MonoBehaviour:
   HudPanel: {fileID: 2613180436229377121}
   errorText: {fileID: 1726411205}
   saveButton: {fileID: 181089739}
+  winText: {fileID: 962890579077397886}
+  submitText: {fileID: 2715069289319911683}
 --- !u!225 &2056995404
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -258940,7 +258941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitch
   selectedScene: MainMenu
   ratingPanel: {fileID: 2121392258}
-  submitText: {fileID: 962890579077397886}
+  submitText: {fileID: 2715069289319911683}
   userDataSaver: {fileID: 2056995403}
 --- !u!1 &7464080033814110822
 GameObject:

@@ -7,7 +7,6 @@ public class SceneSwitch : MonoBehaviour
 {
     [SerializeField] private string selectedScene;
     [SerializeField] private GameObject ratingPanel;
-    [SerializeField] private TextMeshProUGUI submitText;
 
    [SerializeField] private UserDataSaver userDataSaver;
 
@@ -16,13 +15,11 @@ public class SceneSwitch : MonoBehaviour
     {
         if (!userDataSaver.HasRated())
         {
-            submitText.text = "Rate the game";
             Debug.Log("No hay rating, abriendo panel");
             EnableRatingPanel();
         }
         else
         {
-            submitText.text = "Main Menu";
             Debug.Log("Hay rating, Abriendo menú principal");
             SwitchScene();
         }
