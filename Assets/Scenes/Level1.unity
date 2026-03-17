@@ -258940,8 +258940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitch
   selectedScene: MainMenu
   ratingPanel: {fileID: 2121392258}
-  hasRated: 1
   submitText: {fileID: 962890579077397886}
+  userDataSaver: {fileID: 2056995403}
 --- !u!1 &7464080033814110822
 GameObject:
   m_ObjectHideFlags: 0

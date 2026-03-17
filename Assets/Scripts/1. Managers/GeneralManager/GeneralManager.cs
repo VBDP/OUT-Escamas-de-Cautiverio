@@ -79,6 +79,7 @@ public class GeneralManager : MonoBehaviour
 
     void Update()
     {
+        GetTime();
         if (LoginPanel.activeSelf && actualScene != "Tutorial")
         {
             playerMovement.BlockCamera();
@@ -192,16 +193,6 @@ public class GeneralManager : MonoBehaviour
 
     /*
     ----------------------------------------------------------------------------------------------------------------------------
-    · On Application Quit
-    ----------------------------------------------------------------------------------------------------------------------------
-    */
-    void OnApplicationQuit()
-    {
-        timer.SaveTime();
-    }
-
-    /*
-    ----------------------------------------------------------------------------------------------------------------------------
     · Music Volume Management
     ----------------------------------------------------------------------------------------------------------------------------
     */
@@ -262,5 +253,42 @@ public class GeneralManager : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public float GetTime()
+    {
+        string timeStr = timerText.text.Trim(); // Quita espacios al inicio/final
+        float totalSeconds = 0f;
+
+        // Separar minutos y segundos
+        string[] parts = timeStr.Split(':');
+
+        if (parts.Length == 2)
+        {
+            // Parsear minutos
+            if (!float.TryParse(parts[0], out float minutes))
+            {
+                Debug.LogWarning("No se pudo convertir los minutos: " + parts[0]);
+                minutes = 0f;
+            }
+
+            // Parsear segundos (puede tener decimales)
+            if (!float.TryParse(parts[1], out float seconds))
+            {
+                Debug.LogWarning("No se pudo convertir los segundos: " + parts[1]);
+                seconds = 0f;
+            }
+
+            totalSeconds = minutes * 60f + seconds;
+        }
+        else
+        {
+            Debug.LogWarning("Formato de tiempo incorrecto: " + timeStr);
+        }
+
+        // Debug opcional
+        //Debug.Log("Tiempo total en segundos: " + totalSeconds);
+
+        return totalSeconds;
     }
 }

@@ -3,37 +3,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class SceneSwitch : MonoBehaviour
 {
     [SerializeField] private string selectedScene;
     [SerializeField] private GameObject ratingPanel;
-    [SerializeField] private bool hasRated;
     [SerializeField] private TextMeshProUGUI submitText;
 
-    public void Start()
-    {
-            if (submitText != null)
-            {
-                if(hasRated)
-                {
-                    submitText.text = "Main Menu";
-                }
-                else
-                {
-                    submitText.text = "Rate the game";
-                }
-            }
-    }
+   [SerializeField] private UserDataSaver userDataSaver;
 
+    // Actualiza el texto del botón según el estado de hasRated
     public void selectAction()
     {
-        if (!hasRated)
+        if (!userDataSaver.HasRated())
         {
+            submitText.text = "Rate the game";
+            Debug.Log("No hay rating, abriendo panel");
             EnableRatingPanel();
         }
         else
         {
+            submitText.text = "Main Menu";
+            Debug.Log("Hay rating, Abriendo menú principal");
             SwitchScene();
         }
     }
