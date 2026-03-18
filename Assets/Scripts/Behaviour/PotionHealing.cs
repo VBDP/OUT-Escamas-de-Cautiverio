@@ -11,10 +11,12 @@ public class PotionHealing : MonoBehaviour
     private GeneralManager generalManager;
     private AudioSource sfx;
     [SerializeField] private AudioClip takePotion;
+    private DataSaverForLogs dataSaverForLogs;
     
 
     void Start()
     {
+        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         lifeSystem = FindFirstObjectByType<LifeSystem>();
         raycast = FindFirstObjectByType<RaycastController>();
         interactionText = lifeSystem.interactionText;
@@ -39,6 +41,7 @@ public class PotionHealing : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 inventory.pociones += 1;
+                dataSaverForLogs.SetTakedPotions();
                 generalManager.ChangePotionText(inventory.pociones.ToString());
                 sfx.PlayOneShot(takePotion);
                 Destroy(gameObject);

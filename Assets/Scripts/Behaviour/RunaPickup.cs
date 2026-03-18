@@ -18,9 +18,11 @@ public class RunaPickup : MonoBehaviour
     [SerializeField] private Sprite jeraSprite;
     private AudioSource sfx;
     [SerializeField] private  AudioClip runePickup;
+    private DataSaverForLogs dataSaverForLogs;
 
     void Start()
     {
+        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         generalManager = FindFirstObjectByType<GeneralManager>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
@@ -40,6 +42,7 @@ public class RunaPickup : MonoBehaviour
                 {
                     sfx.PlayOneShot(runePickup);
                     inventario.Jera = true;
+                    dataSaverForLogs.SetJeraTime(generalManager.GetTime());
                     blockRight.SetActive(true);
 
                     if (space1.sprite == null)
@@ -57,6 +60,7 @@ public class RunaPickup : MonoBehaviour
                 {
                     sfx.PlayOneShot(runePickup);
                     inventario.Othilla = true;
+                     dataSaverForLogs.SetOthillaTime(generalManager.GetTime());
                     blockLeft.SetActive(true);
                     if (space1.sprite == null)
                     {

@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     public bool jeraPlaced  = false;
 
     public int pociones = 0;
+    private DataSaverForLogs dataSaverForLogs;
 
     private AudioSource sfx;
 
@@ -22,6 +23,7 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         lifeSystem = FindFirstObjectByType<LifeSystem>();
         generalManager = FindFirstObjectByType<GeneralManager>();
         sfx = generalManager.sfxSource;
@@ -36,17 +38,19 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            usarPociones();
+            UsarPociones();
         }
     }
 
-    public void usarPociones()
+    public void UsarPociones()
     {
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             if (pociones > 0)
             {
                 Debug.Log("Has usado una poción");
+                dataSaverForLogs.SetUsedPotions();
+
 
                 if (lifeSystem.currentHealth < 100)
                 {

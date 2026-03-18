@@ -10,11 +10,13 @@ public class KeyController : MonoBehaviour
     private RaycastController raycast;
     private bool take;
     private Outline outline;
+    private DataSaverForLogs dataSaverForLogs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         generalManager = FindFirstObjectByType<GeneralManager>();
+        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         raycast = FindFirstObjectByType<RaycastController>();
         outline = GetComponent<Outline>();
         outline.enabled = true;
@@ -33,10 +35,11 @@ public class KeyController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 SaveOnInventory();
+                dataSaverForLogs.SetFirstKeyTime(generalManager.GetTime());
                 GetComponent<Renderer>().enabled = false;
                 transform.Find("Luz").gameObject.SetActive(false);
                 sfxAudioSource.PlayOneShot(audioClip);
-                Destroy(gameObject);
+                Destroy(gameObject);    
             }
         }
     }
