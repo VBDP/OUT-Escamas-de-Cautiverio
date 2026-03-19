@@ -1,20 +1,55 @@
-using UnityEngine;
+using System.Collections.Generic;
 
-public class DataSaverForLogs : MonoBehaviour
+public class DataSaverForLogs
 {
-    //Timers ans Times 
+    private static DataSaverForLogs instance;
+
+    public static DataSaverForLogs Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new DataSaverForLogs();
+
+            return instance;
+        }
+    }
+
+    private DataSaverForLogs() { }
+
+    // Timers
     public float totalTime = -1f;
     public float firstKeyTime = -1f;
     public float jeraTime = -1f;
     public float othillaTime = -1f;
-    //Objects and Used Objects
+
+    // Objects
     public int takedPotions;
     public int usedPotions;
 
-    //************************************************************************
-    // Times and Timers here.
-    //************************************************************************
-    // Total time of the game
+    public Dictionary<string, float> zoneTimes = new Dictionary<string, float>();
+
+    // -------------------
+    // ZONE TIMES
+    // -------------------
+
+    public void SetZoneTime(string zone, float time)
+    {
+        zoneTimes[zone] = time;
+    }
+
+    public float GetZoneTime(string zone)
+    {
+        if (zoneTimes.ContainsKey(zone))
+            return zoneTimes[zone];
+
+        return 0f;
+    }
+
+    // -------------------
+    // TOTAL TIME
+    // -------------------
+
     public void SetTotalTime(float time)
     {
         totalTime = time;
@@ -25,15 +60,14 @@ public class DataSaverForLogs : MonoBehaviour
         return totalTime;
     }
 
+    // -------------------
+    // FIRST KEY
+    // -------------------
 
-    //Time for the first key.
     public void SetFirstKeyTime(float firstKeyTime)
     {
         if (this.firstKeyTime < 0f)
-        {
             this.firstKeyTime = firstKeyTime;
-            Debug.Log(this.firstKeyTime);
-        }
     }
 
     public float GetFirstKeyTime()
@@ -41,15 +75,14 @@ public class DataSaverForLogs : MonoBehaviour
         return firstKeyTime;
     }
 
-    // Time for the runes
-    // Jera
+    // -------------------
+    // JERA
+    // -------------------
+
     public void SetJeraTime(float time)
     {
         if (jeraTime <= 0f)
-        {
             jeraTime = time;
-        }
-        Debug.Log("Tiempo en coger Jera: " + jeraTime);
     }
 
     public float GetJeraTime()
@@ -57,14 +90,14 @@ public class DataSaverForLogs : MonoBehaviour
         return jeraTime;
     }
 
-    //Othilla
+    // -------------------
+    // OTHILLA
+    // -------------------
+
     public void SetOthillaTime(float time)
     {
         if (othillaTime <= 0f)
-        {
             othillaTime = time;
-        }
-        Debug.Log("Tiempo en coger Othilla: " + othillaTime);
     }
 
     public float GetOthillaTime()
@@ -72,32 +105,27 @@ public class DataSaverForLogs : MonoBehaviour
         return othillaTime;
     }
 
+    // -------------------
+    // POTIONS
+    // -------------------
 
-    //************************************************************************
-    // Objects and Used Objects here.
-    //************************************************************************
-
-    // Taked Potions.
     public void SetTakedPotions()
     {
         takedPotions++;
-        Debug.Log("Taked potions: " + this.takedPotions);
     }
+
     public int GetTakedPotions()
     {
         return takedPotions;
     }
 
-    //Used Potions.
     public void SetUsedPotions()
     {
         usedPotions++;
-        Debug.Log("Used Potions" + this.usedPotions);
     }
 
     public int GetUsedPotions()
     {
         return usedPotions;
     }
-
 }

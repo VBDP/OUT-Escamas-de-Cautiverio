@@ -5,10 +5,7 @@ public class ZoneTimerManager : MonoBehaviour
 {
     private GeneralManager generalManager;
 
-    // Tiempo de entrada por zona
     private Dictionary<string, float> enterTime = new Dictionary<string, float>();
-
-    // Contador de colliders dentro de la zona
     private Dictionary<string, int> zoneCounter = new Dictionary<string, int>();
 
     void Start()
@@ -20,16 +17,27 @@ public class ZoneTimerManager : MonoBehaviour
     {
         string zone = other.tag;
 
+        // Inicializar contador si no existe
         if (!zoneCounter.ContainsKey(zone))
             zoneCounter[zone] = 0;
 
         zoneCounter[zone]++;
 
-        // Primera vez que entras a la zona
         if (zoneCounter[zone] == 1)
         {
             enterTime[zone] = generalManager.GetTime();
+
             Debug.Log("ENTER zona: " + zone);
+
+            float time = enterTime[zone];
+
+            // Usando Singleton (recomendado)
+            if (zone == "Jera")
+                DataSaverForLogs.Instance.SetJeraTime(time);
+            else if (zone == "Othilla")
+                DataSaverForLogs.Instance.SetOthillaTime(time);
+            else if (zone == "FirstKey")
+                DataSaverForLogs.Instance.SetFirstKeyTime(time);
         }
     }
 
@@ -42,7 +50,6 @@ public class ZoneTimerManager : MonoBehaviour
 
         zoneCounter[zone]--;
 
-        // Sales completamente de la zona
         if (zoneCounter[zone] <= 0)
         {
             float exitTime = generalManager.GetTime();
@@ -50,6 +57,7 @@ public class ZoneTimerManager : MonoBehaviour
             if (enterTime.ContainsKey(zone))
             {
                 float duration = exitTime - enterTime[zone];
+
                 Debug.Log("EXIT zona: " + zone + " | Tiempo: " + duration);
             }
 
@@ -57,7 +65,6 @@ public class ZoneTimerManager : MonoBehaviour
         }
     }
 
-    // Tiempo total de una vuelta
     public float TotalLapTime(string startZone, string endZone)
     {
         if (enterTime.ContainsKey(startZone) && enterTime.ContainsKey(endZone))

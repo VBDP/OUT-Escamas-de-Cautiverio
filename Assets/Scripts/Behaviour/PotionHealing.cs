@@ -10,19 +10,21 @@ public class PotionHealing : MonoBehaviour
     private Inventory inventory;
     private GeneralManager generalManager;
     private AudioSource sfx;
+
     [SerializeField] private AudioClip takePotion;
-    private DataSaverForLogs dataSaverForLogs;
-    
 
     void Start()
     {
-        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         lifeSystem = FindFirstObjectByType<LifeSystem>();
         raycast = FindFirstObjectByType<RaycastController>();
-        interactionText = lifeSystem.interactionText;
-        inventory=FindFirstObjectByType<Inventory>();
+        inventory = FindFirstObjectByType<Inventory>();
         generalManager = FindFirstObjectByType<GeneralManager>();
+
+        interactionText = lifeSystem.interactionText;
         sfx = generalManager.sfxSource;
+
+        outline = GetComponent<Outline>();
+
         if (lifeSystem == null || raycast == null)
         {
             Debug.LogError("LifeSystem or RaycastController not found in the scene.");
@@ -34,16 +36,22 @@ public class PotionHealing : MonoBehaviour
     {
         if (raycast.GetHitGameObject() == gameObject)
         {
-            outline = GetComponent<Outline>();
-            outline.OutlineColor = Color.white;
+            if (outline != null)
+                outline.OutlineColor = Color.white;
+
             interactionText.text = "Click para guardar, numpad '1' para consumir";
 
             if (Input.GetMouseButtonDown(0))
             {
                 inventory.pociones += 1;
-                dataSaverForLogs.SetTakedPotions();
+
+                // ✅ USO CORRECTO DEL DATASAVER
+                DataSaverForLogs.Instance.SetTakedPotions();
+
                 generalManager.ChangePotionText(inventory.pociones.ToString());
+
                 sfx.PlayOneShot(takePotion);
+
                 Destroy(gameObject);
             }
         }
@@ -55,5 +63,4 @@ public class PotionHealing : MonoBehaviour
             }
         }
     }
-
 }

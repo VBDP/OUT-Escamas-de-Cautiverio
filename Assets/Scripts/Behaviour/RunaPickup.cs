@@ -7,6 +7,7 @@ public class RunaPickup : MonoBehaviour
     private RaycastController raycast;
     private Inventory inventario;
     private GeneralManager generalManager;
+
     [SerializeField] private GameObject hitObject;
     [SerializeField] private Transform tpPoint;
     [SerializeField] private GameObject blockLeft;
@@ -14,20 +15,19 @@ public class RunaPickup : MonoBehaviour
 
     [SerializeField] private Image space1;
     [SerializeField] private Image space2;
+
     [SerializeField] private Sprite othillaSprite;
     [SerializeField] private Sprite jeraSprite;
+
     private AudioSource sfx;
-    [SerializeField] private  AudioClip runePickup;
-    private DataSaverForLogs dataSaverForLogs;
+    [SerializeField] private AudioClip runePickup;
 
     void Start()
     {
-        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         generalManager = FindFirstObjectByType<GeneralManager>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
-        //blockLeft.SetActive(false);
-        //blockRight.SetActive(false);
+
         sfx = generalManager.sfxSource;
     }
 
@@ -37,12 +37,15 @@ public class RunaPickup : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                
                 if (hitObject.name == "Jera")
                 {
                     sfx.PlayOneShot(runePickup);
+
                     inventario.Jera = true;
-                    dataSaverForLogs.SetJeraTime(generalManager.GetTime());
+
+                    // ✅ Singleton
+                    DataSaverForLogs.Instance.SetJeraTime(generalManager.GetTime());
+
                     blockRight.SetActive(true);
 
                     if (space1.sprite == null)
@@ -59,9 +62,14 @@ public class RunaPickup : MonoBehaviour
                 else if (hitObject.name == "Othilla")
                 {
                     sfx.PlayOneShot(runePickup);
+
                     inventario.Othilla = true;
-                     dataSaverForLogs.SetOthillaTime(generalManager.GetTime());
+
+                    // ✅ Singleton
+                    DataSaverForLogs.Instance.SetOthillaTime(generalManager.GetTime());
+
                     blockLeft.SetActive(true);
+
                     if (space1.sprite == null)
                     {
                         space1.sprite = othillaSprite;
@@ -74,7 +82,11 @@ public class RunaPickup : MonoBehaviour
                     }
                 }
 
-                transform.position = new Vector3(tpPoint.position.x, tpPoint.position.y, tpPoint.position.z + 1000);
+                transform.position = new Vector3(
+                    tpPoint.position.x,
+                    tpPoint.position.y,
+                    tpPoint.position.z + 1000
+                );
             }
         }
     }
@@ -82,6 +94,7 @@ public class RunaPickup : MonoBehaviour
     public void ResetJera()
     {
         inventario.Jera = false;
+
         if (space1.sprite == jeraSprite)
         {
             space1.sprite = null;
@@ -97,6 +110,7 @@ public class RunaPickup : MonoBehaviour
     public void ResetOthilla()
     {
         inventario.Othilla = false;
+
         if (space1.sprite == othillaSprite)
         {
             space1.sprite = null;
