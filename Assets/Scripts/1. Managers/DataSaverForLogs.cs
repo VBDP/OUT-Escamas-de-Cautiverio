@@ -3,6 +3,7 @@ using UnityEngine;
 public class DataSaverForLogs : MonoBehaviour
 {
     //Timers ans Times 
+    public float totalTime = -1f;
     public float firstKeyTime = -1f;
     public float jeraTime = -1f;
     public float othillaTime = -1f;
@@ -13,6 +14,17 @@ public class DataSaverForLogs : MonoBehaviour
     //************************************************************************
     // Times and Timers here.
     //************************************************************************
+    // Total time of the game
+    public void SetTotalTime(float time)
+    {
+        totalTime = time;
+    }
+
+    public float GetTotalTime()
+    {
+        return totalTime;
+    }
+
 
     //Time for the first key.
     public void SetFirstKeyTime(float firstKeyTime)

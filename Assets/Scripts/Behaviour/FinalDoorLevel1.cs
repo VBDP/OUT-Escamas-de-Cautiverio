@@ -11,6 +11,7 @@ public class FinalDoorLevel1 : MonoBehaviour
     [SerializeField] private GameObject winPanel;
 
     [SerializeField] private TextMeshProUGUI interactionText;
+    private DataSaverForLogs  dataSaverForLogs;
 
     private Outline outline;
     private GeneralManager generalManager;
@@ -20,6 +21,7 @@ public class FinalDoorLevel1 : MonoBehaviour
     void Start()
     {
         generalManager = FindFirstObjectByType<GeneralManager>();
+        dataSaverForLogs = FindFirstObjectByType<DataSaverForLogs>();
         raycast = FindFirstObjectByType<RaycastController>();
         inventario = FindFirstObjectByType<Inventory>();
         outline = GetComponent<Outline>();
@@ -47,7 +49,8 @@ public class FinalDoorLevel1 : MonoBehaviour
                 {
                     int score = generalManager.score;
                     PlayerPrefs.SetInt("score", score);
-
+                    dataSaverForLogs.SetTotalTime(generalManager.GetTime());
+                    Debug.Log("has tardado " + dataSaverForLogs.GetTotalTime() + " segundos en total.");
                     winPanel.SetActive(true);
 
                     playerMovement.BlockCamera();
