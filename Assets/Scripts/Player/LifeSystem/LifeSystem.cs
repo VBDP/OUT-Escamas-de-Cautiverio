@@ -23,6 +23,7 @@ public class LifeSystem : MonoBehaviour
     private AudioSource sfxSource;
     [SerializeField] private AudioClip playerDamage;
     [SerializeField] private AudioClip playerDie;
+    private int deaths = 0;
 
 
     /*-------- Void Start && Void Update ---------*/
@@ -38,6 +39,7 @@ public class LifeSystem : MonoBehaviour
         playerSpawnRotation = transform.rotation;
         sfxSource = generalManager.sfxSource;
         actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        deaths = 0;
     }
 
     public void DamagePlayer(float damage)
@@ -93,6 +95,7 @@ public class LifeSystem : MonoBehaviour
         LifeImageFillAmount();
         if (generalManager != null)
         {
+            deaths += 1;
             generalManager.DecreaseScore(200);
             generalManager.EnableDecreaseText(200);
             generalManager.DisableDecreaseTextDelayed(2f);
@@ -104,5 +107,10 @@ public class LifeSystem : MonoBehaviour
     public void LifeImageFillAmount()
     {
         healthImage.fillAmount = currentHealth / maxHealth;
+    }
+
+    public int GetDeaths()
+    {
+        return deaths;
     }
 }

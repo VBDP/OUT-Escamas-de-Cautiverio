@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     private GeneralManager generalManager;
+    private LifeSystem lifeSystem;
 
     // -------------------
     // ZONES
@@ -32,6 +33,7 @@ public class DataManager : MonoBehaviour
 
     void Awake()
     {
+        lifeSystem = FindFirstObjectByType<LifeSystem>();
         if (Instance == null)
             Instance = this;
         else
@@ -210,25 +212,13 @@ public class DataManager : MonoBehaviour
     }
 
     // -------------------
-    // DEATHS
-    // -------------------
-    public void AddDeath()
-    {
-        deaths++;
-    }
-
-    public int GetDeaths()
-    {
-        return deaths;
-    }
-
-    // -------------------
     // GUARDAR EN TXT
     // -------------------
 public void SaveToFile()
 {
     try
     {
+        deaths = lifeSystem.GetDeaths();
         // Carpeta dentro de Assets
         string folderPath = Path.Combine(Application.dataPath, "Logs");
 
