@@ -30,6 +30,7 @@ public class DataManager : MonoBehaviour
     public int takedPotions;
     public int usedPotions;
     public int deaths;
+    public int score;
 
     void Awake()
     {
@@ -219,6 +220,7 @@ public void SaveToFile()
     try
     {
         deaths = lifeSystem.GetDeaths();
+        score = generalManager.GetScore();
         // Carpeta dentro de Assets
         string folderPath = Path.Combine(Application.dataPath, "Logs");
 
@@ -257,6 +259,7 @@ public void SaveToFile()
             writer.WriteLine("Potions Taken: " + takedPotions);
             writer.WriteLine("Potions Used: " + usedPotions);
             writer.WriteLine("Deaths: " + deaths);
+            writer.WriteLine("Score: " + score);
         }
 
         Debug.Log("✅ Datos guardados correctamente en: " + path);

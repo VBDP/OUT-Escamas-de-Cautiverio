@@ -176,6 +176,11 @@ public class GeneralManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
+
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Interaction Text Management
