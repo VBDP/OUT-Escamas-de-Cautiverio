@@ -48,11 +48,20 @@ public class FinalDoorLevel1 : MonoBehaviour
                     int score = generalManager.score;
                     PlayerPrefs.SetInt("score", score);
 
-                    // ✅ USO CORRECTO DEL DATASAVER
-                    DataSaverForLogs.Instance.SetTotalTime(generalManager.GetTime());
+                    // -------------------
+                    // Guardamos el totalTime en DataManager
+                    // -------------------
+                    DataManager.Instance.SetTotalTime(generalManager.GetTime());
 
-                    Debug.Log("has tardado " + DataSaverForLogs.Instance.GetTotalTime() + " segundos en total.");
+                    // -------------------
+                    // Guardamos TODO el DataManager en archivo
+                    // -------------------
+                    DataManager.Instance.SaveToFile();
 
+                    Debug.Log("✅ Datos guardados y panel de victoria abierto.");
+                    Debug.Log("Has tardado " + DataManager.Instance.GetTotalTime() + " segundos en total.");
+
+                    // Abrimos panel de victoria
                     winPanel.SetActive(true);
 
                     playerMovement.BlockCamera();
@@ -66,7 +75,7 @@ public class FinalDoorLevel1 : MonoBehaviour
                 }
             }
         }
-        else if (hitObject != null && hitObject.Contains("Potion"))
+        else if (!string.IsNullOrEmpty(hitObject) && hitObject.Contains("Potion"))
         {
             interactionMessage = "Click para guardar, numpad 1 para curar";
         }

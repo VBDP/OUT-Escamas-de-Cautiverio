@@ -33,40 +33,36 @@ public class Inventory : MonoBehaviour
             pociones = 0;
         }
 
-        // Solo se ejecuta cuando se presiona la tecla
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             UsarPociones();
         }
     }
 
-    public void UsarPociones()
+public void UsarPociones()
+{
+    if (pociones > 0)
     {
-        if (pociones > 0)
+        if (lifeSystem.currentHealth < 100)
         {
             Debug.Log("Has usado una poción");
 
-            // ✅ Singleton
-            DataSaverForLogs.Instance.SetUsedPotions();
+            // ✅ Contabilizamos solo si realmente cura
+            DataManager.Instance.AddPotionUsed();
 
-            if (lifeSystem.currentHealth < 100)
-            {
-                lifeSystem.HealPlayer(50);
-
-                pociones--;
-
-                generalManager.ChangePotionText(pociones.ToString());
-
-                sfx.PlayOneShot(potionDrink);
-            }
-            else
-            {
-                Debug.Log("Ya tenías toda la vida");
-            }
+            lifeSystem.HealPlayer(50);
+            pociones--;
+            generalManager.ChangePotionText(pociones.ToString());
+            sfx.PlayOneShot(potionDrink);
         }
         else
         {
-            Debug.Log("No tienes pociones");
+            Debug.Log("Ya tenías toda la vida");
         }
     }
+    else
+    {
+        Debug.Log("No tienes pociones");
+    }
+}
 }

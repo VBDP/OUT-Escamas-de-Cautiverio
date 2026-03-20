@@ -135173,8 +135173,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140186739}
+  - component: {fileID: 1140186740}
   m_Layer: 0
-  m_Name: ZoneTimeController
+  m_Name: DataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135199,6 +135200,25 @@ Transform:
   - {fileID: 194998533}
   m_Father: {fileID: 1316548802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140186740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140186738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c4d710706c9024c92b68e05408b735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataManager
+  totalTime: -1
+  firstKeyTime: -1
+  jeraTime: -1
+  othillaTime: -1
+  takedPotions: 0
+  usedPotions: 0
+  deaths: 0
 --- !u!1001 &1140771257
 PrefabInstance:
   m_ObjectHideFlags: 0

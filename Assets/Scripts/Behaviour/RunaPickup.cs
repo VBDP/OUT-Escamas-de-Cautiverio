@@ -40,11 +40,10 @@ public class RunaPickup : MonoBehaviour
                 if (hitObject.name == "Jera")
                 {
                     sfx.PlayOneShot(runePickup);
-
                     inventario.Jera = true;
 
-                    // ✅ Singleton
-                    DataSaverForLogs.Instance.SetJeraTime(generalManager.GetTime());
+                    // ✅ NUEVO SISTEMA
+                    DataManager.Instance.SetJeraTime(generalManager.GetTime());
 
                     blockRight.SetActive(true);
 
@@ -62,11 +61,10 @@ public class RunaPickup : MonoBehaviour
                 else if (hitObject.name == "Othilla")
                 {
                     sfx.PlayOneShot(runePickup);
-
                     inventario.Othilla = true;
 
-                    // ✅ Singleton
-                    DataSaverForLogs.Instance.SetOthillaTime(generalManager.GetTime());
+                    // ✅ NUEVO SISTEMA
+                    DataManager.Instance.SetOthillaTime(generalManager.GetTime());
 
                     blockLeft.SetActive(true);
 

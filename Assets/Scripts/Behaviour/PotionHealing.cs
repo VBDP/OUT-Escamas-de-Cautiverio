@@ -45,8 +45,8 @@ public class PotionHealing : MonoBehaviour
             {
                 inventory.pociones += 1;
 
-                // ✅ USO CORRECTO DEL DATASAVER
-                DataSaverForLogs.Instance.SetTakedPotions();
+                // ✅ NUEVO SISTEMA
+                DataManager.Instance.AddPotionTaken();
 
                 generalManager.ChangePotionText(inventory.pociones.ToString());
 

@@ -38,8 +38,8 @@ public class KeyController : MonoBehaviour
             {
                 SaveOnInventory();
 
-                // ✅ USO CORRECTO DEL DATASAVER
-                DataSaverForLogs.Instance.SetFirstKeyTime(generalManager.GetTime());
+                // ✅ NUEVO SISTEMA
+                DataManager.Instance.SetFirstKeyTime(generalManager.GetTime());
 
                 GetComponent<Renderer>().enabled = false;
 
