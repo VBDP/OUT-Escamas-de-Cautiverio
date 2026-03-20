@@ -236,6 +236,10 @@ public void SaveToFile()
         using (StreamWriter writer = new StreamWriter(path))
         {
             writer.WriteLine("=== GAME DATA ===");
+            writer.WriteLine("Fecha: " + System.DateTime.Now.ToString("dd/MM/yyyy"));
+            writer.WriteLine("Hora: " + System.DateTime.Now.ToString("HH:mm"));
+            writer.WriteLine("Username: " + PlayerPrefs.GetString("username"));
+            writer.WriteLine("Email: " + PlayerPrefs.GetString("email"));
 
             writer.WriteLine("\n--- TIMES ---");
             writer.WriteLine("Total Time: " + totalTime);
