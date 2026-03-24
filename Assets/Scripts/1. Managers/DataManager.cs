@@ -2,6 +2,34 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[System.Serializable]
+public class GameData
+{
+    public List<ZoneData> zones;
+
+    public string date;
+    public string time;
+    public string username;
+    public string email;
+
+    public float totalTime;
+    public float firstKeyTime;
+    public float jeraTime;
+    public float othillaTime;
+
+    public int takedPotions;
+    public int usedPotions;
+    public int deaths;
+    public int score;
+}
+
+[System.Serializable]
+public class ZoneData
+{
+    public string zone;
+    public float time;
+}
+
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
@@ -35,6 +63,7 @@ public class DataManager : MonoBehaviour
     void Awake()
     {
         lifeSystem = FindFirstObjectByType<LifeSystem>();
+
         if (Instance == null)
             Instance = this;
         else
@@ -47,9 +76,8 @@ public class DataManager : MonoBehaviour
     }
 
     // -------------------
-    // Entrar en la zona 
+    // ZONE ENTER
     // -------------------
-
     public void EnterZone(string zone)
     {
         if (!zoneCounter.ContainsKey(zone))
@@ -57,15 +85,13 @@ public class DataManager : MonoBehaviour
 
         zoneCounter[zone]++;
 
-        // Solo si es la primera vez dentro de la zona actualmente
         if (zoneCounter[zone] == 1)
         {
             float time = generalManager.GetTime();
-            enterTime[zone] = time; // Guardamos la hora de entrada
+            enterTime[zone] = time;
 
             Debug.Log("ENTER zona: " + zone);
 
-            // Eventos únicos de runas y primeras zonas
             if (zone == "Jera" && jeraTime < 0f)
                 jeraTime = time;
 
@@ -78,7 +104,7 @@ public class DataManager : MonoBehaviour
     }
 
     // -------------------
-    // Salir de la zona
+    // ZONE EXIT
     // -------------------
     public void ExitZone(string zone)
     {
@@ -98,12 +124,10 @@ public class DataManager : MonoBehaviour
                 if (!zoneDurations.ContainsKey(zone))
                     zoneDurations[zone] = 0f;
 
-                // ✅ Acumulamos el tiempo de cada visita
                 zoneDurations[zone] += duration;
 
-                Debug.Log($"EXIT zona: {zone} | Tiempo de esta visita: {duration} | Total acumulado: {zoneDurations[zone]}");
+                Debug.Log($"EXIT zona: {zone} | Duración: {duration} | Total: {zoneDurations[zone]}");
 
-                // Limpiamos el tiempo de entrada para la próxima visita
                 enterTime.Remove(zone);
             }
 
@@ -111,22 +135,9 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public float TotalLapTime(string startZone, string endZone)
-    {
-        if (enterTime.ContainsKey(startZone) && enterTime.ContainsKey(endZone))
-            return enterTime[endZone] - enterTime[startZone];
-
-        return 0f;
-    }
-
     // -------------------
-    // ZONE TIMES (individuales)
+    // GETTERS / SETTERS
     // -------------------
-    public void SetZoneTime(string zone, float time)
-    {
-        zoneDurations[zone] = time;
-    }
-
     public float GetZoneTime(string zone)
     {
         if (zoneDurations.ContainsKey(zone))
@@ -134,139 +145,97 @@ public class DataManager : MonoBehaviour
         return 0f;
     }
 
-    // -------------------
-    // TOTAL TIME
-    // -------------------
-    public void SetTotalTime(float time)
-    {
-        totalTime = time;
-    }
+    public float GetTotalTime() => totalTime;
+    public float GetFirstKeyTime() => firstKeyTime;
+    public float GetJeraTime() => jeraTime;
+    public float GetOthillaTime() => othillaTime;
 
-    public float GetTotalTime()
-    {
-        return totalTime;
-    }
+    public void AddPotionTaken() => takedPotions++;
+    public void AddPotionUsed() => usedPotions++;
 
-    // -------------------
-    // FIRST KEY
-    // -------------------
+    public int GetTakedPotions() => takedPotions;
+    public int GetUsedPotions() => usedPotions;
+
+    public void SetTotalTime(float time) => totalTime = time;
+
     public void SetFirstKeyTime(float time)
     {
         if (firstKeyTime < 0f)
             firstKeyTime = time;
     }
 
-    public float GetFirstKeyTime()
-    {
-        return firstKeyTime;
-    }
-
-    // -------------------
-    // JERA
-    // -------------------
     public void SetJeraTime(float time)
     {
         if (jeraTime < 0f)
             jeraTime = time;
     }
 
-    public float GetJeraTime()
-    {
-        return jeraTime;
-    }
-
-    // -------------------
-    // OTHILLA
-    // -------------------
     public void SetOthillaTime(float time)
     {
         if (othillaTime < 0f)
             othillaTime = time;
     }
 
-    public float GetOthillaTime()
-    {
-        return othillaTime;
-    }
-
     // -------------------
-    // POTIONS
+    // SAVE JSON
     // -------------------
-    public void AddPotionTaken()
+    public void SaveToJSON()
     {
-        takedPotions++;
-    }
-
-    public int GetTakedPotions()
-    {
-        return takedPotions;
-    }
-
-    public void AddPotionUsed()
-    {
-        usedPotions++;
-    }
-
-    public int GetUsedPotions()
-    {
-        return usedPotions;
-    }
-
-    // -------------------
-    // GUARDAR EN TXT
-    // -------------------
-public void SaveToFile()
-{
-    try
-    {
-        deaths = lifeSystem.GetDeaths();
-        score = generalManager.GetScore();
-        // Carpeta dentro de Assets
-        string folderPath = Path.Combine(Application.dataPath, "Logs");
-
-        // Crear carpeta si no existe
-        if (!Directory.Exists(folderPath))
+        try
         {
-            Directory.CreateDirectory(folderPath);
-            Debug.Log("Carpeta creada: " + folderPath);
-        }
+            deaths = lifeSystem.GetDeaths();
+            score = generalManager.GetScore();
 
-        // Nombre del archivo con fecha y hora
-        string fileName = "GameData_" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".txt";
-        string path = Path.Combine(folderPath, fileName);
+            string folderPath = Path.Combine(Application.dataPath, "Logs");
 
-        using (StreamWriter writer = new StreamWriter(path))
-        {
-            writer.WriteLine("=== GAME DATA ===");
-            writer.WriteLine("Fecha: " + System.DateTime.Now.ToString("dd/MM/yyyy"));
-            writer.WriteLine("Hora: " + System.DateTime.Now.ToString("HH:mm"));
-            writer.WriteLine("Username: " + PlayerPrefs.GetString("username"));
-            writer.WriteLine("Email: " + PlayerPrefs.GetString("email"));
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
 
-            writer.WriteLine("\n--- TIMES ---");
-            writer.WriteLine("Total Time: " + totalTime);
-            writer.WriteLine("First Key: " + firstKeyTime);
-            writer.WriteLine("Jera: " + jeraTime);
-            writer.WriteLine("Othilla: " + othillaTime);
+            string fileName = "GameData_" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".json";
+            string path = Path.Combine(folderPath, fileName);
 
-            writer.WriteLine("\n--- ZONES ---");
-            foreach (var zone in zoneDurations)
+            GameData data = new GameData();
+
+            data.date = System.DateTime.Now.ToString("dd/MM/yyyy");
+            data.time = System.DateTime.Now.ToString("HH:mm");
+            data.username = PlayerPrefs.GetString("username");
+            data.email = PlayerPrefs.GetString("email");
+
+            data.totalTime = totalTime;
+            data.firstKeyTime = firstKeyTime;
+            data.jeraTime = jeraTime;
+            data.othillaTime = othillaTime;
+
+            data.takedPotions = takedPotions;
+            data.usedPotions = usedPotions;
+            data.deaths = deaths;
+            data.score = score;
+
+            // Orden fijo
+            data.zones = new List<ZoneData>();
+
+            List<string> order = new List<string> { "Spawn", "Zone1", "Zone2", "Zone3" };
+
+            foreach (string zoneName in order)
             {
-                writer.WriteLine(zone.Key + ": " + zone.Value);
+                if (zoneDurations.ContainsKey(zoneName))
+                {
+                    data.zones.Add(new ZoneData
+                    {
+                        zone = zoneName,
+                        time = zoneDurations[zoneName]
+                    });
+                }
             }
 
-            writer.WriteLine("\n--- STATS ---");
-            writer.WriteLine("Potions Taken: " + takedPotions);
-            writer.WriteLine("Potions Used: " + usedPotions);
-            writer.WriteLine("Deaths: " + deaths);
-            writer.WriteLine("Score: " + score);
-        }
+            string json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(path, json);
 
-        Debug.Log("✅ Datos guardados correctamente en: " + path);
+            Debug.Log("✅ JSON guardado en: " + path);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("❌ Error al guardar JSON: " + ex.Message);
+        }
     }
-    catch (System.Exception ex)
-    {
-        Debug.LogError("❌ Error al guardar el log: " + ex.Message);
-    }
-}
 }

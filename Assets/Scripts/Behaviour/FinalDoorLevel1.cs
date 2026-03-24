@@ -56,7 +56,7 @@ public class FinalDoorLevel1 : MonoBehaviour
                     // -------------------
                     // Guardamos TODO el DataManager en archivo
                     // -------------------
-                    DataManager.Instance.SaveToFile();
+                    DataManager.Instance.SaveToJSON();
 
                     Debug.Log("✅ Datos guardados y panel de victoria abierto.");
                     Debug.Log("Has tardado " + DataManager.Instance.GetTotalTime() + " segundos en total.");
