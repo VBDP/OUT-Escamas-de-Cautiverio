@@ -120,6 +120,111 @@
         .stat-card.rose::before { background-color: var(--accent-2); }
         .stat-card.green::before { background-color: var(--accent-4); }
 
+        .stat-card.clickable {
+            cursor: pointer;
+        }
+        .stat-card.clickable:active {
+            transform: translateY(-2px);
+        }
+
+        .stat-card.clickable .stat-title::after {
+            content: '(Click to view list)';
+            display: block;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            margin-top: 0.25rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-1);
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), var(--glow-gold);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            color: var(--accent-1);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+            padding: 0;
+            display: flex;
+        }
+
+        .btn-close:hover {
+            color: var(--accent-2);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .modal-table th, .modal-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(74, 60, 34, 0.3);
+            text-align: left;
+        }
+
+        .modal-table th {
+            color: var(--accent-3);
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .modal-table td {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
         .stat-title {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -363,9 +468,57 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-1); 
         }
+
+        /* Sandstorm Background Effect */
+        .sandstorm {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .sand-layer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23d4af37'/%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4' mix-blend-mode='multiply'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+            opacity: 0.15;
+            animation: blow 12s linear infinite;
+        }
+
+        .sand-layer.fast {
+            background-size: 350px 350px;
+            animation: blow-fast 8s linear infinite;
+            opacity: 0.25;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes blow {
+            0% { background-position: 0 0; }
+            100% { background-position: -256px 256px; }
+        }
+
+        @keyframes blow-fast {
+            0% { background-position: 0 0; }
+            100% { background-position: -350px 350px; }
+        }
+
+        /* Ensure .container sits on top */
+        .container {
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
+    <div class="sandstorm">
+        <div class="sand-layer"></div>
+        <div class="sand-layer fast"></div>
+    </div>
+
     <div class="container">
         <header>
             <div class="header-title">
@@ -394,15 +547,15 @@
                     <div class="stat-title">Total Sessions</div>
                     <div class="stat-value" id="statSessions">-</div>
                 </div>
-                <div class="stat-card purple">
+                <div class="stat-card purple clickable" onclick="openModalList('score')">
                     <div class="stat-title">Average Score</div>
                     <div class="stat-value" id="statAvgScore">-</div>
                 </div>
-                <div class="stat-card rose">
+                <div class="stat-card rose clickable" onclick="openModalList('deaths')">
                     <div class="stat-title">Total Deaths</div>
                     <div class="stat-value" id="statDeaths">-</div>
                 </div>
-                <div class="stat-card green">
+                <div class="stat-card green clickable" onclick="openModalList('time')">
                     <div class="stat-title">Avg. Session Time</div>
                     <div class="stat-value" id="statAvgTime">-</div>
                 </div>
@@ -481,6 +634,35 @@
 
             <div class="chart-container">
                 <canvas id="detailZoneChart"></canvas>
+            </div>
+        </div>
+
+        <!-- LIST MODAL -->
+        <div class="modal-overlay" id="listModal" onclick="closeListModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h3 id="modalTitle">List</h3>
+                    <button class="btn-close" onclick="closeListModal()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="modal-table">
+                        <thead>
+                            <tr>
+                                <th>Session</th>
+                                <th>Player</th>
+                                <th id="modalThValue">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalTableBody">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -567,17 +749,27 @@
 
             if (charts.zones) charts.zones.destroy();
 
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(255, 140, 0, 0.8)'); // Dragon Fire Orange
+            gradient.addColorStop(0.5, 'rgba(189, 31, 54, 0.6)'); // Orc Blood
+            gradient.addColorStop(1, 'rgba(20, 16, 14, 0.1)'); // Fades into dark
+
             charts.zones = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
                         label: 'Average Time (seconds)',
                         data: data,
-                        backgroundColor: 'rgba(212, 175, 55, 0.8)',
-                        hoverBackgroundColor: 'rgba(212, 175, 55, 1)',
-                        borderRadius: 4,
-                        borderSkipped: false
+                        backgroundColor: gradient,
+                        borderColor: '#ff8c00',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#bd1f36',
+                        pointBorderColor: '#ff8c00',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        fill: true,
+                        tension: 0.5
                     }]
                 },
                 options: {
@@ -713,17 +905,27 @@
 
             if (charts.detailZone) charts.detailZone.destroy();
 
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(255, 140, 0, 0.8)'); // Dragon Fire Orange
+            gradient.addColorStop(0.5, 'rgba(189, 31, 54, 0.6)'); // Orc Blood
+            gradient.addColorStop(1, 'rgba(20, 16, 14, 0.1)'); // Fades into dark
+
             charts.detailZone = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
                         label: 'Time Spent (seconds)',
                         data: data,
-                        backgroundColor: 'rgba(255, 140, 0, 0.8)', // Dragon Fire Orange
-                        hoverBackgroundColor: 'rgba(255, 140, 0, 1)',
-                        borderRadius: 4,
-                        borderSkipped: false
+                        backgroundColor: gradient,
+                        borderColor: '#ff8c00',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#bd1f36',
+                        pointBorderColor: '#ff8c00',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        fill: true,
+                        tension: 0.5
                     }]
                 },
                 options: {
@@ -739,6 +941,59 @@
                     }
                 }
             });
+        }
+
+        // --- Modal Logic --- //
+
+        function openModalList(type) {
+            const modal = document.getElementById('listModal');
+            const title = document.getElementById('modalTitle');
+            const tbody = document.getElementById('modalTableBody');
+            const thValue = document.getElementById('modalThValue');
+            
+            tbody.innerHTML = '';
+            
+            let sortedData = [...activeData];
+            
+            if (type === 'score') {
+                title.innerText = 'Scores by Session';
+                thValue.innerText = 'Score';
+                sortedData.sort((a, b) => (b.score || 0) - (a.score || 0));
+            } else if (type === 'deaths') {
+                title.innerText = 'Deaths by Session';
+                thValue.innerText = 'Deaths';
+                sortedData.sort((a, b) => (b.deaths || 0) - (a.deaths || 0));
+            } else if (type === 'time') {
+                title.innerText = 'Session Times';
+                thValue.innerText = 'Time (s)';
+                sortedData.sort((a, b) => (b.totalTime || 0) - (a.totalTime || 0));
+            }
+
+            sortedData.forEach(d => {
+                const tr = document.createElement('tr');
+                let valStr = '';
+                
+                if (type === 'score') valStr = `<strong style="color:var(--accent-1);">${(d.score || 0).toLocaleString()}</strong>`;
+                else if (type === 'deaths') {
+                    if (d.deaths > 0) valStr = `<span style="color:var(--accent-2); font-weight:bold;">${d.deaths}</span>`;
+                    else valStr = `<span style="color:var(--text-muted);">${d.deaths || 0}</span>`;
+                }
+                else if (type === 'time') valStr = `${(d.totalTime || 0).toFixed(1)}s`;
+
+                tr.innerHTML = `
+                    <td style="color:var(--text-muted); font-size: 0.85rem;">${d.date} ${d.time}</td>
+                    <td><strong style="color:var(--text-main);">${d.username || 'Unknown'}</strong></td>
+                    <td>${valStr}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            modal.style.display = 'flex';
+        }
+
+        function closeListModal(event) {
+            if (event && event.type === 'click' && event.target !== document.getElementById('listModal')) return;
+            document.getElementById('listModal').style.display = 'none';
         }
     </script>
 </body>
