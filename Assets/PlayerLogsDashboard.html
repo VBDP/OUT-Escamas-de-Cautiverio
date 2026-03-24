@@ -7,21 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="Logs/LogsData.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600;700&display=swap');
+
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-1: #3b82f6; /* Blue */
-            --accent-2: #10b981; /* Green */
-            --accent-3: #f43f5e; /* Rose */
-            --accent-4: #a855f7; /* Purple */
-            --border-color: #334155;
+            --bg-color: #080808; /* Abyss black */
+            --card-bg: #12100e; /* Obsidian dark */
+            --text-main: #f2e3c6; /* Bone/Parchment */
+            --text-muted: #8b7355; /* Tarnished bronze */
+            --accent-1: #d4af37; /* Draconian Gold */
+            --accent-2: #bd1f36; /* Orc Blood Red */
+            --accent-3: #b8860b; /* Dark Goldenrod */
+            --accent-4: #ff8c00; /* Dragon Fire Orange */
+            --border-color: #4a3c22; /* Aged brass */
+            --glow-gold: 0 0 15px rgba(212, 175, 55, 0.3);
+            --glow-red: 0 0 15px rgba(189, 31, 54, 0.3);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top, #1a1511 0%, #080808 60%);
             color: var(--text-main);
             margin: 0;
             padding: 2rem;
@@ -41,36 +46,43 @@
             margin-bottom: 2.5rem;
             animation: fadeInDown 0.6s ease-out;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 6px -4px rgba(212, 175, 55, 0.2);
         }
 
         .header-title h1 {
-            font-size: 2.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-4));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-1);
+            text-shadow: var(--glow-gold);
             margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .header-title p {
             color: var(--text-muted);
             margin: 0;
             font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .empty-state {
-            background-color: rgba(30, 41, 59, 0.5);
-            border: 2px dashed #475569;
-            border-radius: 1rem;
+            background-color: rgba(18, 16, 14, 0.8);
+            border: 2px dashed var(--accent-2);
+            border-radius: 0.5rem;
             padding: 4rem 2rem;
             text-align: center;
             display: none;
+            box-shadow: var(--glow-red);
         }
 
-        .dashboard-content {
+        .dashboard-content, .detail-view {
             display: none;
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .stats-grid {
@@ -82,42 +94,47 @@
 
         .stat-card {
             background-color: var(--card-bg);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            background-image: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%);
         }
         
         .stat-card:hover {  
             transform: translateY(-4px); 
+            border-color: var(--accent-1);
+            box-shadow: var(--glow-gold);
         }
 
-        .stat-card::after {
+        .stat-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 3px;
         }
-        .stat-card.blue::after { background-color: var(--accent-1); }
-        .stat-card.green::after { background-color: var(--accent-2); }
-        .stat-card.rose::after { background-color: var(--accent-3); }
-        .stat-card.purple::after { background-color: var(--accent-4); }
+        .stat-card.blue::before { background-color: var(--accent-1); }
+        .stat-card.purple::before { background-color: var(--accent-3); }
+        .stat-card.rose::before { background-color: var(--accent-2); }
+        .stat-card.green::before { background-color: var(--accent-4); }
 
         .stat-title {
             color: var(--text-muted);
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             margin-bottom: 0.75rem;
+            font-family: 'Cinzel', serif;
         }
 
         .stat-value {
-            font-size: 2.25rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 800;
             color: var(--text-main);
+            font-family: 'Cinzel', serif;
         }
 
         .charts-grid {
@@ -129,20 +146,30 @@
 
         .chart-container {
             background-color: var(--card-bg);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
             height: 380px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .chart-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            pointer-events: none;
+            border-radius: 0.5rem;
         }
 
         .table-container {
             background-color: var(--card-bg);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
             overflow-x: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
         .table-header {
@@ -150,11 +177,16 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
         }
 
         .table-header h3 {
             margin: 0;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            font-family: 'Cinzel', serif;
+            color: var(--accent-1);
+            text-transform: uppercase;
         }
 
         table {
@@ -165,27 +197,37 @@
 
         th, td {
             padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(74, 60, 34, 0.5);
         }
 
         th {
-            color: var(--text-muted);
-            font-weight: 600;
+            color: var(--accent-3);
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            font-family: 'Cinzel', serif;
         }
 
         td {
             font-size: 0.95rem;
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        tr.clickable-row {
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
         }
 
-        tr:hover td {
-            background-color: rgba(255, 255, 255, 0.03);
+        tr.clickable-row:hover td {
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+        
+        tr.clickable-row:hover {
+            box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
 
         .user-block {
@@ -199,12 +241,102 @@
 
         .badge {
             padding: 0.25rem 0.6rem;
-            border-radius: 9999px;
+            border-radius: 0.25rem;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
+            border: 1px solid transparent;
         }
-        .badge.neutral { background: rgba(148, 163, 184, 0.1); color: var(--text-muted); }
-        .badge.danger { background: rgba(244, 63, 94, 0.1); color: var(--accent-3); }
+        .badge.neutral { background: rgba(139, 115, 85, 0.1); color: var(--text-muted); border-color: rgba(139, 115, 85, 0.3); }
+        .badge.danger { background: rgba(189, 31, 54, 0.1); color: var(--accent-2); border-color: rgba(189, 31, 54, 0.3); box-shadow: var(--glow-red); }
+
+        /* Detail View Styles */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(20, 18, 16, 0.8);
+            color: var(--accent-1);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+        }
+
+        .btn-back:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent-1);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-back svg {
+            margin-right: 0.5rem;
+            stroke: var(--accent-1);
+        }
+
+        .detail-header {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(189, 31, 54, 0.05));
+            border: 1px solid var(--accent-1);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5), var(--glow-gold);
+            position: relative;
+        }
+        
+        .detail-header::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            pointer-events: none;
+        }
+        
+        .detail-header h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            color: var(--accent-1);
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            text-shadow: var(--glow-gold);
+        }
+
+        .detail-header p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .detail-badges {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .badge-score {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-1);
+            border: 1px solid var(--accent-1);
+            padding: 0.4rem 1.2rem;
+            border-radius: 0.25rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            box-shadow: var(--glow-gold);
+        }
+
+        .badge-date {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1.2rem;
+            border-radius: 0.25rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
 
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
@@ -212,8 +344,24 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar styling for a darker theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-1); 
         }
     </style>
 </head>
@@ -222,23 +370,24 @@
         <header>
             <div class="header-title">
                 <h1>Player Logs Dashboard</h1>
-                <p>OUT: Escamas de Cautiverio - Analytics (Auto-Synced)</p>
+                <p>OUT: Escamas de Cautiverio - Analytics</p>
             </div>
         </header>
 
         <div class="empty-state" id="emptyState">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="12"></line>
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
-            <h3 style="margin-top: 0; font-size: 1.5rem; color: var(--text-muted);">No logs found</h3>
+            <h3 style="margin-top: 0; font-size: 1.5rem; color: var(--accent-1); font-family: 'Cinzel', serif;">No logs found</h3>
             <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
                 Make sure you have played the game and generated <b>.json</b> logs in your <br/><b>Assets/Logs</b> folder.<br><br>
                 If logs exist, open Unity and click <b>Tools > Update Dashboard Logs Data</b> to refresh.
             </p>
         </div>
 
+        <!-- MAIN DASHBOARD -->
         <div class="dashboard-content" id="dashboard">
             <div class="stats-grid">
                 <div class="stat-card blue">
@@ -270,7 +419,7 @@
 
             <div class="table-container">
                 <div class="table-header">
-                    <h3>Recent Sessions Log</h3>
+                    <h3>Recent Sessions Log <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal; margin-left: 1rem; font-family: 'Inter', sans-serif; text-transform:none; letter-spacing:0;">(Click a row for details)</span></h3>
                 </div>
                 <table>
                     <thead>
@@ -289,16 +438,64 @@
                 </table>
             </div>
         </div>
+
+        <!-- DETAIL VIEW -->
+        <div class="detail-view" id="detailView">
+            <button class="btn-back" onclick="hideDetail()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Dashboard
+            </button>
+            
+            <div class="detail-header">
+                <h2 id="detUsername">Username</h2>
+                <p id="detEmail">email@domain.com</p>
+                <div class="detail-badges">
+                    <span id="detDate" class="badge-date">01/01/2026 12:00</span>
+                    <span id="detScore" class="badge-score">Score: 0</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="stat-title">Total Time</div>
+                    <div class="stat-value" id="detTotalTime">0s</div>
+                </div>
+                <div class="stat-card rose">
+                    <div class="stat-title">Deaths</div>
+                    <div class="stat-value" id="detDeaths">0</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-title">Potions (Taken / Used)</div>
+                    <div class="stat-value" id="detPotions">0 / 0</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-title">Key Timings</div>
+                    <div class="stat-value" style="font-size: 1.25rem; line-height: 1.5; margin-top: 0.25rem; font-family: 'Inter', sans-serif;" id="detKeyTimes">
+                        ...
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="detailZoneChart"></canvas>
+            </div>
+        </div>
     </div>
 
     <script>
         const dashboard = document.getElementById('dashboard');
         const emptyState = document.getElementById('emptyState');
+        const detailView = document.getElementById('detailView');
 
         let charts = {};
+        let activeData = [];
 
-        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.color = '#8b7355';
         Chart.defaults.font.family = 'Inter, sans-serif';
+        Chart.defaults.borderColor = 'rgba(74, 60, 34, 0.3)';
 
         // Wait until DOM is loaded to render
         document.addEventListener('DOMContentLoaded', () => {
@@ -307,16 +504,15 @@
                 return;
             }
 
-            // Data loaded successfully from Assets/Logs/LogsData.js
-            renderDashboard(window.PlayerLogsData);
-        });
-
-        function renderDashboard(parsedData) {
             // Sort newest first
-            parsedData.sort((a, b) => {
+            activeData = window.PlayerLogsData.sort((a, b) => {
                 return parseDateTime(b.date, b.time) - parseDateTime(a.date, a.time);
             });
 
+            renderDashboard(activeData);
+        });
+
+        function renderDashboard(parsedData) {
             dashboard.style.display = 'block';
 
             // Top Stats
@@ -340,7 +536,6 @@
 
         function parseDateTime(dateStr, timeStr) {
             if (!dateStr || !timeStr) return 0;
-            // Assumes DD/MM/YYYY and HH:MM
             const parts = dateStr.split('/');
             const tParts = timeStr.split(':');
             if (parts.length === 3 && tParts.length === 2) {
@@ -379,9 +574,9 @@
                     datasets: [{
                         label: 'Average Time (seconds)',
                         data: data,
-                        backgroundColor: 'rgba(59, 130, 246, 0.85)',
-                        hoverBackgroundColor: 'rgba(59, 130, 246, 1)',
-                        borderRadius: 8,
+                        backgroundColor: 'rgba(212, 175, 55, 0.8)',
+                        hoverBackgroundColor: 'rgba(212, 175, 55, 1)',
+                        borderRadius: 4,
                         borderSkipped: false
                     }]
                 },
@@ -390,16 +585,11 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        title: { display: true, text: 'Average Time Spent per Zone', font: { size: 16, weight: 'bold' }, padding: { bottom: 20 } }
+                        title: { display: true, text: 'Average Time Spent per Zone (Global)', font: { size: 16, weight: 'bold', family: 'Cinzel' }, color: '#d4af37', padding: { bottom: 20 } }
                     },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false }
-                        },
-                        x: {
-                            grid: { display: false, drawBorder: false }
-                        }
+                        y: { beginAtZero: true, grid: { color: 'rgba(74, 60, 34, 0.2)', drawBorder: false } },
+                        x: { grid: { display: false, drawBorder: false } }
                     }
                 }
             });
@@ -407,7 +597,7 @@
 
         function drawPotionsChart(parsedData) {
             const ctx = document.getElementById('potionsChart').getContext('2d');
-            const recent = parsedData.slice(0, 15).reverse(); // Oldest to newest for trend line
+            const recent = parsedData.slice(0, 15).reverse(); 
             
             const labels = recent.map(d => d.date + ' ' + d.time);
             const taken = recent.map(d => d.takedPotions || 0);
@@ -420,47 +610,20 @@
                 data: {
                     labels: labels,
                     datasets: [
-                        {
-                            label: 'Potions Taken',
-                            data: taken,
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            borderWidth: 3,
-                            tension: 0.4,
-                            fill: true,
-                            pointBackgroundColor: '#1e293b',
-                            pointHoverBackgroundColor: '#10b981'
-                        },
-                        {
-                            label: 'Potions Used',
-                            data: used,
-                            borderColor: '#f43f5e',
-                            backgroundColor: 'transparent',
-                            borderWidth: 3,
-                            tension: 0.4,
-                            fill: false,
-                            pointBackgroundColor: '#1e293b',
-                            pointHoverBackgroundColor: '#f43f5e'
-                        }
+                        { label: 'Potions Taken', data: taken, borderColor: '#d4af37', backgroundColor: 'rgba(212, 175, 55, 0.1)', borderWidth: 3, tension: 0.4, fill: true, pointBackgroundColor: '#12100e', pointHoverBackgroundColor: '#d4af37' },
+                        { label: 'Potions Used', data: used, borderColor: '#bd1f36', backgroundColor: 'transparent', borderWidth: 3, tension: 0.4, fill: false, pointBackgroundColor: '#12100e', pointHoverBackgroundColor: '#bd1f36' }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'top' },
-                        title: { display: true, text: 'Potions Logistics (Chronological)', font: { size: 16, weight: 'bold' }, padding: { bottom: 20 } }
+                        legend: { position: 'top', labels: { color: '#f2e3c6', font: {family: 'Inter'} } },
+                        title: { display: true, text: 'Potions Logistics (Recent Sessions)', font: { size: 16, weight: 'bold', family: 'Cinzel' }, color: '#d4af37', padding: { bottom: 20 } }
                     },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                            ticks: { stepSize: 1 }
-                        },
-                        x: {
-                            grid: { display: false, drawBorder: false },
-                            ticks: { display: false } 
-                        }
+                        y: { beginAtZero: true, grid: { color: 'rgba(74, 60, 34, 0.2)', drawBorder: false }, ticks: { stepSize: 1 } },
+                        x: { grid: { display: false, drawBorder: false }, ticks: { display: false } }
                     }
                 }
             });
@@ -470,8 +633,10 @@
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
 
-            parsedData.forEach(d => {
+            parsedData.forEach((d, index) => {
                 const tr = document.createElement('tr');
+                tr.className = 'clickable-row';
+                tr.onclick = () => showDetail(index);
                 
                 let deathBadge = `<span class="badge neutral">0</span>`;
                 if (d.deaths > 0) {
@@ -484,16 +649,95 @@
                     </td>
                     <td>
                         <div class="user-block">
-                            <strong>${d.username || 'Unknown'}</strong>
+                            <strong style="color:var(--text-main);">${d.username || 'Unknown'}</strong>
                             <span class="user-email">${d.email || 'N/A'}</span>
                         </div>
                     </td>
-                    <td style="color:var(--accent-4); font-weight:700;">${(d.score || 0).toLocaleString()}</td>
+                    <td style="color:var(--accent-1); font-weight:700;">${(d.score || 0).toLocaleString()}</td>
                     <td>${(d.totalTime || 0).toFixed(1)}s</td>
                     <td>${deathBadge}</td>
-                    <td><span style="color:var(--accent-2)">${d.takedPotions || 0}</span> / <span style="color:var(--accent-3)">${d.usedPotions || 0}</span></td>
+                    <td><span style="color:var(--accent-1)">${d.takedPotions || 0}</span> / <span style="color:var(--accent-2)">${d.usedPotions || 0}</span></td>
                 `;
                 tbody.appendChild(tr);
+            });
+        }
+
+        // --- Detail View Logic --- //
+
+        function showDetail(index) {
+            const session = activeData[index];
+            if (!session) return;
+
+            // Update UI elements
+            document.getElementById('detUsername').innerText = session.username || 'Unknown Player';
+            document.getElementById('detEmail').innerText = session.email || 'No email provided';
+            document.getElementById('detDate').innerText = `${session.date} - ${session.time}`;
+            document.getElementById('detScore').innerText = `Score: ${(session.score || 0).toLocaleString()}`;
+            
+            document.getElementById('detTotalTime').innerText = `${(session.totalTime || 0).toFixed(1)}s`;
+            document.getElementById('detDeaths').innerText = session.deaths || 0;
+            document.getElementById('detPotions').innerText = `${session.takedPotions || 0} / ${session.usedPotions || 0}`;
+
+            document.getElementById('detKeyTimes').innerHTML = `
+                <span style="color:var(--text-muted);font-size:0.9rem;text-transform:uppercase;font-family:'Cinzel',serif;">First Key:</span> ${session.firstKeyTime || '-'}s <br>
+                <span style="color:var(--text-muted);font-size:0.9rem;text-transform:uppercase;font-family:'Cinzel',serif;">Jera:</span> ${session.jeraTime || '-'}s <br>
+                <span style="color:var(--text-muted);font-size:0.9rem;text-transform:uppercase;font-family:'Cinzel',serif;">Othilla:</span> ${session.othillaTime || '-'}s
+            `;
+
+            // Draw specific session chart
+            drawDetailChart(session);
+
+            // Toggle views
+            dashboard.style.display = 'none';
+            detailView.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function hideDetail() {
+            detailView.style.display = 'none';
+            dashboard.style.display = 'block';
+        }
+
+        function drawDetailChart(session) {
+            const ctx = document.getElementById('detailZoneChart').getContext('2d');
+            
+            const labels = [];
+            const data = [];
+            
+            if (session.zones && Array.isArray(session.zones)) {
+                session.zones.forEach(z => {
+                    labels.push(z.zone);
+                    data.push(z.time);
+                });
+            }
+
+            if (charts.detailZone) charts.detailZone.destroy();
+
+            charts.detailZone = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Time Spent (seconds)',
+                        data: data,
+                        backgroundColor: 'rgba(255, 140, 0, 0.8)', // Dragon Fire Orange
+                        hoverBackgroundColor: 'rgba(255, 140, 0, 1)',
+                        borderRadius: 4,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Time Breakdown Per Zone', font: { size: 16, weight: 'bold', family: 'Cinzel' }, color: '#ff8c00', padding: { bottom: 20 } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(74, 60, 34, 0.2)', drawBorder: false } },
+                        x: { grid: { display: false, drawBorder: false } }
+                    }
+                }
             });
         }
     </script>
