@@ -232,10 +232,42 @@ public class DataManager : MonoBehaviour
             File.WriteAllText(path, json);
 
             Debug.Log("✅ JSON guardado en: " + path);
+
+            UpdateLogsDataJS(folderPath);
         }
         catch (System.Exception ex)
         {
             Debug.LogError("❌ Error al guardar JSON: " + ex.Message);
+        }
+    }
+
+    private void UpdateLogsDataJS(string folderPath)
+    {
+        try
+        {
+            string[] files = Directory.GetFiles(folderPath, "*.json");
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine("window.PlayerLogsData = [");
+            for (int i = 0; i < files.Length; i++)
+            {
+                string jsonContent = File.ReadAllText(files[i]);
+                sb.Append(jsonContent);
+                if (i < files.Length - 1)
+                {
+                    sb.AppendLine(",");
+                }
+                else
+                {
+                    sb.AppendLine();
+                }
+            }
+            sb.AppendLine("];");
+            File.WriteAllText(Path.Combine(folderPath, "LogsData.js"), sb.ToString());
+            Debug.Log("✅ LogsData.js actualizado.");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("❌ Error al actualizar LogsData.js: " + ex.Message);
         }
     }
 }
