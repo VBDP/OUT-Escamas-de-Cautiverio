@@ -68,6 +68,13 @@ public class DataManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+            
+        // Actualizamos LogsData.js al arrancar por si el usuario modificó manualmente los archivos JSON
+        string folderPath = Path.Combine(Application.dataPath, "Logs");
+        if (Directory.Exists(folderPath))
+        {
+            UpdateLogsDataJS(folderPath);
+        }
     }
 
     void Start()
