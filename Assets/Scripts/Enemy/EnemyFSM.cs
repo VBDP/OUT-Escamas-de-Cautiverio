@@ -1,0 +1,188 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+public class EnemyFSM : MonoBehaviour
+{
+    public enum State
+    {
+        Patrol,
+        Chase,
+        Attack,
+        Return
+    }
+
+    public State currentState;
+
+    [Header("References")]
+    public Transform player;
+    public Transform[] waypoints;
+    private NavMeshAgent agent;
+    public Animator animator;
+
+    [Header("Parámetros del Animator (Bools)")]
+    public string boolWalk = "isWalking";
+    public string boolRun = "isRunning";
+    public string boolAttack = "isAttacking";
+
+    [Header("Settings")]
+    public float detectionRange = 10f;
+    public float attackRange = 2f;
+    public float loseRange = 15f;
+
+    [Header("Patrol Settings")]
+    public float waitMin = 5f;
+    public float waitMax = 15f;
+    public float rotationSpeed = 5f;
+
+    private int currentWaypoint = 0;
+    private float waitTimer = 0f;
+    private float currentWaitTime = 0f;
+    private bool isWaiting = false;
+
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+        
+        startPosition = transform.position;
+        
+        SetNextWaitTime();
+        
+        // Iniciamos en estado Patrol llamando al método
+        ChangeState(State.Patrol);
+    }
+
+    void Update()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        switch (currentState)
+        {
+            case State.Patrol:
+                Patrol();
+                if (distance < detectionRange)
+                    ChangeState(State.Chase);
+                break;
+
+            case State.Chase:
+                agent.SetDestination(player.position);
+                // Si está en rango de ataque, ataca
+                if (distance <= attackRange)
+                    ChangeState(State.Attack);
+                // Si se aleja mucho, vuelve al inicio
+                else if (distance > loseRange)
+                    ChangeState(State.Return);
+                break;
+
+            case State.Attack:
+                agent.SetDestination(transform.position); // Quedarse quieto para atacar
+                // Rotar hacia el jugador suavemente mientras ataca
+                Vector3 dir = (player.position - transform.position).normalized;
+                if (dir != Vector3.zero)
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+                }
+                
+                // Si el jugador se aleja, volver a perseguir
+                if (distance > attackRange)
+                    ChangeState(State.Chase);
+                break;
+
+            case State.Return:
+                agent.SetDestination(startPosition);
+                // Si llegó a su posición inicial, volver a patrullar
+                if (Vector3.Distance(transform.position, startPosition) < 1.5f)
+                    ChangeState(State.Patrol);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Cambia el estado actual y ajusta los parámetros del Animator.
+    /// </summary>
+    public void ChangeState(State newState)
+    {
+        currentState = newState;
+
+        // Primero apagamos todos los parámetros por seguridad
+        animator.SetBool(boolWalk, false);
+        animator.SetBool(boolRun, false);
+        animator.SetBool(boolAttack, false);
+
+        switch (currentState)
+        {
+            case State.Patrol:
+                if (!isWaiting) 
+                    animator.SetBool(boolWalk, true);
+                break;
+                
+            case State.Chase:
+                animator.SetBool(boolRun, true);
+                break;
+                
+            case State.Attack:
+                animator.SetBool(boolAttack, true);
+                break;
+                
+            case State.Return:
+                animator.SetBool(boolWalk, true);
+                break;
+        }
+    }
+
+    void Patrol()
+    {
+        if (waypoints.Length == 0) return;
+
+        Transform targetPoint = waypoints[currentWaypoint];
+
+        // Si está esperando en un waypoint
+        if (isWaiting)
+        {
+            agent.SetDestination(transform.position);
+
+            // Rotar hacia el siguiente punto
+            Vector3 dir = (targetPoint.position - transform.position).normalized;
+            if (dir != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+            }
+
+            waitTimer += Time.deltaTime;
+
+            if (waitTimer >= currentWaitTime)
+            {
+                isWaiting = false;
+                waitTimer = 0f;
+                currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+                
+                // Se acabó la espera, empezamos a caminar
+                animator.SetBool(boolWalk, true);
+            }
+
+            return;
+        }
+
+        // Moverse al waypoint
+        agent.SetDestination(targetPoint.position);
+
+        // Si llega al punto (ajustado a 1.5f para que la detección sea más precisa)
+        if (Vector3.Distance(transform.position, targetPoint.position) < 1.5f)
+        {
+            isWaiting = true;
+            SetNextWaitTime();
+            
+            // Hemos llegado, así que dejamos de caminar (pasamos a Idle por defecto)
+            animator.SetBool(boolWalk, false);
+        }
+    }
+
+    void SetNextWaitTime()
+    {
+        currentWaitTime = Random.Range(waitMin, waitMax);
+    }
+}
