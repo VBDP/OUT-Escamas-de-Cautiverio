@@ -41,6 +41,12 @@ public class EnemyFSM : MonoBehaviour
     public float maxAlert = 100f;
     [Tooltip("Sprite (Image UI) en el HUD que se llenará con el nivel de alerta")]
     public Image alertUIFill;
+    [Tooltip("AudioSource para el sonido de tensión. ¡Recuerda marcar 'Loop' en Unity!")]
+    public AudioSource alertAudioSource;
+    [Tooltip("Tono (Pitch) más grave/lento cuando te empieza a ver")]
+    public float minPitch = 1.0f;
+    [Tooltip("Tono (Pitch) más agudo/rápido justo antes de atacarte")]
+    public float maxPitch = 2.0f;
     [Tooltip("Aumento por segundo si estás en su rango pero no frente a él")]
     public float alertIncreaseSlow = 15f;
     [Tooltip("Aumento por segundo si te ve directamente en el cono visual")]
@@ -274,6 +280,29 @@ public class EnemyFSM : MonoBehaviour
             
             // Opcional: Esto hace que el Sprite entero desaparezca de la pantalla si no te ha detectado nada (0 alerta).
             alertUIFill.gameObject.SetActive(currentAlert > 0);
+        }
+
+        // Sonido de Detección Dinámico
+        if (alertAudioSource != null)
+        {
+            if (currentAlert > 0)
+            {
+                // Solo le damos a Play si no estaba sonando ya
+                if (!alertAudioSource.isPlaying)
+                    alertAudioSource.Play();
+                
+                // Calcular qué tan alertado está (0 a 1)
+                float alertPercentage = currentAlert / maxAlert;
+                
+                // Lerp entre minPitch y maxPitch. De este modo, por muy alto que suba, nunca pasará del valor seguro que asgines a maxPitch
+                alertAudioSource.pitch = Mathf.Lerp(minPitch, maxPitch, alertPercentage);
+            }
+            else
+            {
+                // Si la alerta bajó por completo, apagar el sonido de tensión
+                if (alertAudioSource.isPlaying)
+                    alertAudioSource.Stop();
+            }
         }
     }
 
