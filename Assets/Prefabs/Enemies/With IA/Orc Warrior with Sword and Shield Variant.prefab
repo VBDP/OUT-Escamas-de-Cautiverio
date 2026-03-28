@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2119784334659806556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.6758
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.98099
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_Name
+      value: Orc Warrior with Sword and Shield Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c30d167e1458cd648b05c09dd82e49b4, type: 2}
+    - target: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_Height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_Acceleration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3104336983848370960}
+    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2488853747213417563}
+    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7402397292139516336}
+  m_SourcePrefab: {fileID: 100100000, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+--- !u!1 &956028299038182214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+  m_PrefabInstance: {fileID: 2119784334659806556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3104336983848370960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956028299038182214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3a19e2bd6242148b549e1749081791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFSM
+  currentState: 0
+  player: {fileID: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  animator: {fileID: 4270901514535102510}
+  boolWalk: isWalking
+  boolRun: isRunning
+  boolAttack: isAttacking
+  detectionRange: 4
+  visionAngle: 45
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  eyeHeight: 1.5
+  attackRange: 2
+  loseRange: 15
+  currentAlert: 0
+  maxAlert: 100
+  alertUIFill: {fileID: 0}
+  alertAudioSource: {fileID: 0}
+  minPitch: 1
+  maxPitch: 2
+  alertIncreaseSlow: 15
+  alertIncreaseFast: 50
+  alertDecrease: 25
+  attackCooldown: 2
+  attackAnimationDuration: 0.5
+  waitMin: 5
+  waitMax: 15
+  rotationSpeed: 3
+--- !u!95 &4270901514535102510 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+  m_PrefabInstance: {fileID: 2119784334659806556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7638198132459489552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+  m_PrefabInstance: {fileID: 2119784334659806556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2488853747213417563
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638198132459489552}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8a65589a845814866949bcc996649d7d, type: 3}
+--- !u!114 &7402397292139516336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638198132459489552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5592c4a280d60f4282cd7da5f475009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  enemyFSM: {fileID: 3104336983848370960}
+  damage: 50
+  hitCooldown: 1

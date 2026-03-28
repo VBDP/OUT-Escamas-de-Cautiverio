@@ -613,48 +613,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7460408368793930548, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
   m_PrefabInstance: {fileID: 1041862157}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1245217444 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-  m_PrefabInstance: {fileID: 1800675126}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1245217448
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245217444}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 8a65589a845814866949bcc996649d7d, type: 3}
---- !u!114 &1245217449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245217444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5592c4a280d60f4282cd7da5f475009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
-  enemyFSM: {fileID: 1800675128}
-  damage: 20
-  hitCooldown: 1
 --- !u!1 &1293857573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,157 +1017,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764248738}
   m_CullTransparentMesh: 1
---- !u!1001 &1800675126
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.6758
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.98099
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526020154982964148, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_Name
-      value: Orc Warrior with Sword and Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c30d167e1458cd648b05c09dd82e49b4, type: 2}
-    - target: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_Height
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_Acceleration
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8509168342158356427, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 80
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1800675128}
-    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1245217448}
-    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1245217449}
-  m_SourcePrefab: {fileID: 100100000, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
---- !u!1 &1800675127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-  m_PrefabInstance: {fileID: 1800675126}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1800675128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800675127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3a19e2bd6242148b549e1749081791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyFSM
-  currentState: 0
-  player: {fileID: 1041862158}
-  waypoints:
-  - {fileID: 1710283729}
-  - {fileID: 1761381374}
-  - {fileID: 347146533}
-  - {fileID: 747507724}
-  - {fileID: 476195951}
-  - {fileID: 775573871}
-  animator: {fileID: 1800675130}
-  boolWalk: isWalking
-  boolRun: isRunning
-  boolAttack: isAttacking
-  detectionRange: 4
-  visionAngle: 45
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  eyeHeight: 1.5
-  attackRange: 2
-  loseRange: 15
-  currentAlert: 0
-  maxAlert: 100
-  alertUIFill: {fileID: 80350427}
-  alertAudioSource: {fileID: 1927719900}
-  minPitch: 1
-  maxPitch: 2
-  alertIncreaseSlow: 15
-  alertIncreaseFast: 50
-  alertDecrease: 25
-  attackCooldown: 2
-  attackAnimationDuration: 0.5
-  waitMin: 5
-  waitMax: 15
-  rotationSpeed: 3
---- !u!95 &1800675130 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
-  m_PrefabInstance: {fileID: 1800675126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1900330381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1274,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5652201610501571711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 956028299038182214, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_Name
+      value: Orc Warrior with Sword and Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.6758
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.98099
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884246357793930984, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1041862158}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: alertUIFill
+      value: 
+      objectReference: {fileID: 80350427}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: alertAudioSource
+      value: 
+      objectReference: {fileID: 1927719900}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1710283729}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1761381374}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 347146533}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 747507724}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[4]'
+      value: 
+      objectReference: {fileID: 476195951}
+    - target: {fileID: 3104336983848370960, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
+      propertyPath: 'waypoints.Array.data[5]'
+      value: 
+      objectReference: {fileID: 775573871}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b2c5ba0119a2b4409e324945830cf46, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1475,7 +1375,7 @@ SceneRoots:
   - {fileID: 1927719901}
   - {fileID: 618651585}
   - {fileID: 1293857574}
-  - {fileID: 1800675126}
+  - {fileID: 5652201610501571711}
   - {fileID: 1041862157}
   - {fileID: 1900330385}
   - {fileID: 1623348784}
