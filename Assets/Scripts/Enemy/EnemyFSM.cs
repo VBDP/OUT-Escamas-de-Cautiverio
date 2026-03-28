@@ -35,6 +35,16 @@ public class EnemyFSM : MonoBehaviour
     public float attackRange = 2f;
     public float loseRange = 15f;
 
+    [Header("Alert Settings")]
+    [Range(0, 100)] public float currentAlert = 0f;
+    public float maxAlert = 100f;
+    [Tooltip("Aumento por segundo si estás en su rango pero no frente a él")]
+    public float alertIncreaseSlow = 15f;
+    [Tooltip("Aumento por segundo si te ve directamente en el cono visual")]
+    public float alertIncreaseFast = 50f;
+    [Tooltip("Disminución por segundo si deja de verte / te escondes")]
+    public float alertDecrease = 25f;
+
     [Header("Patrol Settings")]
     public float waitMin = 5f;
     public float waitMax = 15f;
@@ -64,11 +74,14 @@ public class EnemyFSM : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position);
 
+        // Nivel de alerta sube o baja constantemente basado en posición del jugador
+        UpdateAlertLevel(distance);
+
         switch (currentState)
         {
             case State.Patrol:
                 Patrol();
-                if (CanSeePlayer(distance))
+                if (currentAlert >= maxAlert)
                     ChangeState(State.Chase);
                 break;
 
@@ -77,8 +90,8 @@ public class EnemyFSM : MonoBehaviour
                 // Si está en rango de ataque, ataca
                 if (distance <= attackRange)
                     ChangeState(State.Attack);
-                // Si se aleja mucho, vuelve al inicio
-                else if (distance > loseRange)
+                // Si la alerta llegó a 0 (estuvo escondido un rato) o se alejó mucho 
+                else if (currentAlert <= 0 || distance > loseRange)
                     ChangeState(State.Return);
                 break;
 
@@ -94,13 +107,21 @@ public class EnemyFSM : MonoBehaviour
                 
                 // Si el jugador se aleja, volver a perseguir
                 if (distance > attackRange)
-                    ChangeState(State.Chase);
+                {
+                    if (currentAlert > 0)
+                        ChangeState(State.Chase);
+                    else
+                        ChangeState(State.Return);
+                }
                 break;
 
             case State.Return:
                 agent.SetDestination(startPosition);
+                // Si mientras vuelve a su puesto la alerta se llena, persigue de nuevo
+                if (currentAlert >= maxAlert)
+                    ChangeState(State.Chase);
                 // Si llegó a su posición inicial, volver a patrullar
-                if (Vector3.Distance(transform.position, startPosition) < 1.5f)
+                else if (Vector3.Distance(transform.position, startPosition) < 1.5f)
                     ChangeState(State.Patrol);
                 break;
         }
@@ -192,34 +213,56 @@ public class EnemyFSM : MonoBehaviour
         currentWaitTime = Random.Range(waitMin, waitMax);
     }
 
-    bool CanSeePlayer(float distance)
+    void UpdateAlertLevel(float distance)
     {
-        if (distance <= detectionRange)
+        bool inRange = distance <= detectionRange;
+        bool hasLineOfSight = false;
+        bool inVisionCone = false;
+
+        if (inRange)
         {
-            Vector3 directionToPlayer = (player.position - transform.position).normalized;
-            // Ignoramos la diferencia de altura para el cálculo horizontal del ángulo (opcional, pero más estable)
-            directionToPlayer.y = 0; 
-            Vector3 forward = transform.forward;
-            forward.y = 0;
-            
-            float angle = Vector3.Angle(forward, directionToPlayer.normalized);
-            
-            // Si el jugador está dentro de la mitad del ángulo total de visión hacia la izquierda o derecha
-            if (angle <= visionAngle / 2f)
+            Vector3 origin = transform.position + Vector3.up * eyeHeight;
+            Vector3 target = player.position + Vector3.up * eyeHeight;
+            Vector3 dirToTarget = target - origin;
+
+            // Revisamos si no hay paredes (aplica tanto para visión frontal como periférica/cercana)
+            if (!Physics.Raycast(origin, dirToTarget.normalized, dirToTarget.magnitude, obstacleMask))
             {
-                // Raycast para verificar línea de visión y obstáculos
-                Vector3 origin = transform.position + Vector3.up * eyeHeight;
-                Vector3 target = player.position + Vector3.up * eyeHeight;
-                Vector3 dirToTarget = target - origin;
+                hasLineOfSight = true;
+
+                Vector3 directionToPlayer = (player.position - transform.position).normalized;
+                directionToPlayer.y = 0; 
+                Vector3 forward = transform.forward;
+                forward.y = 0;
                 
-                // Si el rayo choca con algo en la capa de obstáculos antes de llegar al jugador, no lo ve
-                if (!Physics.Raycast(origin, dirToTarget.normalized, dirToTarget.magnitude, obstacleMask))
+                float angle = Vector3.Angle(forward, directionToPlayer.normalized);
+                
+                if (angle <= visionAngle / 2f)
                 {
-                    return true;
+                    inVisionCone = true;
                 }
             }
         }
-        return false;
+
+        // Lógica de llenado/vaciado de alerta
+        if (inVisionCone)
+        {
+            // Te está viendo directamente
+            currentAlert += alertIncreaseFast * Time.deltaTime;
+        }
+        else if (inRange && hasLineOfSight)
+        {
+            // Estás cerca de él y no hay paredes, pero a su espalda o lados
+            currentAlert += alertIncreaseSlow * Time.deltaTime;
+        }
+        else
+        {
+            // O estás muy lejos o hay un muro de por medio
+            currentAlert -= alertDecrease * Time.deltaTime;
+        }
+
+        // Limitamos la alerta para que no pase de 100 ni baje de 0
+        currentAlert = Mathf.Clamp(currentAlert, 0f, maxAlert);
     }
 
     void OnDrawGizmosSelected()
