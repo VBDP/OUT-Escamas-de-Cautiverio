@@ -54,6 +54,12 @@ public class EnemyFSM : MonoBehaviour
     [Tooltip("Disminución por segundo si deja de verte / te escondes")]
     public float alertDecrease = 25f;
 
+    [Header("Combat Settings")]
+    public float attackCooldown = 2.5f;
+    [Tooltip("Tiempo ínfimo (ej: 0.1) que el Boolean de ataque está encendido. Funciona como un Trigger para que el zarpazo no se repita 3 veces seguidas.")]
+    public float attackAnimationDuration = 0.1f;
+    private float attackTimer = 0f;
+
     [Header("Patrol Settings")]
     public float waitMin = 5f;
     public float waitMax = 15f;
@@ -113,6 +119,23 @@ public class EnemyFSM : MonoBehaviour
                     Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
                 }
+
+                // --------- LÓGICA DE COOLDOWN ---------
+                attackTimer += Time.deltaTime;
+                
+                if (attackTimer >= attackAnimationDuration)
+                {
+                    // Apagamos la orden de ataque para que el Animator regrese a IDLE
+                    animator.SetBool(boolAttack, false);
+                }
+                
+                if (attackTimer >= attackCooldown)
+                {
+                    // Ha pasado el tiempo de recarga, damos el siguiente golpe
+                    animator.SetBool(boolAttack, true);
+                    attackTimer = 0f; 
+                }
+                // --------------------------------------
                 
                 // Si el jugador se aleja, volver a perseguir
                 if (distance > attackRange)
@@ -161,6 +184,7 @@ public class EnemyFSM : MonoBehaviour
                 
             case State.Attack:
                 animator.SetBool(boolAttack, true);
+                attackTimer = 0f; // Empezar el ataque inmediatamente
                 break;
                 
             case State.Return:

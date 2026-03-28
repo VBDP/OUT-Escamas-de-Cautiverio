@@ -1144,6 +1144,8 @@ MonoBehaviour:
   alertIncreaseSlow: 15
   alertIncreaseFast: 50
   alertDecrease: 25
+  attackCooldown: 2
+  attackAnimationDuration: 0.5
   waitMin: 5
   waitMax: 15
   rotationSpeed: 3
