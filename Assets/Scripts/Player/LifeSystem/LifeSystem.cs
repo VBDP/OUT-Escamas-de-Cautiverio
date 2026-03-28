@@ -49,7 +49,11 @@ public class LifeSystem : MonoBehaviour
         {
             currentHealth -= damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            sfxSource.PlayOneShot(playerDamage);
+            
+            if (sfxSource != null && playerDamage != null)
+            {
+                sfxSource.PlayOneShot(playerDamage);
+            }
         }
         else
         {
@@ -57,7 +61,7 @@ public class LifeSystem : MonoBehaviour
         }
 
         LifeImageFillAmount();
-        Debug.Log("Te han dañado" + currentHealth);
+        Debug.Log("Te han dañado: " + currentHealth);
     }
 
     public void HealPlayer(float heal)
@@ -89,8 +93,11 @@ public class LifeSystem : MonoBehaviour
         transform.position = playerSpawnPosition;
         transform.rotation = playerSpawnRotation;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.None;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
         currentHealth = 100f;
         LifeImageFillAmount();
         if (generalManager != null)
@@ -100,13 +107,20 @@ public class LifeSystem : MonoBehaviour
             generalManager.EnableDecreaseText(200);
             generalManager.DisableDecreaseTextDelayed(2f);
             generalManager.EnableDeathPanel();
-            sfxSource.PlayOneShot(playerDie);
+            
+            if (sfxSource != null && playerDie != null)
+            {
+                sfxSource.PlayOneShot(playerDie);
+            }
         }
     }
 
     public void LifeImageFillAmount()
     {
-        healthImage.fillAmount = currentHealth / maxHealth;
+        if (healthImage != null)
+        {
+            healthImage.fillAmount = currentHealth / maxHealth;
+        }
     }
 
     public int GetDeaths()

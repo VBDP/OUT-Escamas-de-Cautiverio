@@ -594,6 +594,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263304775106130123, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1186763999228657179, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
     m_RemovedGameObjects: []
@@ -605,6 +613,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7460408368793930548, guid: 9024e969ba5faf8478eeeff8fbeeba5c, type: 3}
   m_PrefabInstance: {fileID: 1041862157}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1245217444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+  m_PrefabInstance: {fileID: 1800675126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1245217448
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245217444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8a65589a845814866949bcc996649d7d, type: 3}
+--- !u!114 &1245217449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245217444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5592c4a280d60f4282cd7da5f475009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  enemyFSM: {fileID: 1800675128}
+  damage: 20
+  hitCooldown: 1
 --- !u!1 &1293857573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1146,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1166012510108757530, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1800675128}
+    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245217448}
+    - targetCorrespondingSourceObject: {fileID: 8604874912808119372, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245217449}
   m_SourcePrefab: {fileID: 100100000, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
 --- !u!1 &1800675127 stripped
 GameObject:
