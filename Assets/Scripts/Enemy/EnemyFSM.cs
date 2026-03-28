@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyFSM : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class EnemyFSM : MonoBehaviour
     [Header("Alert Settings")]
     [Range(0, 100)] public float currentAlert = 0f;
     public float maxAlert = 100f;
+    [Tooltip("Sprite (Image UI) en el HUD que se llenará con el nivel de alerta")]
+    public Image alertUIFill;
     [Tooltip("Aumento por segundo si estás en su rango pero no frente a él")]
     public float alertIncreaseSlow = 15f;
     [Tooltip("Aumento por segundo si te ve directamente en el cono visual")]
@@ -263,6 +266,15 @@ public class EnemyFSM : MonoBehaviour
 
         // Limitamos la alerta para que no pase de 100 ni baje de 0
         currentAlert = Mathf.Clamp(currentAlert, 0f, maxAlert);
+
+        // HUD: Actualizar el relleno de la imagen si se le ha asignado una
+        if (alertUIFill != null)
+        {
+            alertUIFill.fillAmount = currentAlert / maxAlert;
+            
+            // Opcional: Esto hace que el Sprite entero desaparezca de la pantalla si no te ha detectado nada (0 alerta).
+            alertUIFill.gameObject.SetActive(currentAlert > 0);
+        }
     }
 
     void OnDrawGizmosSelected()
