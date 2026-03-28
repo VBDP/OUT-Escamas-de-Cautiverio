@@ -285,7 +285,8 @@ public class EnemyFSM : MonoBehaviour
         // Sonido de Detección Dinámico
         if (alertAudioSource != null)
         {
-            if (currentAlert > 0)
+            // Solo suena si la alerta es mayor a 0 y menor al máximo (cuando te persigue, el efecto de tensión cesa)
+            if (currentAlert > 0 && currentAlert < maxAlert)
             {
                 // Solo le damos a Play si no estaba sonando ya
                 if (!alertAudioSource.isPlaying)
@@ -299,7 +300,7 @@ public class EnemyFSM : MonoBehaviour
             }
             else
             {
-                // Si la alerta bajó por completo, apagar el sonido de tensión
+                // Si la alerta bajó por completo o llegó al 100%, apagar el sonido de tensión
                 if (alertAudioSource.isPlaying)
                     alertAudioSource.Stop();
             }
