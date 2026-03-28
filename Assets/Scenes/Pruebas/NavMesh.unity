@@ -921,11 +921,12 @@ MonoBehaviour:
   boolRun: isRunning
   boolAttack: isAttacking
   detectionRange: 10
+  visionAngle: 45
   attackRange: 2
   loseRange: 15
   waitMin: 5
   waitMax: 15
-  rotationSpeed: 5
+  rotationSpeed: 3
 --- !u!95 &1800675130 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2751618917240606066, guid: 7ab7848f57e92fc4abdb735ffa9d79fc, type: 3}
