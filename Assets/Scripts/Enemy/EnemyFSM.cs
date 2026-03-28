@@ -28,6 +28,10 @@ public class EnemyFSM : MonoBehaviour
     public float detectionRange = 10f;
     [Tooltip("Ángulo de visión frontal (cono)")]
     public float visionAngle = 90f;
+    [Tooltip("Capas que bloquean la visión del enemigo (ej. Paredes, Obstáculos)")]
+    public LayerMask obstacleMask;
+    [Tooltip("Desplazamiento en Y para lanzar el rayo desde los 'ojos'")]
+    public float eyeHeight = 1.5f;
     public float attackRange = 2f;
     public float loseRange = 15f;
 
@@ -203,8 +207,16 @@ public class EnemyFSM : MonoBehaviour
             // Si el jugador está dentro de la mitad del ángulo total de visión hacia la izquierda o derecha
             if (angle <= visionAngle / 2f)
             {
-                // NOTA: Aquí se podría añadir un Physics.Raycast si quieres que las paredes bloqueen su visión.
-                return true;
+                // Raycast para verificar línea de visión y obstáculos
+                Vector3 origin = transform.position + Vector3.up * eyeHeight;
+                Vector3 target = player.position + Vector3.up * eyeHeight;
+                Vector3 dirToTarget = target - origin;
+                
+                // Si el rayo choca con algo en la capa de obstáculos antes de llegar al jugador, no lo ve
+                if (!Physics.Raycast(origin, dirToTarget.normalized, dirToTarget.magnitude, obstacleMask))
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -212,16 +224,18 @@ public class EnemyFSM : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        Vector3 eyePosition = transform.position + Vector3.up * eyeHeight;
+
         // Dibujamos el rango general de detección en amarillo
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(eyePosition, detectionRange);
 
         // Dibujamos las líneas del cono de visión en rojo
         Gizmos.color = Color.red;
         Vector3 rightDir = Quaternion.Euler(0, visionAngle / 2f, 0) * transform.forward;
         Vector3 leftDir = Quaternion.Euler(0, -visionAngle / 2f, 0) * transform.forward;
         
-        Gizmos.DrawRay(transform.position, rightDir * detectionRange);
-        Gizmos.DrawRay(transform.position, leftDir * detectionRange);
+        Gizmos.DrawRay(eyePosition, rightDir * detectionRange);
+        Gizmos.DrawRay(eyePosition, leftDir * detectionRange);
     }
 }
