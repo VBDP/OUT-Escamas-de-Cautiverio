@@ -44,24 +44,24 @@ public class LifeSystem : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
-        //Programa para recibir damage
-        if (currentHealth > 0)
+        // Reducir vida
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        
+        // Sonido de daño
+        if (sfxSource != null && playerDamage != null && currentHealth > 0)
         {
-            currentHealth -= damage;
-            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            
-            if (sfxSource != null && playerDamage != null)
-            {
-                sfxSource.PlayOneShot(playerDamage);
-            }
+            sfxSource.PlayOneShot(playerDamage);
         }
-        else
+
+        // Si la vida llega a 0, matar al jugador
+        if (currentHealth <= 0)
         {
             KillPlayer();
         }
 
         LifeImageFillAmount();
-        Debug.Log("Te han dañado: " + currentHealth);
+        Debug.Log("Vida actual: " + currentHealth);
     }
 
     public void HealPlayer(float heal)
