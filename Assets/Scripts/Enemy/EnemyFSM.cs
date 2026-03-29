@@ -114,9 +114,10 @@ public class EnemyFSM : MonoBehaviour
                 agent.SetDestination(transform.position); // Quedarse quieto para atacar
                 // Rotar hacia el jugador suavemente mientras ataca
                 Vector3 dir = (player.position - transform.position).normalized;
-                if (dir != Vector3.zero)
+                Vector3 lookDir = new Vector3(dir.x, 0, dir.z);
+                if (lookDir != Vector3.zero)
                 {
-                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+                    Quaternion lookRotation = Quaternion.LookRotation(lookDir);
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
                 }
 
@@ -206,9 +207,10 @@ public class EnemyFSM : MonoBehaviour
 
             // Rotar hacia el siguiente punto
             Vector3 dir = (targetPoint.position - transform.position).normalized;
-            if (dir != Vector3.zero)
+            Vector3 lookDir = new Vector3(dir.x, 0, dir.z);
+            if (lookDir != Vector3.zero)
             {
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+                Quaternion lookRotation = Quaternion.LookRotation(lookDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
             }
 

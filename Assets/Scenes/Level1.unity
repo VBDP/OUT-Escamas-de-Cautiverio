@@ -236479,7 +236479,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996587305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -255860,10 +255860,10 @@ MonoBehaviour:
   alertAudioSource: {fileID: 2184026134406714648}
   minPitch: 1
   maxPitch: 2
-  alertIncreaseSlow: 15
-  alertIncreaseFast: 50
-  alertDecrease: 25
-  attackCooldown: 2
+  alertIncreaseSlow: 50
+  alertIncreaseFast: 80
+  alertDecrease: 15
+  attackCooldown: 1.5
   attackAnimationDuration: 0.5
   waitMin: 5
   waitMax: 15
