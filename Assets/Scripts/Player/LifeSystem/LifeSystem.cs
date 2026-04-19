@@ -24,6 +24,9 @@ public class LifeSystem : MonoBehaviour
     [SerializeField] private AudioClip playerDamage;
     [SerializeField] private AudioClip playerDie;
     private int deaths = 0;
+    
+    [Header("System State")]
+    public bool isLifeSystemActive = true;
 
 
     /*-------- Void Start && Void Update ---------*/
@@ -42,8 +45,15 @@ public class LifeSystem : MonoBehaviour
         deaths = 0;
     }
 
+    public void SetLifeSystemActive(bool isActive)
+    {
+        isLifeSystemActive = isActive;
+    }
+
     public void DamagePlayer(float damage)
     {
+        if (!isLifeSystemActive || !this.enabled) return;
+
         // Reducir vida
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -66,6 +76,8 @@ public class LifeSystem : MonoBehaviour
 
     public void HealPlayer(float heal)
     {
+        if (!isLifeSystemActive || !this.enabled) return;
+
         //Programa para sanar
         if (currentHealth > 0)
         {
@@ -90,6 +102,8 @@ public class LifeSystem : MonoBehaviour
 
     public void KillPlayer()
     {
+        if (!isLifeSystemActive || !this.enabled) return;
+
         transform.position = playerSpawnPosition;
         transform.rotation = playerSpawnRotation;
         Rigidbody rb = GetComponent<Rigidbody>();

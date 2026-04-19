@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using TMPro;
@@ -60,7 +60,7 @@ public class GeneralManager : MonoBehaviour
     * Health
     */
     public Image healthBar;
-    [SerializeField] private GameObject LoginPanel;
+    [SerializeField] public GameObject LoginPanel;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Void Awake() and Update() Methods
