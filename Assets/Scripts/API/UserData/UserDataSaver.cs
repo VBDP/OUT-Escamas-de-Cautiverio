@@ -24,10 +24,7 @@ public class UserDataSaver : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR
         PlayerPrefs.DeleteAll();
-#endif
-
         nameInputField.characterLimit = 10;
         loginCanvas = LoginPanel.GetComponent<CanvasGroup>();
         errorText.text = "";
