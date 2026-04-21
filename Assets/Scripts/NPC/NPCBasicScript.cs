@@ -59,7 +59,7 @@ public class NPCBasicScript : MonoBehaviour
                     Debug.Log("Poniendo la frase: " + frases[count]);
                     npcTextBox.text = frases[count];
                     isShowingText = true;
-                    textTimer = 4f; // Tiempo que la frase durará en pantalla
+                    textTimer = 400f; // Tiempo que la frase durará en pantalla
 
                     // Pasar a la siguiente línea
                     if (count < frases.Count - 1)

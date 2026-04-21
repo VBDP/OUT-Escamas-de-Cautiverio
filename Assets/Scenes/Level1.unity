@@ -92905,7 +92905,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774616021}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df543fe738057ee49a3f693deb427b38, type: 3}
   m_Name: 
@@ -137031,7 +137031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591644860445115680, guid: a55e8b944b49e774899ecb13192840e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3591644860445115680, guid: a55e8b944b49e774899ecb13192840e5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -160769,7 +160769,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319534928}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df543fe738057ee49a3f693deb427b38, type: 3}
   m_Name: 
@@ -227285,7 +227285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591644860445115680, guid: a55e8b944b49e774899ecb13192840e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3591644860445115680, guid: a55e8b944b49e774899ecb13192840e5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -278630,12 +278630,27 @@ MonoBehaviour:
   raycast: {fileID: 536603471}
   outline: {fileID: 7735042195318934520}
   frases:
-  - Elige una de las dos caras de esta Moneda...
-  - 'Si eres un maldito cobarde y un bastardo... '
-  - Pulsa la letra B en tu teclado ahora para ser inmortal
-  - "Pero cuidado... As\xED, no ganar\xE1s"
-  - "Si quieres mostrar tu val\xEDa y ganar con tus propios m\xE9ritos"
-  - Ignorame y sigue adelante.
+  - "Forastero\u2026 tu olor no pertenece a estas piedras. Y, sin embargo\u2026 el
+    destino te ha tra\xEDdo hasta mi presencia."
+  - "Escucha con atenci\xF3n, porque no repetir\xE9 mis palabras. El tiempo aqu\xED
+    dentro no fluye\u2026 devora."
+  - "En lo m\xE1s profundo de esta mazmorra yacen dos runas antiguas. No son reliquias.
+    No son tesoros. Son cerraduras."
+  - "Cerraduras que mantienen dormido algo que jam\xE1s debi\xF3 respirar."
+  - "Tu misi\xF3n es simple de entender\u2026 y terrible de ejecutar. Encuentra las
+    dos runas. Col\xF3calas en sus pedestales. Hazlo antes de que esta prisi\xF3n
+    ceda."
+  - "Pero no todo es desesperanza, viajero\u2026 Esta mazmorra te concede un don."
+  - Dos modos para enfrentar tu destino.
+  - "Modo Normal. Carne, hueso, miedo\u2026 como cualquier mortal. Si caes\u2026
+    todo habr\xE1 terminado."
+  - Modo Inmortal.
+  - No puedes morir. No puedes caer. No puedes fracasar.
+  - "Pero cada segundo en ese estado\u2026 algo en ti se consume. Recuerdos. Voluntad.
+    Alma."
+  - "Cuando salgas de aqu\xED\u2026 ya no ser\xE1s quien entr\xF3."
+  - "Elige con sabidur\xEDa. Corre con decisi\xF3n. Porque aqu\xED, viajero\u2026"
+  - El tiempo no es oro. El tiempo es tu enemigo.
 --- !u!114 &7735042195318934520
 MonoBehaviour:
   m_ObjectHideFlags: 0
