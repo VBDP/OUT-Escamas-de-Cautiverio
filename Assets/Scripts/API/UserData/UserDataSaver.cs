@@ -28,6 +28,7 @@ public class UserDataSaver : MonoBehaviour
         nameInputField.characterLimit = 10;
         loginCanvas = LoginPanel.GetComponent<CanvasGroup>();
         errorText.text = "";
+        errorText.color = Color.red;
         playerMovement = FindFirstObjectByType<PlayerMovement>();
 
         nameInputField.onValueChanged.AddListener(delegate { ValidateInputs(); });
@@ -60,6 +61,24 @@ public class UserDataSaver : MonoBehaviour
 
     void Update()
     {
+        // Navegación con Tabulador entre inputs
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (nameInputField.isFocused)
+            {
+                mailInputField.ActivateInputField();
+            }
+            else if (mailInputField.isFocused)
+            {
+                nameInputField.ActivateInputField();
+            }
+            else
+            {
+                // Si ninguno está enfocado, enfoca el primero
+                nameInputField.ActivateInputField();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Return) && saveButton.interactable)
         {
             saveData();
@@ -71,16 +90,49 @@ public class UserDataSaver : MonoBehaviour
         string name = nameInputField.text.Trim();
         string mail = mailInputField.text.Trim();
 
-        bool nameValid =
-            !string.IsNullOrEmpty(name) &&
-            name.Length <= 10 &&
-            Regex.IsMatch(name, @"^[a-zA-Z0-9]{1,10}$");
+        errorText.color = Color.red;
 
-        bool mailValid =
-            !string.IsNullOrEmpty(mail) &&
-            Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        // Validar Nombre
+        if (string.IsNullOrEmpty(name))
+        {
+            errorText.text = "Introduce un nombre";
+            saveButton.interactable = false;
+            return;
+        }
 
-        saveButton.interactable = nameValid && mailValid;
+        if (name.Length < 3)
+        {
+            errorText.text = "Nombre muy corto (mín. 3 caracteres)";
+            saveButton.interactable = false;
+            return;
+        }
+
+        if (!Regex.IsMatch(name, @"^[a-zA-Z0-9_]{3,10}$"))
+        {
+            errorText.text = "Nombre no válido (solo letras, números y _)";
+            saveButton.interactable = false;
+            return;
+        }
+
+        // Validar Email
+        if (string.IsNullOrEmpty(mail))
+        {
+            errorText.text = "Introduce un email";
+            saveButton.interactable = false;
+            return;
+        }
+
+        if (!Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+        {
+            errorText.text = "Formato de email no válido";
+            saveButton.interactable = false;
+            return;
+        }
+
+        // Todo correcto
+        errorText.text = "Datos correctos";
+        errorText.color = Color.green;
+        saveButton.interactable = true;
     }
 
     public void saveData()
@@ -89,8 +141,7 @@ public class UserDataSaver : MonoBehaviour
         string name = nameInputField.text.Trim();
         string mail = mailInputField.text.Trim();
 
-        errorText.text = "";
-
+        errorText.color = Color.green;
         PlayerPrefs.SetString("username", name);
         PlayerPrefs.SetString("email", mail);
         PlayerPrefs.Save();
