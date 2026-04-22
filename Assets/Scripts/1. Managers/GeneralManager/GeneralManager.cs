@@ -47,6 +47,7 @@ public class GeneralManager : MonoBehaviour
     private float scoreIntervalTimer = 0f;
     private float scoreInterval = 10f;
     private int scorePenalty = 25;
+    private bool scoreDecayActive = false;
 
     /*
     * Music and SFX Audio Sources
@@ -101,7 +102,7 @@ public class GeneralManager : MonoBehaviour
             ClosePauseMenu();
         }
 
-        if (!pauseMenuActive)
+        if (!pauseMenuActive && scoreDecayActive)
         {
             scoreIntervalTimer += Time.deltaTime;
 
@@ -179,6 +180,11 @@ public class GeneralManager : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public void StartScoreDecay()
+    {
+        scoreDecayActive = true;
     }
 
     /*
