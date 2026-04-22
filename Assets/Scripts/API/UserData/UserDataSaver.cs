@@ -122,9 +122,9 @@ public class UserDataSaver : MonoBehaviour
             return;
         }
 
-        if (!Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+        if (!Regex.IsMatch(mail, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
         {
-            errorText.text = "Formato de email no válido";
+            errorText.text = "Formato de email no válido (ej: usuario@dominio.com)";
             saveButton.interactable = false;
             return;
         }
