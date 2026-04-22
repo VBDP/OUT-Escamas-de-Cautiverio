@@ -8,7 +8,7 @@ public class BeastModeController : MonoBehaviour
     private LifeSystem lifeSystem;
     private GeneralManager generalManager;
     private float beastModeTimer = 0f;
-    private float beastModeInterval = 1f;
+    private float beastModeInterval = 10f;
 
     void Start()
     {
@@ -21,6 +21,9 @@ public class BeastModeController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B)) // Check if the 'B' key is pressed to toggle beast mode
         {
+            // Si ya está activo, no permitimos desactivarlo
+            if (beastModeEffect.activeSelf) return;
+
             // Solo permite activarlo si el GeneralManager y LoginPanel existen, y el panel está desactivado.
             if (generalManager != null && generalManager.LoginPanel != null && generalManager.LoginPanel.activeSelf)
             {
