@@ -75,17 +75,31 @@ public class GeneralManager : MonoBehaviour
         if (actualScene != "Tutorial")
         {
             LoginPanel.SetActive(true);
+            
+            if (playerMovement != null)
+            {
+                playerMovement.disableCursorLockOnStart = true;
+                playerMovement.BlockCamera();
+            }
+            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
     void Update()
     {
         GetTime();
+        // El bloqueo del LoginPanel ahora se gestiona por eventos de activación/desactivación
+        // o mediante el estado inicial en Awake/Start para evitar conflictos.
         if (LoginPanel.activeSelf && actualScene != "Tutorial")
         {
-            playerMovement.BlockCamera();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            // Opcional: asegurarnos de que el cursor sea visible si el panel está activo por alguna razón
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
 
         timer.Tick(Time.deltaTime);

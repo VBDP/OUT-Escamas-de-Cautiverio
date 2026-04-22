@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private bool cameraUnlocked = true;
     private bool isGrounded = true;
 
+    [HideInInspector] public bool disableCursorLockOnStart = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,8 +38,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Solo bloqueamos el cursor si el sistema lo permite al empezar
+        // (El GeneralManager puede deshabilitar esto si el login está activo)
+        if (!disableCursorLockOnStart)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     private void Update()

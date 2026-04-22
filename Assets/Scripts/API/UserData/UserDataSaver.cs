@@ -162,15 +162,24 @@ public class UserDataSaver : MonoBehaviour
     IEnumerator LoginSuccess()
     {
         errorText.text = "Data saved";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         yield return StartCoroutine(FadeOutLogin());
 
+        // Finalizar transición: Bloquear cursor y liberar cámara
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
         Input.ResetInputAxes();
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 
-        playerMovement.UnblockCamera();
+        if (playerMovement != null)
+        {
+            playerMovement.UnblockCamera();
+        }
+        else
+        {
+            Debug.LogWarning("UserDataSaver: PlayerMovement not found during LoginSuccess!");
+        }
     }
 
     IEnumerator FadeOutLogin()
@@ -188,9 +197,6 @@ public class UserDataSaver : MonoBehaviour
         loginCanvas.alpha = 0;
         LoginPanel.SetActive(false);
         HudPanel.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     IEnumerator VerifyUser(string username, string email)
