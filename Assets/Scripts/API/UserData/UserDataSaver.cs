@@ -18,6 +18,7 @@ public class UserDataSaver : MonoBehaviour
 
     private CanvasGroup loginCanvas;
     private PlayerMovement playerMovement;
+    private GeneralManager generalManager;
     private bool hasRated;
     private string apiToken = "nL3ggwGvsiYZ5vzCqhAL58WnDcZgB9ad7FtDv82oaAAYa36UoJPS35sIbR9F";
     private string apiBaseUrl = "https://phpstack-1076337-5399863.cloudwaysapps.com/api";
@@ -30,6 +31,7 @@ public class UserDataSaver : MonoBehaviour
         errorText.text = "";
         errorText.color = Color.red;
         playerMovement = FindFirstObjectByType<PlayerMovement>();
+        generalManager = FindFirstObjectByType<GeneralManager>();
 
         nameInputField.onValueChanged.AddListener(delegate { ValidateInputs(); });
         mailInputField.onValueChanged.AddListener(delegate { ValidateInputs(); });
@@ -165,21 +167,20 @@ public class UserDataSaver : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         yield return StartCoroutine(FadeOutLogin());
 
-        // Finalizar transición: Bloquear cursor y liberar cámara
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
-        Input.ResetInputAxes();
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-
-        if (playerMovement != null)
+        if (generalManager != null)
         {
-            playerMovement.UnblockCamera();
+            generalManager.EndLoginUI();
         }
         else
         {
-            Debug.LogWarning("UserDataSaver: PlayerMovement not found during LoginSuccess!");
+            Debug.LogWarning("UserDataSaver: GeneralManager not found, attempting manual unblock.");
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            if (playerMovement != null) playerMovement.UnblockCamera();
         }
+        
+        Input.ResetInputAxes();
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
 
     IEnumerator FadeOutLogin()

@@ -62,6 +62,7 @@ public class GeneralManager : MonoBehaviour
     */
     public Image healthBar;
     [SerializeField] public GameObject LoginPanel;
+    private bool hasUnblockedAfterLogin = false;
     /*
     ----------------------------------------------------------------------------------------------------------------------------
     · Void Awake() and Update() Methods
@@ -92,7 +93,7 @@ public class GeneralManager : MonoBehaviour
         GetTime();
         // El bloqueo del LoginPanel ahora se gestiona por eventos de activación/desactivación
         // o mediante el estado inicial en Awake/Start para evitar conflictos.
-        if (LoginPanel.activeSelf && actualScene != "Tutorial")
+        if (LoginPanel != null && LoginPanel.activeSelf && actualScene != "Tutorial")
         {
             // Opcional: asegurarnos de que el cursor sea visible si el panel está activo por alguna razón
             if (Cursor.lockState != CursorLockMode.None)
@@ -100,6 +101,13 @@ public class GeneralManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
+        }
+        else if (LoginPanel != null && !LoginPanel.activeSelf && actualScene != "Tutorial" && !pauseMenuActive && !hasUnblockedAfterLogin)
+        {
+            // Sistema de Auto-Reparación: si el panel se cerró pero aún no hemos desbloqueado la cámara, lo hacemos ahora.
+            Debug.Log("<color=cyan>GeneralManager: Self-healing unblock triggered</color>");
+            EndLoginUI();
+            hasUnblockedAfterLogin = true;
         }
 
         timer.Tick(Time.deltaTime);
@@ -269,6 +277,33 @@ public class GeneralManager : MonoBehaviour
             textDeathPanel.text = "¡Has muerto, reapareces al inicio del nivel!";
         }
 
+    }
+
+    public void EndLoginUI()
+    {
+        Debug.Log("<color=yellow>GeneralManager: EndLoginUI() called</color>");
+        
+        if (LoginPanel != null)
+        {
+            LoginPanel.SetActive(false);
+        }
+
+        if (playerMovement == null)
+        {
+            Debug.LogWarning("GeneralManager: playerMovement was null in EndLoginUI, searching now...");
+            playerMovement = FindFirstObjectByType<PlayerMovement>();
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.UnblockCamera();
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        hasUnblockedAfterLogin = true;
+        
+        Debug.Log("Login UI ended. Gameplay resumed.");
     }
 
     public void DisableDeathPanel()

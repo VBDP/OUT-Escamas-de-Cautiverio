@@ -125,7 +125,16 @@ public class PlayerMovement : MonoBehaviour
         mouseSensitivity = value;
     }
 
-    public void BlockCamera() => cameraUnlocked = false;
-    public void UnblockCamera() => cameraUnlocked = true;
+    public void BlockCamera()
+    {
+        cameraUnlocked = false;
+        Debug.Log("<color=red>Camera BLOCKED</color> by call from: " + new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name);
+    }
+
+    public void UnblockCamera()
+    {
+        cameraUnlocked = true;
+        Debug.Log("<color=green>Camera UNBLOCKED</color> by call from: " + new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name);
+    }
     #endregion
 }
