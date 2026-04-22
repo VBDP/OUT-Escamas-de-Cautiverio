@@ -9,6 +9,12 @@ public class BeastModeController : MonoBehaviour
     private GeneralManager generalManager;
     private float beastModeTimer = 0f;
     private float beastModeInterval = 10f;
+    
+    [Header("HUD Animation Settings")]
+    [SerializeField] private float pulseSpeed = 2f;
+    [SerializeField] private Color colorGold = new Color(0.55f, 0.42f, 0.08f, 0.2f); // Dorado base
+    [SerializeField] private Color colorRed = new Color(0.5f, 0f, 0f, 0.2f);      // Rojo fuego
+    [SerializeField] private float flickerSpeed = 15f;
 
     void Start()
     {
@@ -46,6 +52,22 @@ public class BeastModeController : MonoBehaviour
                 }
                 beastModeTimer = 0f;
             }
+
+            // Lógica de animación del HUD (Fuego/Energía)
+            float pulse = (Mathf.Sin(Time.time * pulseSpeed) + 1f) / 2f;
+            float flicker = Mathf.Lerp(0.7f, 1.3f, Mathf.PingPong(Time.time * flickerSpeed, 1f));
+            
+            Color currentEffectColor = Color.Lerp(colorGold, colorRed, pulse);
+            currentEffectColor.a *= flicker; // Aplicar parpadeo a la transparencia
+            beastModeHud.color = currentEffectColor;
+        }
+        else
+        {
+            // Asegurarse de que el HUD esté invisible si el modo está apagado
+            if (beastModeHud.color.a > 0)
+            {
+                beastModeHud.color = new Color(0, 0, 0, 0);
+            }
         }
     }
 
@@ -58,7 +80,12 @@ public class BeastModeController : MonoBehaviour
             beastModeTimer = 0f; // Reiniciar el temporizador al activarlo
         }
 
-        beastModeHud.color = new Color(0.55f, 0.42f, 0.08f, isActive ? 0 : 0.3f); // Change the HUD opacity based on the beast mode state
+        // El color se gestionará dinámicamente en el Update una vez activo, 
+        // pero establecemos un estado inicial aquí si se desea.
+        if (!isActive) 
+        {
+            beastModeHud.color = colorGold;
+        }
 
         // Si isActive es false, significa que nos estamos transformando (activando el modo bestia), y la vida debe desactivarse.
         // Si isActive es true, significa que volvemos a la normalidad (desactivando el modo bestia), y la vida debe activarse.
