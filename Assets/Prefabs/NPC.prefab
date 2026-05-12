@@ -1088,8 +1088,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4137454377434021718}
   - component: {fileID: 5142768272751469348}
-  - component: {fileID: 8866836807323466081}
-  - component: {fileID: 3779527882899986492}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -1139,45 +1137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &8866836807323466081
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226088141808265681}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5240366, y: 1.7561575, z: 0.6416502}
-  m_Center: {x: 0.0032598653, y: 0.9189293, z: 0.059476193}
---- !u!114 &3779527882899986492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226088141808265681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 0}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1239136693302521265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,7 +4537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnableDialogue
   canvas: {fileID: 5422625470292746644}
   player: {fileID: 0}
-  outline: {fileID: 3779527882899986492}
+  outline: {fileID: 0}
 --- !u!1 &4579322998597600844
 GameObject:
   m_ObjectHideFlags: 0
