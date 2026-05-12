@@ -12,6 +12,9 @@ public class ClickRotationPhysics : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+        
+        // Congelar posición para que no se mueva, y rotación en X y Z para que solo gire sobre Y
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void Update()
