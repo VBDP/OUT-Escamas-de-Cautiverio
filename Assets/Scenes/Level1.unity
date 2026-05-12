@@ -56758,7 +56758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287353120183323330, guid: f866648d31fd9494093daef232970acf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -225492,7 +225492,7 @@ GameObject:
   - component: {fileID: 1842453030}
   - component: {fileID: 1842453029}
   m_Layer: 5
-  m_Name: FillImage
+  m_Name: DetectionFillImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230203,7 +230203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2287353120183323330, guid: f866648d31fd9494093daef232970acf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -265485,7 +265485,7 @@ GameObject:
   - component: {fileID: 3104336983633527961}
   - component: {fileID: 2184026134406714648}
   m_Layer: 6
-  m_Name: Orc Warrior with Sword and Shield Variant
+  m_Name: Enemy Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

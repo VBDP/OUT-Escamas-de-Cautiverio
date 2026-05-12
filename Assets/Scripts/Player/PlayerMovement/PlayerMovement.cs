@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Cargar sensibilidad desde PlayerPrefs (el valor guardado es de 0 a 1)
         float savedSens = PlayerPrefs.GetFloat("MouseSensitivity", 0.4f);
-        mouseSensitivity = savedSens * 5f; // Sincronizado con OptionsManager
+        mouseSensitivity = Mathf.Lerp(0.1f, 2.0f, savedSens); // Mapeado de 0.1 a 2.0
     }
 
     private void Start()

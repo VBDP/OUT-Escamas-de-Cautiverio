@@ -150,7 +150,7 @@ public class OptionsManager : MonoBehaviour
     {
         if (player != null)
         {
-            player.SetMouseSensitivity(mouseSensitivityLevel * 5f);
+            player.SetMouseSensitivity(Mathf.Lerp(0.1f, 2.0f, mouseSensitivityLevel));
         }
     }
 }
