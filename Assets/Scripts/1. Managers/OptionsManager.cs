@@ -39,16 +39,24 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] private Slider mouseSensitivitySlider;
     [SerializeField] private TextMeshProUGUI mouseSensitivityText;
 
+    // -------------------------
+    // API Setting
+    // -------------------------
+    private bool apiEnabled;
+    [SerializeField] private Toggle apiToggle;
+
     void Awake()
     {
         // Cargar valores guardados
         musicVolumeLevel = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxVolumeLevel = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         mouseSensitivityLevel = PlayerPrefs.GetFloat("MouseSensitivity", 0.4f);
+        apiEnabled = PlayerPrefs.GetInt("ApiEnabled", 1) == 1;
 
         musicVolumeSlider.value = musicVolumeLevel;
         sfxVolumeSlider.value = sfxVolumeLevel;
         mouseSensitivitySlider.value = mouseSensitivityLevel;
+        if (apiToggle != null) apiToggle.isOn = apiEnabled;
 
         // Buscar managers
         generalManager = FindFirstObjectByType<GeneralManager>();
@@ -80,6 +88,8 @@ public class OptionsManager : MonoBehaviour
 
         mouseSensitivitySlider.value = mouseSensitivityLevel;
         mouseSensitivityText.text = (mouseSensitivityLevel * 100).ToString("0") + "%";
+
+        if (apiToggle != null) apiToggle.isOn = apiEnabled;
     }
 
     // -------------------------
@@ -151,6 +161,21 @@ public class OptionsManager : MonoBehaviour
         if (player != null)
         {
             player.SetMouseSensitivity(Mathf.Lerp(0.1f, 2.0f, mouseSensitivityLevel));
+        }
+    }
+
+    // -------------------------
+    // API
+    // -------------------------
+    
+    public void OnApiToggleChanged()
+    {
+        if (apiToggle != null)
+        {
+            apiEnabled = apiToggle.isOn;
+            PlayerPrefs.SetInt("ApiEnabled", apiEnabled ? 1 : 0);
+            PlayerPrefs.Save();
+            Debug.Log("API Enabled: " + apiEnabled);
         }
     }
 }

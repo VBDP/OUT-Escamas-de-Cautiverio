@@ -75,16 +75,25 @@ public class GeneralManager : MonoBehaviour
         actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (actualScene != "Tutorial")
         {
-            LoginPanel.SetActive(true);
-            
-            if (playerMovement != null)
+            if (PlayerPrefs.GetInt("ApiEnabled", 1) == 1)
             {
-                playerMovement.disableCursorLockOnStart = true;
-                playerMovement.BlockCamera();
+                LoginPanel.SetActive(true);
+                
+                if (playerMovement != null)
+                {
+                    playerMovement.disableCursorLockOnStart = true;
+                    playerMovement.BlockCamera();
+                }
+                
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
-            
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            else
+            {
+                // API is disabled, so we don't show the login panel and make sure it's deactivated
+                LoginPanel.SetActive(false);
+                hasUnblockedAfterLogin = true;
+            }
         }
     }
 

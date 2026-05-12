@@ -33,6 +33,13 @@ public class Top5ScoresWithUserAuto : MonoBehaviour
         currentUserScoreText.text = currentScore.ToString();
         currentUserRankingText.text = "-";
 
+        if (PlayerPrefs.GetInt("ApiEnabled", 1) == 0)
+        {
+            topScoresText.text = "API Desactivada";
+            currentUserRankingText.text = "-";
+            return;
+        }
+
         StartCoroutine(AutoRefresh());
     }
 

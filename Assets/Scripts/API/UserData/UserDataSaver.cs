@@ -38,6 +38,13 @@ public class UserDataSaver : MonoBehaviour
 
         saveButton.interactable = false;
 
+        if (PlayerPrefs.GetInt("ApiEnabled", 1) == 0)
+        {
+            LoginPanel.SetActive(false);
+            HudPanel.SetActive(true);
+            return;
+        }
+
         if (PlayerPrefs.HasKey("username") && PlayerPrefs.HasKey("email"))
         {
             nameInputField.text = PlayerPrefs.GetString("username");

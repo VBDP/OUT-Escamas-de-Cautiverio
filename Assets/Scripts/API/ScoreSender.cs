@@ -10,6 +10,7 @@ public class ScoreSender
 
     public void SendScore(MonoBehaviour coroutineRunner, string username, string email, int scoreValue)
     {
+        if (PlayerPrefs.GetInt("ApiEnabled", 1) == 0) return;
         coroutineRunner.StartCoroutine(PostScore(username, email, scoreValue));
     }
 

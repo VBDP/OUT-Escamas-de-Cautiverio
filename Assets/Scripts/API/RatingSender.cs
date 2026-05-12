@@ -25,6 +25,7 @@ public class RatingSender
                         int general, int jug, int dif, int gra, int concordancia,
                         System.Action onComplete = null)
     {
+        useAPI = PlayerPrefs.GetInt("ApiEnabled", 1) == 1;
         if (useAPI)
         {
             runner.StartCoroutine(VerifyScoreAndRate(username, email, score, general, jug, dif, gra, concordancia, onComplete));
