@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
         if (!playerCamera && transform.childCount > 0)
             playerCamera = transform.GetChild(0);
 
-        // Cargar sensibilidad desde PlayerPrefs
-        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity);
-        // Si no hay valor guardado, usa el valor por defecto del inspector
+        // Cargar sensibilidad desde PlayerPrefs (el valor guardado es de 0 a 1)
+        float savedSens = PlayerPrefs.GetFloat("MouseSensitivity", 0.4f);
+        mouseSensitivity = savedSens * 5f; // Sincronizado con OptionsManager
     }
 
     private void Start()

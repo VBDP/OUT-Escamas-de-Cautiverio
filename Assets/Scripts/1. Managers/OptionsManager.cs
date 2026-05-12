@@ -44,7 +44,7 @@ public class OptionsManager : MonoBehaviour
         // Cargar valores guardados
         musicVolumeLevel = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxVolumeLevel = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
-        mouseSensitivityLevel = PlayerPrefs.GetFloat("MouseSensitivity", 0.5f);
+        mouseSensitivityLevel = PlayerPrefs.GetFloat("MouseSensitivity", 0.4f);
 
         musicVolumeSlider.value = musicVolumeLevel;
         sfxVolumeSlider.value = sfxVolumeLevel;
@@ -150,7 +150,7 @@ public class OptionsManager : MonoBehaviour
     {
         if (player != null)
         {
-            player.SetMouseSensitivity(mouseSensitivityLevel * 10f);
+            player.SetMouseSensitivity(mouseSensitivityLevel * 5f);
         }
     }
 }

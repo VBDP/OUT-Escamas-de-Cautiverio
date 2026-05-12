@@ -12082,7 +12082,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1199140124482532624, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8539677
+      value: 0.32807574
       objectReference: {fileID: 0}
     - target: {fileID: 1199140124482532624, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -12090,7 +12090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1199140124482532624, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5203259
+      value: 0.9446514
       objectReference: {fileID: 0}
     - target: {fileID: 1199140124482532624, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -12098,7 +12098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1199140124482532624, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 62.708
+      value: 141.696
       objectReference: {fileID: 0}
     - target: {fileID: 2348863151781214678, guid: 41b3c6540d4009a48afc54cfdb0ca5b9, type: 3}
       propertyPath: m_StaticEditorFlags
