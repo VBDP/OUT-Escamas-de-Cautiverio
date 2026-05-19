@@ -38,10 +38,19 @@ public class KeyController : MonoBehaviour
             {
                 SaveOnInventory();
 
-                // ✅ NUEVO SISTEMA
-                DataManager.Instance.SetFirstKeyTime(generalManager.GetTime());
-
-                GetComponent<Renderer>().enabled = false;
+                Renderer rend = GetComponent<Renderer>();
+                if (rend != null)
+                {
+                    rend.enabled = false;
+                }
+                else
+                {
+                    Renderer childRend = GetComponentInChildren<Renderer>();
+                    if (childRend != null)
+                    {
+                        childRend.enabled = false;
+                    }
+                }
 
                 // ⚠️ Protección por si no existe "Luz"
                 Transform luz = transform.Find("Luz");

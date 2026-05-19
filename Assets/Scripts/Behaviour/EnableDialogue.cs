@@ -18,11 +18,19 @@ public class EnableDialogue : MonoBehaviour
   }
   void Update()
   {
-    outline.OutlineColor = new Color(0, 0, 0, 0);
-    if (raycast.GetHitObjectName() == "NPC")
+    if (outline != null)
     {
-      outline.OutlineColor = new Color(1, 1, 1, 1);
-      if (Input.GetMouseButtonDown(0))
+      outline.OutlineColor = new Color(0, 0, 0, 0);
+    }
+    
+    if (raycast.GetHitGameObject() == this.gameObject)
+    {
+      if (outline != null)
+      {
+          outline.OutlineColor = new Color(1, 1, 1, 1);
+      }
+      
+      if (Input.GetMouseButtonDown(0) && distancia <= 3f)
       {
         canvas.SetActive(true);
       }
@@ -63,8 +71,11 @@ public class EnableDialogue : MonoBehaviour
 
     if (distancia > 3f)
     {
-      canvas.SetActive(false);
-      dialogues.Reset();
+      if (canvas != null && canvas.activeSelf)
+      {
+        canvas.SetActive(false);
+        dialogues.Reset();
+      }
     }
 
   }
