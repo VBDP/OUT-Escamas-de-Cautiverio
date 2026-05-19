@@ -22,16 +22,8 @@ public class RatingManager : MonoBehaviour
 
     public TextMeshProUGUI errorText;
 
-    [Header("Configuración")]
-    public bool useAPI = true; // Flag para activar/desactivar API
-
-    private RatingSender sender;
-
     void Awake()
     {
-        sender = new RatingSender();
-        sender.useAPI = useAPI;
-
         // Inicializar barras al mínimo 1 estrella
         jugabilidadFilledImage.fillAmount = 0.2f;
         dificultadFilledImage.fillAmount = 0.2f;
@@ -76,27 +68,10 @@ public class RatingManager : MonoBehaviour
             return;
         }
 
-        string username = PlayerPrefs.GetString("username", "Player");
-        string email = PlayerPrefs.GetString("email", "noemail@game.com");
-        int score = PlayerPrefs.GetInt("score", 0);
-
-        int jug = Mathf.RoundToInt(jugabilidadFilledImage.fillAmount * 5);
-        int dif = Mathf.RoundToInt(dificultadFilledImage.fillAmount * 5);
-        int gra = Mathf.RoundToInt(graficosFilledImage.fillAmount * 5);
-        int con = Mathf.RoundToInt(concordanciaFilledImage.fillAmount * 5);
-        int gen = Mathf.RoundToInt(generalFilledImage.fillAmount * 5);
-
-        errorText.text = "Enviando rating...";
-
-        sender.SendAll(this, username, email, score, gen, jug, dif, gra, con, () =>
-        {
-            errorText.text = sender.useAPI 
-                ? "✅ ¡Rating enviado correctamente al servidor!" 
-                : "✅ ¡Rating guardado localmente!";
-            
-            // Delay antes de volver al menú principal
-            StartCoroutine(DelayAndLoadMenu());
-        });
+        errorText.text = "¡Rating guardado localmente!";
+        
+        // Delay antes de volver al menú principal
+        StartCoroutine(DelayAndLoadMenu());
     }
 
     private IEnumerator DelayAndLoadMenu()
